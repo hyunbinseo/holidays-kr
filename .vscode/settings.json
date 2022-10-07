@@ -2,6 +2,9 @@
 	"editor.tabSize": 2,
 	"editor.insertSpaces": false,
 	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true
+	},
 	"files.insertFinalNewline": true,
 	"[csv]": {
 		"files.encoding": "utf8bom"
