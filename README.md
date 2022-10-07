@@ -1,13 +1,16 @@
 # 대한민국의 공휴일
 
-월력요항의 '국경일과 관공서의 공휴일'을 가공한 자료입니다.
+월력요항[^1]의 '국경일과 관공서의 공휴일'을 가공한 자료입니다.
 
 - 공휴일의 명칭은 [공휴일에 관한 법률](https://www.law.go.kr/LSW//lsInfoP.do?lsiSeq=233829)을 따릅니다.
-- 공휴일이 아닌 국경일은 제외합니다. (예: 제헌절)
+- 공휴일이 아닌 국경일은 포함하지 않습니다. (예: 제헌절)
+- 지방 공휴일은 포함하지 않습니다. (예: [4·3희생자추념일](https://www.law.go.kr/LSW/ordinInfoP.do?ordinSeq=1342242))
 - ISO 8601 형식의 날짜를 사용합니다. (예: 2022-10-05)
 - [Google 캘린더에 호환되는 CSV 형식](https://support.google.com/calendar/answer/37118?hl=ko)을 사용합니다.
 
 ## 다운로드
+
+- 2023년 월력요항 ([과학기술정보통신부 공고 제2022-0621호](<https://gwanbo.go.kr/ezpdf/customLayout.jsp?contentId=I0000000000000001654753565985000&tocId=I0000000000000001653980856205000&isTocOrder=N&name=%25EA%25B3%25BC%25ED%2595%2599%25EA%25B8%25B0%25EC%2588%25A0%25EC%25A0%2595%25EB%25B3%25B4%25ED%2586%25B5%25EC%258B%25A0%25EB%25B6%2580%25EA%25B3%25B5%25EA%25B3%25A0%25EC%25A0%259C2022-0621%25ED%2598%25B8(2023%25EB%2585%2584%25EC%259B%2594%25EB%25A0%25A5%25EC%259A%2594%25ED%2595%25AD)>))
 
 > **Warning**
 > Chromium 웹 브라우저에서는 CSV 파일이 `.txt` 확장자로 저장되지 않도록 주의합니다.
@@ -29,3 +32,5 @@ Google 캘린더에서 제공하는 [대한민국의 휴일](https://calendar.go
 `Watch / Custom / Releases`를 ✅해 이메일 알림을 받아볼 수 있습니다.
 
 ![GitHub: Custom Watch](https://user-images.githubusercontent.com/47051820/193986661-2ca906de-0bcb-4756-a688-a93877931d79.png)
+
+[^1]: 월력요항은 달력 제작의 기준이 되는 자료입니다. [천문법](https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%B2%9C%EB%AC%B8%EB%B2%95)과 [천문법 시행령](https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%B2%9C%EB%AC%B8%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9)에 의거해 작성되어 관보에 게재됩니다.
