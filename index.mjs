@@ -6,8 +6,9 @@ const year = 2023;
 const holidayArray = Object.entries(holidays);
 
 holidayArray.forEach(([date, subject]) => {
-	if (!/\d{4}-\d{2}-\d{2}/.test(date)) throw new Error('Incorrect date format');
+	if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error('Incorrect date format');
 	if (typeof subject !== 'string') throw new Error('Incorrect subject format');
+	if (!subject) throw new Error('Subject should not be empty');
 });
 
 const csvLines = holidayArray.map(([date, subject]) => (`${subject},${date}`));
