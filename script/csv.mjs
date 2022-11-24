@@ -1,10 +1,10 @@
 /**
- * @param {{[date: string]: string}} holidays 
+ * @param {{[date: string]: string}} dates 
  */
-export const generateCsv = (holidays) => (
+export const generateCsv = (dates) => (
 	'\ufeff' // BOM 
 	+ 'Start date,Subject\n'
-	+ JSON.stringify(holidays)
+	+ JSON.stringify(dates)
 		.replaceAll('","', '\n')
 		.replaceAll('":"', ',')
 		.replaceAll(/{"|"}/g, '')

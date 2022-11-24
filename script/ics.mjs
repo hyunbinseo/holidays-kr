@@ -1,7 +1,7 @@
 /**
- * @param {{[date: string]: string}} holidays 
+ * @param {{[date: string]: string}} dates 
  */
-export const generateIcsEvents = (holidays) => {
+export const generateIcsEvents = (dates) => {
 	const timestamp = new Date()
 		.toISOString()
 		.replaceAll(/-|:/g, '')
@@ -21,10 +21,7 @@ export const generateIcsEvents = (holidays) => {
 
 	let events = '';
 
-	for (const date in holidays) {
-		const subject = holidays[date];
-		events = events + generateIcsEvent(date, subject);
-	};
+	for (const date in dates) events = events + generateIcsEvent(date, dates[date]);
 
 	return events;
 };
