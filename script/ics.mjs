@@ -1,7 +1,9 @@
 /**
  * @param {{[date: string]: string}} dates 
+ * @param {number} id 
+ * @returns 
  */
-export const generateIcsEvents = (dates) => {
+export const generateIcsEvents = (dates, id) => {
 	const timestamp = new Date()
 		.toISOString()
 		.replaceAll(/-|:/g, '')
@@ -13,7 +15,7 @@ export const generateIcsEvents = (dates) => {
 			'BEGIN:VEVENT\n'
 			+ `DTSTART;VALUE=DATE:${formattedDate}\n`
 			+ `DTSTAMP:${timestamp}\n`
-			+ `UID:${formattedDate}-${timestamp}\n`
+			+ `UID:${formattedDate}-${id}\n`
 			+ `SUMMARY:${subject}\n`
 			+ 'END:VEVENT\n'
 		);
