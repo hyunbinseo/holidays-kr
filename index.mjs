@@ -1,5 +1,7 @@
 import { writeFile } from 'node:fs/promises';
-import holidays from './data/2023.json' assert { type: 'json' };
+import holidays from './input/2023.json' assert { type: 'json' };
+import { generateCsv } from './script/csv.mjs';
+import { generateIcs, generateIcsEvents } from './script/ics.mjs';
 
 const year = 2023;
 
@@ -10,11 +12,5 @@ for (const date in holidays) {
 	if (!subject) throw new Error('Subject should not be empty');
 };
 
-await writeFile(`./data/${year}.csv`,
-	'\ufeff' // BOM 
-	+ 'Start date,Subject\n'
-	+ JSON.stringify(holidays)
-		.replaceAll('","', '\n')
-		.replaceAll('":"', ',')
-		.replaceAll(/{"|"}/g, ''),
-);
+await writeFile(`./output/${year}.csv`, generateCsv(holidays));
+await writeFile(`./output/${year}.ics`, generateIcs(generateIcsEvents(holidays)));

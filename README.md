@@ -6,14 +6,14 @@
 - 공휴일이 아닌 국경일은 포함하지 않습니다. (예: 제헌절)
 - 지방 공휴일은 포함하지 않습니다. (예: [4·3희생자추념일](https://www.law.go.kr/LSW/ordinInfoP.do?ordinSeq=1342242))
 - ISO 8601 형식의 날짜를 사용합니다. (예: 2022-10-05)
-- [Google 캘린더에 호환되는 CSV 형식](https://support.google.com/calendar/answer/37118?hl=ko)을 사용합니다.
+- [Google 캘린더에 호환되는 파일 형식](https://support.google.com/calendar/answer/37118?hl=ko)을 사용합니다.
 
 ## 다운로드
 
-- [2023년 월력요항](<https://gwanbo.go.kr/ezpdf/customLayout.jsp?contentId=I0000000000000001654753565985000&tocId=I0000000000000001653980856205000&isTocOrder=N&name=%25EA%25B3%25BC%25ED%2595%2599%25EA%25B8%25B0%25EC%2588%25A0%25EC%25A0%2595%25EB%25B3%25B4%25ED%2586%25B5%25EC%258B%25A0%25EB%25B6%2580%25EA%25B3%25B5%25EA%25B3%25A0%25EC%25A0%259C2022-0621%25ED%2598%25B8(2023%25EB%2585%2584%25EC%259B%2594%25EB%25A0%25A5%25EC%259A%2594%25ED%2595%25AD)>) - 과학기술정보통신부 공고 제2022-0621호
-- [2023.csv](data/2023.csv) - `1월 1일,2XXX-01-01 …`
-- [2023.json](data/2023.json) - `{ "2XXX-01-01": "1월 1일", … }`
-- 연도별 자료는 [/data](data) 폴더에 정리되어 있습니다.
+연도별 자료는 [/output](output) 폴더에 정리되어 있습니다.
+
+- [2023년 월력요항](<https://gwanbo.go.kr/ezpdf/customLayout.jsp?contentId=I0000000000000001654753565985000&tocId=I0000000000000001653980856205000&isTocOrder=N&name=%25EA%25B3%25BC%25ED%2595%2599%25EA%25B8%25B0%25EC%2588%25A0%25EC%25A0%2595%25EB%25B3%25B4%25ED%2586%25B5%25EC%258B%25A0%25EB%25B6%2580%25EA%25B3%25B5%25EA%25B3%25A0%25EC%25A0%259C2022-0621%25ED%2598%25B8(2023%25EB%2585%2584%25EC%259B%2594%25EB%25A0%25A5%25EC%259A%2594%25ED%2595%25AD)>)
+- [2023.csv](output/2023.csv), [2023.ics](output/2023.ics)
 
 > **Warning**
 > Chromium 웹 브라우저에서는 CSV 파일이 `.txt` 확장자로 저장되지 않도록 주의합니다.
@@ -24,7 +24,7 @@
 
 ## 활용 방법
 
-Google 캘린더의 `가져오기` 기능을 사용해 CSV 파일의 일정을 등록합니다.
+Google 캘린더의 `가져오기` 기능을 사용해 CSV 또는 ICS 파일의 일정을 등록합니다.
 
 ![Google Calendar: Import from file](https://user-images.githubusercontent.com/47051820/193986668-6367b034-3523-48c0-b253-0453638068bd.png)
 
