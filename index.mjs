@@ -1,6 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 import ids from './input/ids.json' assert { type: 'json' };
 import presets from './input/presets.json' assert { type: 'json' };
+import { checkHolidays } from './script/checkHolidays.mjs';
 import { generateCsv } from './script/generateCsv.mjs';
 import { generateIcs, generateIcsEvents } from './script/generateIcs.mjs';
 
@@ -19,6 +20,8 @@ for (const date in preset) {
 	if (date.substring(0, 4) !== year) throw new Error(`Invalid date value. ${date} should be a date in year ${year}`);
 	if (!subject || typeof subject !== 'string') throw new Error(`Invalid subject format. Subject of ${date} should be a truthy string`);
 };
+
+checkHolidays(preset, year);
 
 await writeFile(`./output/${year}.csv`, generateCsv(preset));
 await writeFile(`./output/${year}.ics`, generateIcs(generateIcsEvents(preset, id)));
