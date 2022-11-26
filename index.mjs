@@ -14,7 +14,7 @@ const preset = presets[year];
 if (!id || typeof id !== 'number') throw new Error('Invalid ID format');
 if (!preset || typeof preset !== 'object' || !Object.keys(preset).length) throw new Error('Invalid preset format');
 
-for (const date in preset) {
+for (const date of Object.keys(preset)) {
 	const subject = preset[date];
 	if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`Invalid date format. ${date} should in YYYY-MM-DD format`);
 	if (date.substring(0, 4) !== year) throw new Error(`Invalid date value. ${date} should be a date in year ${year}`);

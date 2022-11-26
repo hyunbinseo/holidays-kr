@@ -40,7 +40,7 @@ export const checkHolidays = (preset, year) => {
 
 	const requiredHolidays = generateRequiredHolidays(year);
 
-	for (const date in requiredHolidays) {
+	for (const date of Object.keys(requiredHolidays)) {
 		const actualSubject = preset[date];
 		const expectedSubject = requiredHolidays[date];
 		if (actualSubject !== expectedSubject) throw new Error(`Invalid date-subject pair. ${date} should be ${expectedSubject}`);

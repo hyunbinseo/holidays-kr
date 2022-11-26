@@ -23,7 +23,7 @@ export const generateIcsEvents = (preset, id) => {
 
 	let events = '';
 
-	for (const date in preset) events = events + generateIcsEvent(date, preset[date]);
+	for (const date of Object.keys(preset)) events = events + generateIcsEvent(date, preset[date]);
 
 	return events;
 };
