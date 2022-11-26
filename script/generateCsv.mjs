@@ -1,10 +1,10 @@
 /**
- * @param {{[date: string]: string}} dates 
+ * @param {{[date: string]: string}} preset 
  */
-export const generateCsv = (dates) => (
+export const generateCsv = (preset) => (
 	'\ufeff' // BOM 
 	+ 'Start date,Subject\n'
-	+ JSON.stringify(dates)
+	+ JSON.stringify(preset)
 		.replaceAll('","', '\n')
 		.replaceAll('":"', ',')
 		.replaceAll(/{"|"}/g, '')

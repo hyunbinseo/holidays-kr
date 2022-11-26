@@ -1,9 +1,9 @@
 /**
- * @param {{[date: string]: string}} dates 
+ * @param {{[date: string]: string}} preset 
  * @param {number} id 
  * @returns 
  */
-export const generateIcsEvents = (dates, id) => {
+export const generateIcsEvents = (preset, id) => {
 	const timestamp = new Date()
 		.toISOString()
 		.replaceAll(/-|:/g, '')
@@ -23,7 +23,7 @@ export const generateIcsEvents = (dates, id) => {
 
 	let events = '';
 
-	for (const date in dates) events = events + generateIcsEvent(date, dates[date]);
+	for (const date in preset) events = events + generateIcsEvent(date, preset[date]);
 
 	return events;
 };
