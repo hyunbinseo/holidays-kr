@@ -27,8 +27,8 @@ for (let year = minYear; year <= maxYear; year += 1) {
 	cumulatedIcsEvents += icsEvents;
 
 	if (year === maxYear) {
-		writeFileSync(`./output/${year}.csv`, generateCsv(preset));
-		writeFileSync(`./output/${year}.ics`, generateIcs(icsEvents));
-		writeFileSync('./output/basic.ics', generateIcs(cumulatedIcsEvents));
+		writeFileSync(`./public/${year}.csv`, generateCsv(preset));
+		writeFileSync(`./public/${year}.ics`, generateIcs(icsEvents));
+		writeFileSync('./public/basic.ics', generateIcs(cumulatedIcsEvents));
 	};
 };
