@@ -15,6 +15,8 @@ export const generateIcsEvents = ({ preset, id }) => {
 			+ `DTSTAMP:${timestamp}\n`
 			+ `UID:${formattedDate}-${id}\n`
 			+ `SUMMARY:${subject}\n`
+			+ 'CLASS:PUBLIC\n' // 공개
+			+ 'TRANSP:TRANSPARENT\n' // !바쁨
 			+ 'END:VEVENT\n'
 		);
 	};
@@ -33,6 +35,9 @@ export const generateIcs = (events) => (
 	'BEGIN:VCALENDAR\n'
 	+ 'VERSION:2.0\n'
 	+ 'PRODID:-//GitHub@hyunbinseo//holidays-kr//KO\n'
+	+ 'X-WR-CALNAME:대한민국의 공휴일\n'
+	+ 'X-WR-TIMEZONE:Asia/Seoul\n'
+	+ 'X-WR-CALDESC:https://github.com/hyunbinseo/holidays-kr\n'
 	+ events
 	+ 'END:VCALENDAR'
 );
