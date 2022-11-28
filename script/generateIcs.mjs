@@ -1,9 +1,7 @@
 /**
- * @param {{[date: string]: string}} preset 
- * @param {number} id 
- * @returns 
+ * @param {{preset: {[date: string]: string},id: number}} param0 
  */
-export const generateIcsEvents = (preset, id) => {
+export const generateIcsEvents = ({ preset, id }) => {
 	const timestamp = new Date()
 		.toISOString()
 		.replaceAll(/-|:/g, '')

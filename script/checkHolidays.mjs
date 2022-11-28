@@ -10,7 +10,7 @@ const requiredSubjects = [
 ];
 
 /**
- * @param {string} year 
+ * @param {number} year 
  */
 const generateRequiredHolidays = (year) => ({
 	[`${year}-01-01`]: '1월 1일',
@@ -24,10 +24,18 @@ const generateRequiredHolidays = (year) => ({
 });
 
 /**
- * @param {{[date: string]: string}} preset 
- * @param {string} year 
+ * @param {{preset: {[date: string]: string}, year: number}} param0 
  */
-export const checkHolidays = (preset, year) => {
+export const checkHolidays = ({ preset, year }) => {
+	if (!preset || typeof preset !== 'object' || !Object.keys(preset).length) throw new Error('Invalid preset format');
+
+	for (const date of Object.keys(preset)) {
+		const subject = preset[date];
+		if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`Invalid date format. ${date} should in YYYY-MM-DD format`);
+		if (date.substring(0, 4) !== year.toString()) throw new Error(`Invalid date value. ${date} should be a date in year ${year}`);
+		if (!subject || typeof subject !== 'string') throw new Error(`Invalid subject format. Subject of ${date} should be a truthy string`);
+	};
+
 	const subjects = Object.values(preset);
 
 	for (const bannedSubject of bannedSubjects) {
