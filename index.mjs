@@ -1,6 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import ids from './input/ids.json' assert { type: 'json' };
 import presets from './input/presets.json' assert { type: 'json' };
+import redirects from './input/redirects.json' assert { type: 'json' };
 import { checkHolidays } from './script/checkHolidays.mjs';
 import { generateCsv } from './script/generateCsv.mjs';
 import { generateIcs, generateIcsEvents } from './script/generateIcs.mjs';
@@ -32,3 +33,7 @@ for (let year = minYear; year <= maxYear; year += 1) {
 		writeFileSync('./public/basic.ics', generateIcs(cumulatedIcsEvents));
 	};
 };
+
+const _redirects = Object.entries(redirects).reduce((acc, [key, value]) => (`${acc}${key} ${value}\n`), `# ${Date.now()}\n`);
+
+writeFileSync(`./public/_redirects`, _redirects);
