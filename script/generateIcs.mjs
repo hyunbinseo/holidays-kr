@@ -1,5 +1,7 @@
 /**
- * @param {{preset: {[date: string]: string},id: number}} param0 
+ * @param {Object} param
+ * @param {Object.<string, string>} param.preset
+ * @param {number} param.id
  */
 export const generateIcsEvents = ({ preset, id }) => {
 	const timestamp = new Date()
@@ -28,9 +30,7 @@ export const generateIcsEvents = ({ preset, id }) => {
 	return events;
 };
 
-/**
- * @param {string} events 
- */
+/** @param {string} events */
 export const generateIcs = (events) => (
 	'BEGIN:VCALENDAR\n'
 	+ 'VERSION:2.0\n'

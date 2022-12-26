@@ -9,9 +9,7 @@ const requiredSubjects = [
 	'추석 다음 날',
 ];
 
-/**
- * @param {number} year 
- */
+/** @param {number} year */
 const generateRequiredHolidays = (year) => ({
 	[`${year}-01-01`]: '1월 1일',
 	[`${year}-03-01`]: '3ㆍ1절',
@@ -24,7 +22,10 @@ const generateRequiredHolidays = (year) => ({
 });
 
 /**
- * @param {{preset: {[date: string]: string}, year: number}} param0 
+ * @param {Object} param
+ * @param {any} param.preset
+ * @param {number} param.year
+ * @returns {preset is Object.<string, string>}
  */
 export const checkHolidays = ({ preset, year }) => {
 	if (!preset || typeof preset !== 'object' || !Object.keys(preset).length) throw new Error('Invalid preset format');
@@ -53,4 +54,6 @@ export const checkHolidays = ({ preset, year }) => {
 		const expectedSubject = requiredHolidays[date];
 		if (actualSubject !== expectedSubject) throw new Error(`Invalid date-subject pair. ${date} should be ${expectedSubject}`);
 	}
+
+	return true;
 };
