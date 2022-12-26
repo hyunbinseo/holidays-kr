@@ -1,9 +1,8 @@
 /**
- * @param {Object} param
- * @param {Object.<string, string>} param.preset
- * @param {number} param.id
+ * @param {Object.<string, string>} preset
+ * @param {number} id
  */
-export const generateIcsEvents = ({ preset, id }) => {
+export const generateIcsEvents = (preset, id) => {
 	const timestamp = new Date()
 		.toISOString()
 		.replaceAll(/-|:/g, '')
