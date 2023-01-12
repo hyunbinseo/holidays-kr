@@ -1,0 +1,16 @@
+{
+  "name": "@hyunbinseo/holidays-kr",
+  "version": "1.0.0",
+  "description": "연도별 대한민국 공휴일. 과학기술정보통신부 월력요항 기준",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyunbinseo/holidays-kr.git"
+  },
+  "author": "Hyunbin Seo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyunbinseo/holidays-kr/issues"
+  },
+  "homepage": "https://github.com/hyunbinseo/holidays-kr#readme"
+}
