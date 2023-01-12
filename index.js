@@ -1,10 +1,10 @@
 import { writeFileSync } from 'node:fs';
-import ids from './input/ids.json' assert { type: 'json' };
-import presets from './input/presets.json' assert { type: 'json' };
-import redirects from './input/redirects.json' assert { type: 'json' };
-import { checkHolidays } from './script/checkHolidays.mjs';
-import { generateCsv } from './script/generateCsv.mjs';
-import { generateIcs, generateIcsEvents } from './script/generateIcs.mjs';
+import { checkHolidays } from './script/checkHolidays.js';
+import { generateCsv } from './script/generateCsv.js';
+import { generateIcs, generateIcsEvents } from './script/generateIcs.js';
+import ids from './source/ids.json' assert { type: 'json' };
+import presets from './source/presets.json' assert { type: 'json' };
+import redirects from './source/redirects.json' assert { type: 'json' };
 
 let cumulatedIcsEvents = '';
 

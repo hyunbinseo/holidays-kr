@@ -12,5 +12,6 @@
   "bugs": {
     "url": "https://github.com/hyunbinseo/holidays-kr/issues"
   },
-  "homepage": "https://github.com/hyunbinseo/holidays-kr#readme"
+  "homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
+  "type": "module"
 }
