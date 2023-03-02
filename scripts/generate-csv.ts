@@ -1,8 +1,7 @@
-/** @param {Object.<string, string>} preset */
-export const generateCsv = (preset) =>
-	'\ufeff' + // BOM
-	'Start date,Subject\n' +
-	JSON.stringify(preset)
-		.replaceAll('","', '\n')
-		.replaceAll('":"', ',')
-		.replaceAll(/{"|"}/g, '');
+import type { Year } from '../index';
+
+export const generateCsv = (preset: Year) => {
+	let string = '\ufeff' + 'Start date,Subject';
+	for (const [date, subject] of preset) string += `\n${date},${subject}`;
+	return string;
+};

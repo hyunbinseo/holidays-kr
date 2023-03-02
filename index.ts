@@ -1,6 +1,7 @@
-export type Year = Array<[string, string]>;
+export type Date = `${number}-${number}-${number}`;
+export type Year = Map<Date, string>;
 
-export const y2023 = [
+export const y2023 = new Map([
 	['2023-01-01', '1월 1일'],
 	['2023-01-21', '설날 전날'],
 	['2023-01-22', '설날'],
@@ -18,9 +19,9 @@ export const y2023 = [
 	['2023-10-03', '개천절'],
 	['2023-10-09', '한글날'],
 	['2023-12-25', '기독탄신일'],
-] satisfies Year;
+]) satisfies Year;
 
-export const y2022 = [
+export const y2022 = new Map([
 	['2022-01-01', '1월 1일'],
 	['2022-01-31', '설날 전날'],
 	['2022-02-01', '설날'],
@@ -40,4 +41,4 @@ export const y2022 = [
 	['2022-10-09', '한글날'],
 	['2022-10-10', '대체공휴일(한글날)'],
 	['2022-12-25', '기독탄신일'],
-] satisfies Year;
+]) satisfies Year;

@@ -1,14 +1,12 @@
-/**
- * @param {Object.<string, string>} preset
- * @param {number} id
- */
-export const generateIcsEvents = (preset, id) => {
+import type { Date, Year } from '../index';
+
+export const generateIcsEvents = (preset: Year, id: number) => {
 	const timestamp = new Date()
 		.toISOString()
 		.replaceAll(/-|:/g, '')
 		.replace(/.\d{3}Z/, 'Z');
 
-	const generateIcsEvent = (date, subject) => {
+	const generateIcsEvent = (date: Date, subject: string) => {
 		const formattedDate = date.replaceAll('-', '');
 		return (
 			'BEGIN:VEVENT\n' +
@@ -24,14 +22,13 @@ export const generateIcsEvents = (preset, id) => {
 
 	let events = '';
 
-	for (const date of Object.keys(preset))
-		events = events + generateIcsEvent(date, preset[date]);
+	for (const [date, subject] of preset)
+		events = events + generateIcsEvent(date, subject);
 
 	return events;
 };
 
-/** @param {string} events */
-export const generateIcs = (events) =>
+export const generateIcs = (events: string) =>
 	'BEGIN:VCALENDAR\n' +
 	'VERSION:2.0\n' +
 	'PRODID:-//GitHub@hyunbinseo//holidays-kr//KO\n' +
