@@ -1,7 +1,0 @@
-{
-	"compilerOptions": {
-		"checkJs": true,
-		"module": "NodeNext",
-		"resolveJsonModule": true
-	}
-}
