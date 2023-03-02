@@ -1,6 +1,7 @@
 import type { Date, Year } from '../index';
 
 const bannedSubjects = ['제헌절'];
+
 const requiredSubjects = [
 	'설날 전날',
 	'설날',
@@ -27,24 +28,33 @@ export const checkHolidays = (preset: Year, year: number) => {
 	for (const [date, subject] of preset) {
 		if (!/^\d{4}-\d{2}-\d{2}$/.test(date))
 			throw new Error(
-				`Invalid date format. ${date} should in YYYY-MM-DD format`
+				`Invalid date format. ${date} should be in YYYY-MM-DD format.`
 			);
 
 		if (date.substring(0, 4) !== year.toString())
 			throw new Error(
-				`Invalid date value. ${date} should be a date in ${year}`
+				`Invalid date value. ${date} should be a date in ${year}.`
 			);
 
 		if (bannedSubjects.includes(subject))
-			throw new Error(`Should not include ${subject}`);
+			throw new Error(
+				`Invalid subject. ${year} should not include ${subject}.`
+			);
+	}
+
+	const subjects = [...preset.values()];
+
+	for (const requiredSubject of requiredSubjects) {
+		if (!subjects.includes(requiredSubject))
+			throw new Error(`Invalid preset. ${year} is missing ${requiredSubject}.`);
 	}
 
 	const requiredHolidays = generateRequiredHolidays(year);
 
 	for (const [date, subject] of requiredHolidays) {
-		if (!preset.has(date)) throw new Error(`Missing data for ${subject}`);
-		const actualSubject = preset.get(date);
-		if (actualSubject !== subject)
-			throw new Error(`Subject of ${date} should be ${subject}`);
+		if (!preset.has(date))
+			throw new Error(`Invalid preset. ${year} is missing ${subject}.`);
+		if (preset.get(date) !== subject)
+			throw new Error(`Invalid subject. ${date} should be ${subject}.`);
 	}
 };
