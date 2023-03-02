@@ -28,7 +28,9 @@ for (const [year, [preset, id]] of Object.entries(holidays)) {
 	writeFileSync(`./public/${year}.ics`, generateIcs(icsEvents));
 }
 
+writeFileSync('./public/basic.json', JSON.stringify(holidays));
 writeFileSync('./public/basic.ics', generateIcs(cumulatedIcsEvents));
+
 writeFileSync(
 	'./public/_redirects',
 	`# ${Date.now()}\n/ https://github.com/hyunbinseo/holidays-kr#%EB%AC%B8%EC%A0%9C-%EC%83%81%ED%99%A9`

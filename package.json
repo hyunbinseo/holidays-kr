@@ -2,7 +2,17 @@
 	"name": "@hyunbinseo/holidays-kr",
 	"version": "1.0.0",
 	"description": "South Korea's national holidays, based on the official gazette",
-	"scripts": {},
+	"scripts": {
+		"type": "npx -p typescript tsc index.js --declaration --allowJs --emitDeclarationOnly"
+	},
+	"devDependencies": {
+		"typescript": "^4.9.5"
+	},
+	"type": "module",
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hyunbinseo/holidays-kr.git"
@@ -12,9 +22,5 @@
 	"bugs": {
 		"url": "https://github.com/hyunbinseo/holidays-kr/issues"
 	},
-	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
-	"type": "module",
-	"devDependencies": {
-		"typescript": "^4.9.5"
-	}
+	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme"
 }
