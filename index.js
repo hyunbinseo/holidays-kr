@@ -1,34 +1,41 @@
-import { writeFileSync } from 'node:fs';
-import { checkHolidays } from './scripts/check-holidays.js';
-import { generateCsv } from './scripts/generate-csv.js';
-import { generateIcs, generateIcsEvents } from './scripts/generate-ics.js';
-import ids from './source/ids.json' assert { type: 'json' };
-import presets from './source/presets.js';
+export const y2023 = {
+	'2023-01-01': '1월 1일',
+	'2023-01-21': '설날 전날',
+	'2023-01-22': '설날',
+	'2023-01-23': '설날 다음 날',
+	'2023-01-24': '대체공휴일(설날)',
+	'2023-03-01': '3ㆍ1절',
+	'2023-05-05': '어린이날',
+	'2023-05-27': '부처님 오신 날',
+	'2023-05-29': '대체공휴일(부처님 오신 날)',
+	'2023-06-06': '현충일',
+	'2023-08-15': '광복절',
+	'2023-09-28': '추석 전날',
+	'2023-09-29': '추석',
+	'2023-09-30': '추석 다음 날',
+	'2023-10-03': '개천절',
+	'2023-10-09': '한글날',
+	'2023-12-25': '기독탄신일',
+};
 
-let cumulatedIcsEvents = '';
-
-for (const year of Object.keys(presets)) {
-	if (!/^2\d{3}$/.test(year)) throw new Error('Invalid year format');
-}
-
-for (const [year, preset] of Object.entries(presets)) {
-	const id = ids[year];
-
-	if (!id || typeof id !== 'number' || id.toString().length !== 13)
-		throw new Error('Invalid ID format. Use a value returned by Date.now()');
-
-	checkHolidays(preset, year);
-
-	const icsEvents = generateIcsEvents(preset, id);
-
-	cumulatedIcsEvents += icsEvents;
-
-	writeFileSync(`./public/${year}.csv`, generateCsv(preset));
-	writeFileSync(`./public/${year}.ics`, generateIcs(icsEvents));
-}
-
-writeFileSync('./public/basic.ics', generateIcs(cumulatedIcsEvents));
-writeFileSync(
-	'./public/_redirects',
-	`# ${Date.now()}\n/ https://github.com/hyunbinseo/holidays-kr#%EB%AC%B8%EC%A0%9C-%EC%83%81%ED%99%A9`
-);
+export const y2022 = {
+	'2022-01-01': '1월 1일',
+	'2022-01-31': '설날 전날',
+	'2022-02-01': '설날',
+	'2022-02-02': '설날 다음 날',
+	'2022-03-01': '3ㆍ1절',
+	'2022-03-09': '대통령선거',
+	'2022-05-05': '어린이날',
+	'2022-05-08': '부처님 오신 날',
+	'2022-06-01': '전국동시지방선거',
+	'2022-06-06': '현충일',
+	'2022-08-15': '광복절',
+	'2022-09-09': '추석 전날',
+	'2022-09-10': '추석',
+	'2022-09-11': '추석 다음 날',
+	'2022-09-12': '대체공휴일(추석)',
+	'2022-10-03': '개천절',
+	'2022-10-09': '한글날',
+	'2022-10-10': '대체공휴일(한글날)',
+	'2022-12-25': '기독탄신일',
+};
