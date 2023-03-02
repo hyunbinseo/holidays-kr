@@ -13,5 +13,8 @@
 		"url": "https://github.com/hyunbinseo/holidays-kr/issues"
 	},
 	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
-	"type": "module"
+	"type": "module",
+	"devDependencies": {
+		"typescript": "^4.9.5"
+	}
 }
