@@ -26,30 +26,45 @@ const generateRequiredHolidays = (year) => ({
  * @param {string} year
  */
 export const checkHolidays = (preset, year) => {
-	if (!preset || typeof preset !== 'object' || !Object.keys(preset).length) throw new Error('Invalid preset format');
+	if (!preset || typeof preset !== 'object' || !Object.keys(preset).length)
+		throw new Error('Invalid preset format');
 
 	for (const date of Object.keys(preset)) {
 		const subject = preset[date];
-		if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`Invalid date format. ${date} should in YYYY-MM-DD format`);
-		if (date.substring(0, 4) !== year) throw new Error(`Invalid date value. ${date} should be a date in year ${year}`);
-		if (!subject || typeof subject !== 'string') throw new Error(`Invalid subject format. Subject of ${date} should be a truthy string`);
-	};
+		if (!/^\d{4}-\d{2}-\d{2}$/.test(date))
+			throw new Error(
+				`Invalid date format. ${date} should in YYYY-MM-DD format`
+			);
+		if (date.substring(0, 4) !== year)
+			throw new Error(
+				`Invalid date value. ${date} should be a date in year ${year}`
+			);
+		if (!subject || typeof subject !== 'string')
+			throw new Error(
+				`Invalid subject format. Subject of ${date} should be a truthy string`
+			);
+	}
 
 	const subjects = Object.values(preset);
 
 	for (const bannedSubject of bannedSubjects) {
-		if (subjects.includes(bannedSubject)) throw new Error(`Should not include ${bannedSubject}`);
-	};
+		if (subjects.includes(bannedSubject))
+			throw new Error(`Should not include ${bannedSubject}`);
+	}
 
 	for (const requiredSubject of requiredSubjects) {
-		if (!subjects.includes(requiredSubject)) throw new Error(`Missing required ${requiredSubject}`);
-	};
+		if (!subjects.includes(requiredSubject))
+			throw new Error(`Missing required ${requiredSubject}`);
+	}
 
 	const requiredHolidays = generateRequiredHolidays(year);
 
 	for (const date of Object.keys(requiredHolidays)) {
 		const actualSubject = preset[date];
 		const expectedSubject = requiredHolidays[date];
-		if (actualSubject !== expectedSubject) throw new Error(`Invalid date-subject pair. ${date} should be ${expectedSubject}`);
+		if (actualSubject !== expectedSubject)
+			throw new Error(
+				`Invalid date-subject pair. ${date} should be ${expectedSubject}`
+			);
 	}
 };

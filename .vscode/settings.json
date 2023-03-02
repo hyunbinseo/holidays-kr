@@ -1,12 +1,13 @@
 {
-	"editor.tabSize": 2,
-	"editor.insertSpaces": false,
-	"editor.formatOnSave": true,
+	"[csv]": {
+		"files.encoding": "utf8bom"
+	},
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": true
 	},
-	"files.insertFinalNewline": true,
-	"[csv]": {
-		"files.encoding": "utf8bom"
-	}
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.insertSpaces": false,
+	"files.eol": "\n",
+	"files.insertFinalNewline": true
 }

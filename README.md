@@ -59,7 +59,7 @@
 ## 파일 다운로드
 
 - 연도별 `csv`, `ics` 파일은 [public](public) 폴더에 위치합니다.
-- 모든 연도의 정보가 담긴 [`ics`](/public/basic.ics), [`json`](/input/presets.json) 파일이 제공됩니다.
+- 모든 연도의 정보가 담긴 [`json`](/source/presets.json), [`ics`](/public/basic.ics) 파일이 제공됩니다.
 
 > **Warning**
 > Chromium 웹 브라우저에서는 파일이 `.txt` 확장자로 저장되지 않도록 주의합니다.

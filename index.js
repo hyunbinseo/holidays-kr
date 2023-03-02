@@ -1,16 +1,15 @@
 import { writeFileSync } from 'node:fs';
-import ids from './input/ids.json' assert { type: 'json' };
-import presets from './input/presets.json' assert { type: 'json' };
-import redirects from './input/redirects.json' assert { type: 'json' };
-import { checkHolidays } from './script/checkHolidays.mjs';
-import { generateCsv } from './script/generateCsv.mjs';
-import { generateIcs, generateIcsEvents } from './script/generateIcs.mjs';
+import { checkHolidays } from './scripts/check-holidays.js';
+import { generateCsv } from './scripts/generate-csv.js';
+import { generateIcs, generateIcsEvents } from './scripts/generate-ics.js';
+import ids from './source/ids.json' assert { type: 'json' };
+import presets from './source/presets.js';
 
 let cumulatedIcsEvents = '';
 
 for (const year of Object.keys(presets)) {
 	if (!/^2\d{3}$/.test(year)) throw new Error('Invalid year format');
-};
+}
 
 for (const [year, preset] of Object.entries(presets)) {
 	const id = ids[year];
@@ -26,10 +25,10 @@ for (const [year, preset] of Object.entries(presets)) {
 
 	writeFileSync(`./public/${year}.csv`, generateCsv(preset));
 	writeFileSync(`./public/${year}.ics`, generateIcs(icsEvents));
-};
+}
 
 writeFileSync('./public/basic.ics', generateIcs(cumulatedIcsEvents));
-
-const _redirects = Object.entries(redirects).reduce((acc, [key, value]) => (`${acc}${key} ${value}\n`), `# ${Date.now()}\n`);
-
-writeFileSync(`./public/_redirects`, _redirects);
+writeFileSync(
+	'./public/_redirects',
+	`# ${Date.now()}\n/ https://github.com/hyunbinseo/holidays-kr#%EB%AC%B8%EC%A0%9C-%EC%83%81%ED%99%A9`
+);

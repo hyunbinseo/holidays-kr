@@ -1,0 +1,17 @@
+{
+	"name": "@hyunbinseo/holidays-kr",
+	"version": "1.0.0",
+	"description": "South Korea's national holidays, based on the official gazette",
+	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/hyunbinseo/holidays-kr.git"
+	},
+	"author": "Hyunbin Seo",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/hyunbinseo/holidays-kr/issues"
+	},
+	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
+	"type": "module"
+}
