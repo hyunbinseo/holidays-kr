@@ -2,9 +2,6 @@
 	"name": "@hyunbinseo/holidays-kr",
 	"version": "1.0.0",
 	"description": "South Korea's national holidays, based on the official gazette",
-	"scripts": {
-		"package": "npx -p typescript tsc index.ts --declaration"
-	},
 	"devDependencies": {
 		"@types/node": "^18.14.3",
 		"esno": "^0.16.3",
@@ -15,6 +12,12 @@
 		"index.js",
 		"index.d.ts"
 	],
+	"exports": {
+		".": {
+			"types": "./index.d.ts",
+			"default": "./index.js"
+		}
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hyunbinseo/holidays-kr.git"

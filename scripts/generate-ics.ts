@@ -3,11 +3,11 @@ import type { Date, Year } from '../index';
 export const generateIcsEvents = (preset: Year, id: number) => {
 	const timestamp = new Date()
 		.toISOString()
-		.replaceAll(/-|:/g, '')
+		.replace(/-|:/g, '')
 		.replace(/.\d{3}Z/, 'Z');
 
 	const generateIcsEvent = (date: Date, subject: string) => {
-		const formattedDate = date.replaceAll('-', '');
+		const formattedDate = date.replace(/-/g, '');
 		return (
 			'BEGIN:VEVENT\n' +
 			`DTSTART;VALUE=DATE:${formattedDate}\n` +
