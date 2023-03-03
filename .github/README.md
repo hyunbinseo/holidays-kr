@@ -4,7 +4,12 @@
 
 다 함께 쉬는 날을 `csv`, `ics`, `json` 파일 형식으로 가공한 [자료](#파일-다운로드)입니다.
 
-구글, 애플 캘린더 등에서 구독할 수 있도록 공개 캘린더 URL도 [제공](#캘린더-구독)합니다.
+- 구글, 애플 캘린더 등에서 구독할 수 있도록 [공개 캘린더 호스팅]을 제공합니다.
+- 자바스크립트에서 활용할 수 있도록 패키지를 제공합니다. ([npm], [jsDelivr])
+
+[공개 캘린더 호스팅]: #캘린더-구독
+[npm]: https://www.npmjs.com/package/@hyunbinseo/holidays-kr
+[jsdelivr]: https://www.jsdelivr.com/package/npm/@hyunbinseo/holidays-kr
 
 > **Note**
 > 매년 월력요항이 발표된 이후 작업이 이뤄집니다. 지연될 경우 이슈를 남겨주세요.
@@ -50,7 +55,7 @@
 > **Note**
 > Google 캘린더에서 새로 추가된 공휴일을 불러오는데 [24시간 이상](https://support.google.com/calendar/answer/37100?hl=ko) 걸릴 수 있습니다.
 
-- [Google Calendar](https://support.google.com/calendar/answer/37100?hl=ko) [웹](https://calendar.google.com/): '다른 캘린더' 옆 `+` > URL로 추가
+- [Google Calendar 웹](https://support.google.com/calendar/answer/37100?hl=ko): '다른 캘린더' 옆 `+` > URL로 추가
 - [Apple iCloud 캘린더](https://support.apple.com/ko-kr/HT202361): 파일 > 새로운 캘린더 구독
 
 ![macOS 캘린더 앱에서 새로운 캘린더를 구독하는 대화상자](https://user-images.githubusercontent.com/47051820/204253040-05f5d740-19df-4f93-aa51-190fefc73022.png)
@@ -59,13 +64,13 @@
 
 [다운로드한 파일](#파일-다운로드)에 포함된 공휴일 일정을 불러와 등록합니다. 1회성입니다.
 
-- [Google Calendar](https://support.google.com/a/users/answer/37118?hl=ko) [웹](https://calendar.google.com/): '다른 캘린더' 옆 `+` > 가져오기
+- [Google Calendar 웹](https://support.google.com/a/users/answer/37118?hl=ko): '다른 캘린더' 옆 `+` > 가져오기
 - [Mac 캘린더](https://support.apple.com/ko-kr/guide/calendar/icl1023/mac): 파일 > 가져오기
 
 ## 파일 다운로드
 
-- 연도별 `csv`, `ics`, `json` 파일은 [public](public) 폴더에 위치합니다.
-- 모든 연도의 정보가 담긴 [`json`](/public/basic.json), [`ics`](/public/basic.ics) 파일이 제공됩니다.
+- 연도별 `csv`, `ics`, `json` 파일은 [public](/public) 폴더에 위치합니다.
+- 모든 연도의 정보가 담긴 [`json`](/public/basic.json), [`ics`](/public/basic.ics) 파일도 제공됩니다.
 
 > **Warning**
 > Chromium 웹 브라우저에서는 파일이 `.txt` 확장자로 저장되지 않도록 주의합니다.
