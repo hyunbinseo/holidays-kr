@@ -1,0 +1,5 @@
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"overrides": [{ "files": "*.md", "options": { "useTabs": false } }]
+}
