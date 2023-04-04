@@ -1,5 +1,5 @@
-export type Date = `${number}-${number}-${number}`;
-export type Year = Map<Date, string>;
+export type DateString = `${number}-${number}-${number}`;
+export type Year = Map<DateString, string>;
 
 export const y2023 = new Map([
 	['2023-01-01', '1월 1일'],

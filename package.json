@@ -11,15 +11,26 @@
 	"type": "module",
 	"files": [
 		"public",
-		"index.js",
-		"index.d.ts"
+		"*.js",
+		"*.d.ts"
 	],
 	"exports": {
 		".": {
 			"types": "./index.d.ts",
-			"default": "./index.js"
+			"import": "./index.js"
+		},
+		"./check": {
+			"types": "./check.d.ts",
+			"import": "./check.js"
 		}
 	},
+	"keywords": [
+		"대한민국",
+		"한국",
+		"공휴일",
+		"Korean",
+		"holidays"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/hyunbinseo/holidays-kr.git"

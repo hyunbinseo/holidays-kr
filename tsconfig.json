@@ -1,7 +1,8 @@
 {
 	"compilerOptions": {
 		"declaration": true,
+		"moduleResolution": "nodenext",
 		"target": "ES2015"
 	},
-	"files": ["index.ts"]
+	"files": ["index.ts", "check.ts"]
 }

@@ -1,4 +1,4 @@
-import type { Date, Year } from '../index';
+import type { DateString, Year } from '../index';
 
 export const generateIcsEvents = (preset: Year, id: number) => {
 	const timestamp = new Date()
@@ -6,7 +6,7 @@ export const generateIcsEvents = (preset: Year, id: number) => {
 		.replace(/-|:/g, '')
 		.replace(/.\d{3}Z/, 'Z');
 
-	const generateIcsEvent = (date: Date, subject: string) => {
+	const generateIcsEvent = (date: DateString, subject: string) => {
 		const formattedDate = date.replace(/-/g, '');
 		return (
 			'BEGIN:VEVENT\n' +
