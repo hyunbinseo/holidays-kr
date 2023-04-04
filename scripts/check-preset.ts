@@ -24,7 +24,7 @@ const generateRequiredHolidays = (year: number) =>
 		[`${year}-12-25`, '기독탄신일'],
 	]);
 
-export const checkHolidays = (preset: Year, year: number) => {
+export const checkPreset = (preset: Year, year: number) => {
 	for (const [date, subject] of preset) {
 		if (!/^\d{4}-\d{2}-\d{2}$/.test(date))
 			throw new Error(
