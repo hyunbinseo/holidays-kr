@@ -1,7 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import type { Year } from './index.js';
 import { y2022, y2023 } from './index.js';
-import { checkHolidays } from './scripts/check-holidays';
+import { checkPreset } from './scripts/check-preset';
 import { generateCsv } from './scripts/generate-csv';
 import { generateIcs, generateIcsEvents } from './scripts/generate-ics';
 
@@ -14,7 +14,7 @@ let cumulatedIcsEvents = '';
 let cumulatedJsonEvents: string[] = [];
 
 for (const [year, [preset, id]] of holidays) {
-	checkHolidays(preset, year);
+	checkPreset(preset, year);
 
 	writeFileSync(`./public/${year}.csv`, generateCsv(preset));
 

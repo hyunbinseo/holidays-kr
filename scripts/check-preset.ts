@@ -1,4 +1,4 @@
-import type { Date, Year } from '../index';
+import type { DateString, Year } from '../index';
 
 const bannedSubjects = ['제헌절'];
 
@@ -13,7 +13,7 @@ const requiredSubjects = [
 ];
 
 const generateRequiredHolidays = (year: number) =>
-	new Map<Date, string>([
+	new Map<DateString, string>([
 		[`${year}-01-01`, '1월 1일'],
 		[`${year}-03-01`, '3ㆍ1절'],
 		[`${year}-05-05`, '어린이날'],
@@ -24,7 +24,7 @@ const generateRequiredHolidays = (year: number) =>
 		[`${year}-12-25`, '기독탄신일'],
 	]);
 
-export const checkHolidays = (preset: Year, year: number) => {
+export const checkPreset = (preset: Year, year: number) => {
 	for (const [date, subject] of preset) {
 		if (!/^\d{4}-\d{2}-\d{2}$/.test(date))
 			throw new Error(
