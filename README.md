@@ -10,7 +10,8 @@ Based on the official gazette. Yearly updated.
 Yearly holidays are provided as a JavaScript Map. Reference the [index.js](/index.js) file.
 
 ```javascript
-import { y2023 } from '@hyunbinseo/holidays-kr'; // Can be replaced with a jsDelivr URL
+import { y2023 } from '@hyunbinseo/holidays-kr';
+// Can be replaced with a CDN URL (e.g. jsDelivr)
 
 y2023.has('2023-01-01'); // true
 y2023.has('2023-01-02'); // false
@@ -38,14 +39,14 @@ Check if a JavaScript Date is a holiday. Be careful with the date's timezone.
 ```javascript
 import { isHoliday } from '@hyunbinseo/holidays-kr/check';
 
-// GMT+0900 is equivalent to the Asia/Seoul timezone.
-isHoliday(new Date('2023-01-01 GMT+0900')); // true
-isHoliday(new Date('2023-01-02 GMT+0900')); // false
+// +0900 is equivalent to the Asia/Seoul timezone.
+isHoliday(new Date('2023-01-01T00:00:00.000+0900')); // true
+isHoliday(new Date('2023-01-02T00:00:00.000+0900')); // false
 
-isHoliday(new Date('2023-01-01 GMT+1000')); // false
+isHoliday(new Date('2023-01-01T00:00:00.000+1000')); // false
 // Sat Dec 31 2022 23:00:00 GMT+0900 is not a holiday.
 
-isHoliday(new Date('2000-01-01 GMT+0900')); // null
+isHoliday(new Date('2000-01-01T00:00:00.000+0900')); // null
 // Holiday information of the year 2000 is not included.
 // Therefore, cannot determine if the date is a holiday.
 
