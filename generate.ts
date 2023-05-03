@@ -22,7 +22,7 @@ for (const [year, [preset, id]] of holidays) {
 	writeFileSync(`./public/${year}.ics`, generateIcs(icsEvents));
 	cumulatedIcsEvents = icsEvents + cumulatedIcsEvents;
 
-	const jsonEvents = JSON.stringify(Object.fromEntries(preset));
+	const jsonEvents = JSON.stringify(Object.fromEntries(preset), null, '\t');
 	writeFileSync(`./public/${year}.json`, jsonEvents);
 	cumulatedJsonEvents.push(`"${year}":${jsonEvents}`);
 }
