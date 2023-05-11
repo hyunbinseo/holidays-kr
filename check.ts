@@ -4,8 +4,21 @@ import * as holidays from './index.js';
 const isValidKey = (key: string): key is keyof typeof holidays =>
 	key in holidays;
 
-export const isHoliday = (date: Date): boolean | null | TypeError => {
+type Options = {
+	include: Partial<{
+		saturday: boolean;
+		sunday: boolean;
+	}>;
+};
+
+export const isHoliday = (
+	date: Date,
+	options?: Options
+): boolean | null | TypeError => {
 	if (!(date instanceof Date)) return new TypeError('Invalid date.');
+
+	if (options?.include?.sunday && date.getDay() === 0) return true;
+	if (options?.include?.saturday && date.getDay() === 6) return true;
 
 	const dateString = date
 		.toLocaleDateString('ko-KR', {

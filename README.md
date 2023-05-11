@@ -41,7 +41,11 @@ import { isHoliday } from '@hyunbinseo/holidays-kr/check';
 
 // +0900 is equivalent to the Asia/Seoul timezone.
 isHoliday(new Date('2023-01-01T00:00:00.000+0900')); // true
-isHoliday(new Date('2023-01-02T00:00:00.000+0900')); // false
+
+const date = new Date('2023-01-07T00:00:00.000+0900'); // Saturday
+isHoliday(date, { include: { saturday: true } }); // true
+isHoliday(date, { include: { sunday: true } }); // false
+isHoliday(date); // false
 
 isHoliday(new Date('2023-01-01T00:00:00.000+1000')); // false
 // Sat Dec 31 2022 23:00:00 GMT+0900 is not a holiday.
@@ -51,6 +55,20 @@ isHoliday(new Date('2000-01-01T00:00:00.000+0900')); // null
 // Therefore, cannot determine if the date is a holiday.
 
 isHoliday('2023-01-01'); // TypeError
+```
+
+```typescript
+type Options = {
+  include: Partial<{
+    saturday: boolean;
+    sunday: boolean;
+  }>;
+};
+
+export declare const isHoliday: (
+  date: Date,
+  options?: Options
+) => boolean | null | TypeError;
 ```
 
 ## Static Files
