@@ -1,6 +1,9 @@
 import type { DateString, Year } from './index.js';
 import * as holidays from './index.js';
 
+const isValidKey = (key: string): key is keyof typeof holidays =>
+	key in holidays;
+
 export const isHoliday = (date: Date): boolean | null | TypeError => {
 	if (!(date instanceof Date)) return new TypeError('Invalid date.');
 
@@ -16,7 +19,7 @@ export const isHoliday = (date: Date): boolean | null | TypeError => {
 
 	const key = `y${dateString.substring(0, 4)}`;
 
-	if (!(key in holidays)) return null;
+	if (!isValidKey(key)) return null;
 
 	const preset = holidays[key] as Year;
 

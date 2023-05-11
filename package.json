@@ -11,17 +11,16 @@
 	"type": "module",
 	"files": [
 		"public",
-		"*.js",
-		"*.d.ts"
+		"dist"
 	],
 	"exports": {
 		".": {
-			"types": "./index.d.ts",
-			"import": "./index.js"
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
 		},
 		"./check": {
-			"types": "./check.d.ts",
-			"import": "./check.js"
+			"types": "./dist/check.d.ts",
+			"import": "./dist/check.js"
 		}
 	},
 	"keywords": [
