@@ -1,6 +1,6 @@
 {
 	"name": "@hyunbinseo/holidays-kr",
-	"version": "1.2023.5",
+	"version": "1.2023.6",
 	"description": "South Korea's national holidays, based on the official gazette",
 	"devDependencies": {
 		"@types/node": "^18.14.3",
