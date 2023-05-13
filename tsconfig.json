@@ -1,10 +1,6 @@
 {
 	"compilerOptions": {
-		"declaration": true,
 		"moduleResolution": "nodenext",
-		"outDir": "dist",
-		"strict": true,
-		"target": "es2016"
-	},
-	"files": ["index.ts", "check.ts"]
+		"strict": true
+	}
 }

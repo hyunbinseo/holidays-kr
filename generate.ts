@@ -1,6 +1,6 @@
 import { writeFileSync } from 'node:fs';
-import type { Year } from './index.js';
-import { y2022, y2023 } from './index.js';
+import type { Year } from './index';
+import { y2022, y2023 } from './index';
 import { checkPreset } from './scripts/check-preset';
 import { generateCsv } from './scripts/generate-csv';
 import { generateIcs, generateIcsEvents } from './scripts/generate-ics';

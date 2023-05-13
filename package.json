@@ -6,21 +6,26 @@
 		"@types/node": "^18.14.3",
 		"esno": "^0.16.3",
 		"prettier": "^2.8.4",
-		"typescript": "^4.9.5"
+		"tsup": "^6.7.0",
+		"typescript": "^5.0.4"
 	},
-	"type": "module",
 	"files": [
 		"public",
 		"dist"
 	],
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js"
+			"require": "./dist/index.js",
+			"import": "./dist/index.mjs",
+			"types": "./dist/index.d.ts"
 		},
 		"./check": {
-			"types": "./dist/check.d.ts",
-			"import": "./dist/check.js"
+			"require": "./dist/check.js",
+			"import": "./dist/check.mjs",
+			"types": "./dist/check.d.ts"
 		}
 	},
 	"keywords": [

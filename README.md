@@ -1,17 +1,17 @@
 # South Korea's National Holidays
 
-Based on the official gazette. Yearly updated.
+Yearly updated based on the official gazette. Available in [npm] and [jsDelivr].
 
-- [npm](https://www.npmjs.com/package/@hyunbinseo/holidays-kr)
-- [jsDelivr](https://www.jsdelivr.com/package/npm/@hyunbinseo/holidays-kr)
+[npm]: https://www.npmjs.com/package/@hyunbinseo/holidays-kr
+[jsDelivr]: https://www.jsdelivr.com/package/npm/@hyunbinseo/holidays-kr
 
 ## Usage
 
-Yearly holidays are provided as a JavaScript Map. Reference the [index.js](/index.js) file.
+Yearly holidays are provided as a JavaScript Map. [Reference](index.ts)
 
 ```javascript
 import { y2023 } from '@hyunbinseo/holidays-kr';
-// Can be replaced with a CDN URL (e.g. jsDelivr)
+// const { y2023 } = require('@hyunbinseo/holidays-kr');
 
 y2023.has('2023-01-01'); // true
 y2023.has('2023-01-02'); // false
@@ -29,6 +29,7 @@ for (const [date, subject] of y2023) {
 
 ```javascript
 import * as yearlyHolidays from '@hyunbinseo/holidays-kr';
+// const yearlyHolidays = require('@hyunbinseo/holidays-kr');
 
 const { y2022 } = yearlyHolidays;
 const y2023 = yearlyHolidays['y2023'];
@@ -38,6 +39,7 @@ Check if a JavaScript Date is a holiday. Be careful with the date's timezone.
 
 ```javascript
 import { isHoliday } from '@hyunbinseo/holidays-kr/check';
+// const { isHoliday } = require('@hyunbinseo/holidays-kr/check');
 
 // +0900 is equivalent to the Asia/Seoul timezone.
 isHoliday(new Date('2023-01-01T00:00:00.000+0900')); // true
