@@ -1,9 +1,9 @@
 import { writeFileSync } from 'node:fs';
-import type { Year } from './index';
-import { y2022, y2023 } from './index';
-import { checkPreset } from './scripts/check-preset';
-import { generateCsv } from './scripts/generate-csv';
-import { generateIcs, generateIcsEvents } from './scripts/generate-ics';
+import type { Year } from '../index';
+import { y2022, y2023 } from '../index';
+import { checkPreset } from './check-preset';
+import { generateCsv } from './content-csv';
+import { generateIcs, generateIcsEvents } from './content-ics';
 
 const holidays = new Map([
 	[2023, [y2023, 1669289424786]],
