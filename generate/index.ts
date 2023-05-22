@@ -32,5 +32,7 @@ writeFileSync('./public/basic.json', `{${cumulatedJsonEvents.join(',')}}`);
 
 writeFileSync(
 	'./public/_redirects',
-	`# ${Date.now()}\n/ https://github.com/hyunbinseo/holidays-kr#%EB%AC%B8%EC%A0%9C-%EC%83%81%ED%99%A9`
+	// FIXME: Temporary redirect due to Cloudflare Pages redirect error.
+	// Reference https://github.com/hyunbinseo/holidays-kr/issues/7
+	`# ${Date.now()}\n/ https://github.com/hyunbinseo/holidays-kr/blob/main/.github/README.md`
 );
