@@ -1,6 +1,10 @@
 {
 	"compilerOptions": {
 		"moduleResolution": "nodenext",
+		"paths": {
+			"source": ["./source"],
+			"source/*": ["./source/*"]
+		},
 		"strict": true,
 		"target": "ESNext"
 	}

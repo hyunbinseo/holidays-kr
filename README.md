@@ -5,9 +5,21 @@ Yearly updated based on the official gazette. Available in [npm] and [jsDelivr].
 [npm]: https://www.npmjs.com/package/@hyunbinseo/holidays-kr
 [jsDelivr]: https://www.jsdelivr.com/package/npm/@hyunbinseo/holidays-kr
 
+## Migration
+
+### 2.x
+
+```diff
+- import { isHoliday } from '@hyunbinseo/holidays-kr/check';
++ import { isHoliday } from '@hyunbinseo/holidays-kr';
+
+- const { isHoliday } = require('@hyunbinseo/holidays-kr/check');
++ const { isHoliday } = require('@hyunbinseo/holidays-kr');
+```
+
 ## Usage
 
-Yearly holidays are provided as a JavaScript Map. [Reference](index.ts)
+Yearly holidays are provided as a JavaScript Map. [Reference](/source/index.ts)
 
 ```javascript
 import { y2023 } from '@hyunbinseo/holidays-kr';
@@ -27,19 +39,11 @@ for (const [date, subject] of y2023) {
 [...y2023.values()]; // ['1월 1일', '설날 전날', … ]
 ```
 
-```javascript
-import * as yearlyHolidays from '@hyunbinseo/holidays-kr';
-// const yearlyHolidays = require('@hyunbinseo/holidays-kr');
-
-const { y2022 } = yearlyHolidays;
-const y2023 = yearlyHolidays['y2023'];
-```
-
 Check if a JavaScript Date is a holiday. Be careful with the date's timezone.
 
 ```javascript
-import { isHoliday } from '@hyunbinseo/holidays-kr/check';
-// const { isHoliday } = require('@hyunbinseo/holidays-kr/check');
+import { isHoliday } from '@hyunbinseo/holidays-kr';
+// const { isHoliday } = require('@hyunbinseo/holidays-kr');
 
 // +0900 is equivalent to the Asia/Seoul timezone.
 isHoliday(new Date('2023-01-01T00:00:00.000+0900')); // true

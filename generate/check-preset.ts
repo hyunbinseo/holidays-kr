@@ -1,4 +1,4 @@
-import type { DateString, Year } from '../index';
+import type { DateString, Year } from 'source';
 
 const bannedSubjects = ['제헌절'];
 

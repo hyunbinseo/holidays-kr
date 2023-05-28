@@ -1,5 +1,5 @@
-import type { DateString, Year } from './index';
-import * as holidays from './index';
+import type { DateString, Year } from '.';
+import * as holidays from '.';
 
 const isValidKey = (key: string): key is keyof typeof holidays =>
 	key in holidays;

@@ -21,11 +21,6 @@
 			"require": "./dist/index.js",
 			"import": "./dist/index.mjs",
 			"types": "./dist/index.d.ts"
-		},
-		"./check": {
-			"require": "./dist/check.js",
-			"import": "./dist/check.mjs",
-			"types": "./dist/check.d.ts"
 		}
 	},
 	"keywords": [

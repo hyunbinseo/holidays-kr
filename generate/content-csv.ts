@@ -1,4 +1,4 @@
-import type { Year } from '../index';
+import type { Year } from 'source';
 
 export const generateCsv = (preset: Year) => {
 	let string = '\ufeff' + 'Start date,Subject';

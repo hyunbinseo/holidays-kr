@@ -1,4 +1,4 @@
-import type { DateString, Year } from '../index';
+import type { DateString, Year } from 'source';
 
 export const generateIcsEvents = (preset: Year, id: number) => {
 	const timestamp = new Date()
