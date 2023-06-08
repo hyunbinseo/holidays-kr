@@ -10,8 +10,9 @@
 		"typescript": "^5.0.4"
 	},
 	"files": [
+		"dist",
 		"public",
-		"dist"
+		"!public/_redirects"
 	],
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
