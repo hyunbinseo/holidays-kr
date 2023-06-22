@@ -1,11 +1,12 @@
 import { writeFileSync } from 'node:fs';
 import type { Year } from 'source';
-import { y2022, y2023 } from 'source';
+import { y2022, y2023, y2024 } from 'source';
 import { checkPreset } from './check-preset';
 import { generateCsv } from './content-csv';
 import { generateIcs, generateIcsEvents } from './content-ics';
 
 const holidays = new Map([
+	[2024, [y2024, 1687425345417]],
 	[2023, [y2023, 1669289424786]],
 	[2022, [y2022, 1669509606092]],
 ]) satisfies Map<number, [Year, number]>;
