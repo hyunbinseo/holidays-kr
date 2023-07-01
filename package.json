@@ -2,10 +2,14 @@
 	"name": "@hyunbinseo/holidays-kr",
 	"version": "2.2024.1",
 	"description": "South Korea's national holidays, based on the official gazette",
+	"scripts": {
+		"build": "esno cli/generate && tsup"
+	},
 	"devDependencies": {
 		"@types/node": "^18.14.3",
 		"esno": "^0.16.3",
 		"prettier": "^2.8.4",
+		"sendgrid-send": "^1.0.6",
 		"tsup": "^6.7.0",
 		"typescript": "^5.0.4"
 	},
