@@ -7,10 +7,10 @@
 	},
 	"devDependencies": {
 		"@types/node": "^18.14.3",
-		"esno": "^0.16.3",
-		"prettier": "^2.8.4",
+		"esno": "^0.17.0",
+		"prettier": "^3.0.3",
 		"sendgrid-send": "^1.0.6",
-		"tsup": "^6.7.0",
+		"tsup": "^7.2.0",
 		"typescript": "^5.0.4"
 	},
 	"files": [
