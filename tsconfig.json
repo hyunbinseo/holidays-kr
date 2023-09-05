@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
-		"moduleResolution": "nodenext",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"paths": {
 			"source": ["./source"],
 			"source/*": ["./source/*"]
