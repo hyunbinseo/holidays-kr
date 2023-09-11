@@ -28,11 +28,11 @@ export const generateIcsEvents = (preset: Year, id: number) => {
 	return events;
 };
 
-export const generateIcs = (events: string) =>
+export const generateIcs = (events: string, calendarName: string) =>
 	'BEGIN:VCALENDAR\n' +
 	'VERSION:2.0\n' +
 	'PRODID:-//GitHub@hyunbinseo//holidays-kr//KO\n' +
-	'X-WR-CALNAME:대한민국의 공휴일\n' +
+	`X-WR-CALNAME:${calendarName}\n` +
 	'X-WR-TIMEZONE:Asia/Seoul\n' +
 	'X-WR-CALDESC:https://github.com/hyunbinseo/holidays-kr\n' +
 	events +

@@ -9,6 +9,8 @@ export const writeFiles = (
 	yearlyPresets: Map<number, [Year, number]>,
 ) => {
 	const path = type === 'holiday' ? './public/' : './public/anniversaries/';
+	const calendarName =
+		'대한민국의 ' + (type === 'holiday' ? '공휴일' : '기념일');
 
 	let cumulatedIcsEvents = '';
 	let cumulatedJsonEvents: string[] = [];
@@ -19,7 +21,7 @@ export const writeFiles = (
 		writeFileSync(`${path}${year}.csv`, generateCsv(preset));
 
 		const icsEvents = generateIcsEvents(preset, id);
-		writeFileSync(`${path}${year}.ics`, generateIcs(icsEvents));
+		writeFileSync(`${path}${year}.ics`, generateIcs(icsEvents, calendarName));
 		cumulatedIcsEvents = icsEvents + cumulatedIcsEvents;
 
 		const jsonEvents = JSON.stringify(Object.fromEntries(preset), null, '\t');
@@ -27,6 +29,9 @@ export const writeFiles = (
 		cumulatedJsonEvents.push(`"${year}":${jsonEvents}`);
 	}
 
-	writeFileSync(`${path}basic.ics`, generateIcs(cumulatedIcsEvents));
+	writeFileSync(
+		`${path}basic.ics`,
+		generateIcs(cumulatedIcsEvents, calendarName),
+	);
 	writeFileSync(`${path}basic.json`, `{${cumulatedJsonEvents.join(',')}}`);
 };
