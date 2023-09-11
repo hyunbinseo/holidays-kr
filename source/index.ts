@@ -1,6 +1,8 @@
 export type DateString = `${number}-${number}-${number}`;
 export type Year = Map<DateString, string>;
 
+// Use the symbol ㆍ in the holiday names.
+
 export const y2024 = new Map([
 	['2024-01-01', '1월 1일'],
 	['2024-02-09', '설날 전날'],

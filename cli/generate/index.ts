@@ -1,39 +1,29 @@
 import { writeFileSync } from 'node:fs';
-import type { Year } from 'source';
 import { y2022, y2023, y2024 } from 'source';
-import { checkPreset } from './check-preset';
-import { generateCsv } from './content-csv';
-import { generateIcs, generateIcsEvents } from './content-ics';
+import { y2022a, y2023a, y2024a } from 'source/anniversaries';
+import { writeFiles } from './write-files';
 
-const holidays = new Map([
-	[2024, [y2024, 1687425345417]],
-	[2023, [y2023, 1669289424786]],
-	[2022, [y2022, 1669509606092]],
-]) satisfies Map<number, [Year, number]>;
+writeFiles(
+	'holiday',
+	new Map([
+		[2024, [y2024, 1687425345417]],
+		[2023, [y2023, 1669289424786]],
+		[2022, [y2022, 1669509606092]],
+	]),
+);
 
-let cumulatedIcsEvents = '';
-let cumulatedJsonEvents: string[] = [];
-
-for (const [year, [preset, id]] of holidays) {
-	checkPreset(preset, year);
-
-	writeFileSync(`./public/${year}.csv`, generateCsv(preset));
-
-	const icsEvents = generateIcsEvents(preset, id);
-	writeFileSync(`./public/${year}.ics`, generateIcs(icsEvents));
-	cumulatedIcsEvents = icsEvents + cumulatedIcsEvents;
-
-	const jsonEvents = JSON.stringify(Object.fromEntries(preset), null, '\t');
-	writeFileSync(`./public/${year}.json`, jsonEvents);
-	cumulatedJsonEvents.push(`"${year}":${jsonEvents}`);
-}
-
-writeFileSync('./public/basic.ics', generateIcs(cumulatedIcsEvents));
-writeFileSync('./public/basic.json', `{${cumulatedJsonEvents.join(',')}}`);
+writeFiles(
+	'anniversaries',
+	new Map([
+		[2024, [y2024a, 1694431397688]],
+		[2023, [y2023a, 1694431397227]],
+		[2022, [y2022a, 1694431396579]],
+	]),
+);
 
 writeFileSync(
 	'./public/_redirects',
 	// FIXME: Temporary redirect due to Cloudflare Pages redirect error.
 	// Reference https://github.com/hyunbinseo/holidays-kr/issues/7
-	`# ${Date.now()}\n/ https://github.com/hyunbinseo/holidays-kr/blob/main/.github/README.md`
+	`# ${Date.now()}\n/ https://github.com/hyunbinseo/holidays-kr/blob/main/.github/README.md`,
 );
