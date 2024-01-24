@@ -16,7 +16,7 @@
 
 `https://holidays.hyunbin.page/anniversaries/basic.ics` 주소로 새로운 캘린더를 구독합니다.
 
-> **Warning**
+> [!WARNING]
 > 위 주소를 직접 공유하는 것을 금합니다. [holidays.hyunbin.page]를 공유합니다.
 
 [holidays.hyunbin.page]: https://holidays.hyunbin.page/
