@@ -6,12 +6,12 @@
 		"build": "esno cli/generate && tsup"
 	},
 	"devDependencies": {
-		"@types/node": "^18.14.3",
-		"esno": "^0.17.0",
-		"prettier": "^3.0.3",
-		"sendgrid-send": "^1.0.6",
-		"tsup": "^7.2.0",
-		"typescript": "^5.0.4"
+		"@types/node": "^20.12.5",
+		"esno": "^4.7.0",
+		"prettier": "^3.2.5",
+		"sendgrid-send": "^1.0.7",
+		"tsup": "^8.0.2",
+		"typescript": "^5.4.4"
 	},
 	"files": [
 		"dist",
