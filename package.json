@@ -3,7 +3,7 @@
 	"version": "2.2024.4",
 	"description": "South Korea's national holidays, based on the official gazette",
 	"scripts": {
-		"build": "esno cli/generate && tsup"
+		"build": "esno cli/generate && tsup index.ts --format cjs,esm --dts --clean"
 	},
 	"devDependencies": {
 		"@types/node": "^20.12.5",
