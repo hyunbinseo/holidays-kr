@@ -3,21 +3,38 @@
 	"version": "2.2024.4",
 	"description": "South Korea's national holidays, based on the official gazette",
 	"scripts": {
-		"build": "esno cli/generate && tsup index.ts --format cjs,esm --dts --clean"
+		"build": "esno cli/generate && tsup && publint",
+		"prepublishOnly": "pnpm build"
+	},
+	"dependencies": {
+		"new-request": "^0.0.15",
+		"valibot": "0.31.0-rc.7"
 	},
 	"devDependencies": {
-		"@types/node": "^20.12.5",
+		"@types/node": "^20.13.0",
 		"esno": "^4.7.0",
-		"prettier": "^3.2.5",
-		"sendgrid-send": "^1.0.7",
+		"prettier": "^3.3.0",
+		"publint": "^0.2.8",
 		"tsup": "^8.0.2",
-		"typescript": "^5.4.4"
+		"typescript": "^5.4.5"
+	},
+	"tsup": {
+		"entry": [
+			"index.ts"
+		],
+		"format": [
+			"cjs",
+			"esm"
+		],
+		"dts": true,
+		"clean": true
 	},
 	"files": [
 		"dist",
 		"public",
 		"!public/_redirects"
 	],
+	"type": "commonjs",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
@@ -43,5 +60,6 @@
 	"bugs": {
 		"url": "https://github.com/hyunbinseo/holidays-kr/issues"
 	},
-	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme"
+	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
+	"packageManager": "pnpm@9.1.4+sha512.9df9cf27c91715646c7d675d1c9c8e41f6fce88246f1318c1aa6a1ed1aeb3c4f032fcdf4ba63cc69c4fe6d634279176b5358727d8f2cc1e65b65f43ce2f8bfb0"
 }
