@@ -1,11 +1,12 @@
 module.exports = {
+	/** @type {import('pm2-ecosystem').StartOptions[]} */
 	apps: [
 		{
-			name: 'Check MSIT RSS',
-			script: './cli/check.mjs',
+			name: 'check-msit-holidays',
+			script: 'cli/check.mjs',
 			time: true,
 			autorestart: false,
-			cron_restart: '0 * * * *',
+			cron: '0,30 * * * *',
 		},
 	],
 };

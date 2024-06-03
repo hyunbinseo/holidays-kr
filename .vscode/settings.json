@@ -2,6 +2,7 @@
 	"[csv]": {
 		"files.encoding": "utf8bom"
 	},
+	"cSpell.words": ["Dooray"],
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "explicit"
 	},

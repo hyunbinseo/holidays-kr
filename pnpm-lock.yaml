@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       new-request:
-        specifier: ^0.0.15
-        version: 0.0.15
+        specifier: ^0.0.16
+        version: 0.0.16
       valibot:
         specifier: 0.31.0-rc.7
         version: 0.31.0-rc.7
@@ -21,6 +21,9 @@ importers:
       esno:
         specifier: ^4.7.0
         version: 4.7.0
+      pm2-ecosystem:
+        specifier: ^5.4.0
+        version: 5.4.0
       prettier:
         specifier: ^3.3.0
         version: 3.3.0
@@ -703,8 +706,8 @@ packages:
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
 
-  new-request@0.0.15:
-    resolution: {integrity: sha512-ecvHuHcJlw/oqWI9cVSrpDOv02+A4y2xhGn8qgwMGPlwSo/bDlCHeAt9xX5A21AouLFwJhQIq+fL4Ef2vMzRrg==}
+  new-request@0.0.16:
+    resolution: {integrity: sha512-MNRyoIwf5aOD17AWseeiIl1kZ3GLbQN1ZtjNhmxnUOOqZnwqCXNrqTIEGAh3VhNIXmsTkRCSLFZVN+yZUUyILQ==}
     engines: {node: '>=18'}
 
   normalize-path@3.0.0:
@@ -761,6 +764,9 @@ packages:
   pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
+
+  pm2-ecosystem@5.4.0:
+    resolution: {integrity: sha512-FG5BW/8vtoG07j7i9QTcvBTGkpP6ypwWIvrcCBwte3ddGL1ZTYtMaQuvNUmjjJui4Q8VcuQ3v0h/oePtB4nesQ==}
 
   postcss-load-config@4.0.2:
     resolution: {integrity: sha512-bSVhyJGL00wMVoPUzAVAnbEoWyqRxkjv64tUl427SKnPrENtq6hJwUojroMz2VB+Q1edmi4IfrAPpami5VVgMQ==}
@@ -1473,7 +1479,7 @@ snapshots:
       object-assign: 4.1.1
       thenify-all: 1.6.0
 
-  new-request@0.0.15: {}
+  new-request@0.0.16: {}
 
   normalize-path@3.0.0: {}
 
@@ -1518,6 +1524,8 @@ snapshots:
   picomatch@2.3.1: {}
 
   pirates@4.0.6: {}
+
+  pm2-ecosystem@5.4.0: {}
 
   postcss-load-config@4.0.2:
     dependencies:

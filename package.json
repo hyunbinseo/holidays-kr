@@ -4,15 +4,17 @@
 	"description": "South Korea's national holidays, based on the official gazette",
 	"scripts": {
 		"build": "esno cli/generate && tsup && publint",
-		"prepublishOnly": "pnpm build"
+		"prepublishOnly": "pnpm build",
+		"check": "pm2 start"
 	},
 	"dependencies": {
-		"new-request": "^0.0.15",
+		"new-request": "^0.0.16",
 		"valibot": "0.31.0-rc.7"
 	},
 	"devDependencies": {
 		"@types/node": "^20.13.0",
 		"esno": "^4.7.0",
+		"pm2-ecosystem": "^5.4.0",
 		"prettier": "^3.3.0",
 		"publint": "^0.2.8",
 		"tsup": "^8.0.2",
