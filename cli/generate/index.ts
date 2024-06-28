@@ -1,11 +1,12 @@
 import { writeFileSync } from 'node:fs';
-import { y2022, y2023, y2024 } from 'source';
-import { y2022a, y2023a, y2024a } from 'source/anniversaries';
+import { y2022, y2023, y2024, y2025 } from 'source';
+import { y2022a, y2023a, y2024a, y2025a } from 'source/anniversaries';
 import { writeFiles } from './write-files';
 
 writeFiles(
 	'holiday',
 	new Map([
+		[2025, [y2025, 1719570756964]],
 		[2024, [y2024, 1687425345417]],
 		[2023, [y2023, 1669289424786]],
 		[2022, [y2022, 1669509606092]],
@@ -15,6 +16,7 @@ writeFiles(
 writeFiles(
 	'anniversaries',
 	new Map([
+		[2025, [y2025a, 1719575527349]],
 		[2024, [y2024a, 1694431397688]],
 		[2023, [y2023a, 1694431397227]],
 		[2022, [y2022a, 1694431396579]],
