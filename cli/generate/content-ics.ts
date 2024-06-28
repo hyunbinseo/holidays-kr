@@ -22,8 +22,7 @@ export const generateIcsEvents = (preset: Year, id: number) => {
 
 	let events = '';
 
-	for (const [date, subject] of preset)
-		events = events + generateIcsEvent(date, subject);
+	for (const [date, subject] of preset) events = events + generateIcsEvent(date, subject);
 
 	return events;
 };

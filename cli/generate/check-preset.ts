@@ -27,19 +27,13 @@ const generateRequiredHolidays = (year: number) =>
 export const checkPreset = (preset: Year, year: number) => {
 	for (const [date, subject] of preset) {
 		if (!/^\d{4}-\d{2}-\d{2}$/.test(date))
-			throw new Error(
-				`Invalid date format. ${date} should be in YYYY-MM-DD format.`
-			);
+			throw new Error(`Invalid date format. ${date} should be in YYYY-MM-DD format.`);
 
 		if (date.substring(0, 4) !== year.toString())
-			throw new Error(
-				`Invalid date value. ${date} should be a date in ${year}.`
-			);
+			throw new Error(`Invalid date value. ${date} should be a date in ${year}.`);
 
 		if (bannedSubjects.includes(subject))
-			throw new Error(
-				`Invalid subject. ${year} should not include ${subject}.`
-			);
+			throw new Error(`Invalid subject. ${year} should not include ${subject}.`);
 	}
 
 	const subjects = [...preset.values()];
@@ -52,8 +46,7 @@ export const checkPreset = (preset: Year, year: number) => {
 	const requiredHolidays = generateRequiredHolidays(year);
 
 	for (const [date, subject] of requiredHolidays) {
-		if (!preset.has(date))
-			throw new Error(`Invalid preset. ${year} is missing ${subject}.`);
+		if (!preset.has(date)) throw new Error(`Invalid preset. ${year} is missing ${subject}.`);
 		if (preset.get(date) !== subject)
 			throw new Error(`Invalid subject. ${date} should be ${subject}.`);
 	}

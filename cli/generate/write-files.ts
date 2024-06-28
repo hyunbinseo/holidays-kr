@@ -9,8 +9,7 @@ export const writeFiles = (
 	yearlyPresets: Map<number, [Year, number]>,
 ) => {
 	const path = type === 'holiday' ? './public/' : './public/anniversaries/';
-	const calendarName =
-		'대한민국의 ' + (type === 'holiday' ? '공휴일' : '기념일');
+	const calendarName = '대한민국의 ' + (type === 'holiday' ? '공휴일' : '기념일');
 
 	let cumulatedIcsEvents = '';
 	let cumulatedJsonEvents: string[] = [];
@@ -29,9 +28,6 @@ export const writeFiles = (
 		cumulatedJsonEvents.push(`"${year}":${jsonEvents}`);
 	}
 
-	writeFileSync(
-		`${path}basic.ics`,
-		generateIcs(cumulatedIcsEvents, calendarName),
-	);
+	writeFileSync(`${path}basic.ics`, generateIcs(cumulatedIcsEvents, calendarName));
 	writeFileSync(`${path}basic.json`, `{${cumulatedJsonEvents.join(',')}}`);
 };

@@ -1,8 +1,7 @@
 import type { DateString, Year } from '.';
 import * as holidays from '.';
 
-const isValidKey = (key: string): key is keyof typeof holidays =>
-	key in holidays;
+const isValidKey = (key: string): key is keyof typeof holidays => key in holidays;
 
 type Options = {
 	include: Partial<{
@@ -11,10 +10,7 @@ type Options = {
 	}>;
 };
 
-export const isHoliday = (
-	date: Date,
-	options?: Options
-): boolean | null | TypeError => {
+export const isHoliday = (date: Date, options?: Options): boolean | null | TypeError => {
 	if (!(date instanceof Date)) return new TypeError('Invalid date.');
 
 	if (options?.include?.sunday && date.getDay() === 0) return true;

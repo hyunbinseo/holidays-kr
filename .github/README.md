@@ -30,6 +30,7 @@
 [자바스크립트 패키지]: https://www.npmjs.com/package/@hyunbinseo/holidays-kr
 
 [^3]: [다른 사람의 Google Calendar 구독하기] 문서를 참고합니다. (링크를 사용하여 공개 캘린더 추가하기)
+
 [^4]: [iCloud 캘린더 구독 사용하기] 문서를 참고합니다.
 
 [다른 사람의 Google Calendar 구독하기]: https://support.google.com/calendar/answer/37100?hl=ko

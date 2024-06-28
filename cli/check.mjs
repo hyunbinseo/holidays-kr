@@ -1,15 +1,7 @@
 import { DooraySendMessage } from 'new-request';
 import { loadEnvFile } from 'process';
 import { Agent, fetch } from 'undici';
-import {
-	array,
-	isoDate,
-	object,
-	parse,
-	pipe,
-	string,
-	transform,
-} from 'valibot';
+import { array, isoDate, object, parse, pipe, string, transform } from 'valibot';
 
 const Schema = pipe(
 	object({
@@ -46,26 +38,23 @@ const doorayWebhookUrl = process.env.DOORAY_URL;
 if (!isDoorayWebhookUrl(doorayWebhookUrl)) throw new Error();
 
 try {
-	const response = await fetch(
-		'https://www.kasa.go.kr/web/board/ajax/list.do?menu_cd=000024',
-		{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-			},
-			body: new URLSearchParams({
-				currentPage: '1',
-				searchData: 'contdata',
-				searchText: '월력요항',
-				countPerPage: '10',
-			}),
-			// TODO Remove workaround:
-			// TypeError: fetch failed
-			// [cause]: Error: unable to verify the first certificate
-			// code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE'
-			dispatcher: new Agent({ connect: { rejectUnauthorized: false } }),
+	const response = await fetch('https://www.kasa.go.kr/web/board/ajax/list.do?menu_cd=000024', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
 		},
-	);
+		body: new URLSearchParams({
+			currentPage: '1',
+			searchData: 'contdata',
+			searchText: '월력요항',
+			countPerPage: '10',
+		}),
+		// TODO Remove workaround:
+		// TypeError: fetch failed
+		// [cause]: Error: unable to verify the first certificate
+		// code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE'
+		dispatcher: new Agent({ connect: { rejectUnauthorized: false } }),
+	});
 
 	if (!response.ok) throw new Error('우주항공청 누리집 요청에 실패했습니다.');
 

@@ -27,9 +27,6 @@ importers:
       pm2-ecosystem:
         specifier: ^5.4.1
         version: 5.4.1
-      prettier:
-        specifier: ^3.3.2
-        version: 3.3.2
       publint:
         specifier: ^0.2.8
         version: 0.2.8
@@ -642,11 +639,6 @@ packages:
         optional: true
       ts-node:
         optional: true
-
-  prettier@3.3.2:
-    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
-    engines: {node: '>=14'}
-    hasBin: true
 
   publint@0.2.8:
     resolution: {integrity: sha512-C5MjGJ7gpanqaDpgBN+6QhjvXcoj0/YpbucoW29oO5729CGTMzfr3wZTIYcpzB1xl9ZfEqj4KL86P2Z50pt/JA==}
@@ -1306,8 +1298,6 @@ snapshots:
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.4.5
-
-  prettier@3.3.2: {}
 
   publint@0.2.8:
     dependencies:

@@ -1,6 +1,0 @@
-{
-	"overrides": [{ "files": "*.md", "options": { "useTabs": false } }],
-	"quoteProps": "consistent",
-	"singleQuote": true,
-	"useTabs": true
-}

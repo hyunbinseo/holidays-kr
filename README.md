@@ -71,10 +71,7 @@ type Options = {
   }>;
 };
 
-export declare const isHoliday: (
-  date: Date,
-  options?: Options
-) => boolean | null | TypeError;
+export declare const isHoliday: (date: Date, options?: Options) => boolean | null | TypeError;
 ```
 
 ## Static Files

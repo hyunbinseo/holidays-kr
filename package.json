@@ -16,7 +16,6 @@
 		"@types/node": "^20.14.9",
 		"esno": "^4.7.0",
 		"pm2-ecosystem": "^5.4.1",
-		"prettier": "^3.3.2",
 		"publint": "^0.2.8",
 		"tsup": "^8.1.0",
 		"typescript": "^5.5.2"
