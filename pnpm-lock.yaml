@@ -11,6 +11,9 @@ importers:
       new-request:
         specifier: ^0.0.16
         version: 0.0.16
+      undici:
+        specifier: ^6.19.2
+        version: 6.19.2
       valibot:
         specifier: ^0.35.0
         version: 0.35.0
@@ -785,6 +788,10 @@ packages:
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
+  undici@6.19.2:
+    resolution: {integrity: sha512-JfjKqIauur3Q6biAtHJ564e3bWa8VvT+7cSiOJHFbX4Erv6CLGDpg8z+Fmg/1OI/47RA+GI2QZaF48SSaLvyBA==}
+    engines: {node: '>=18.17'}
+
   valibot@0.35.0:
     resolution: {integrity: sha512-+i2aCRkReTrd5KBN/dW2BrPOvFnU5LXTV2xjZnjnqUIO8YUx6P2+MgRrkwF2FhkexgyKq/NIZdPdknhHf5A/Ww==}
 
@@ -1452,6 +1459,8 @@ snapshots:
   typescript@5.5.2: {}
 
   undici-types@5.26.5: {}
+
+  undici@6.19.2: {}
 
   valibot@0.35.0: {}
 

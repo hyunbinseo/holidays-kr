@@ -9,6 +9,7 @@
 	},
 	"dependencies": {
 		"new-request": "^0.0.16",
+		"undici": "^6.19.2",
 		"valibot": "^0.35.0"
 	},
 	"devDependencies": {

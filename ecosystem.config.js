@@ -2,7 +2,7 @@ module.exports = {
 	/** @type {import('pm2-ecosystem').StartOptions[]} */
 	apps: [
 		{
-			name: 'check-msit-holidays',
+			name: 'check-kasa-holidays',
 			script: 'cli/check.mjs',
 			time: true,
 			autorestart: false,

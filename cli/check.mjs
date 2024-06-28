@@ -1,36 +1,30 @@
 import { DooraySendMessage } from 'new-request';
 import { loadEnvFile } from 'process';
-import { array, object, parse, pipe, string, transform } from 'valibot';
+import { Agent, fetch } from 'undici';
+import {
+	array,
+	isoDate,
+	object,
+	parse,
+	pipe,
+	string,
+	transform,
+} from 'valibot';
 
 const Schema = pipe(
 	object({
-		result: object({
-			rows: array(
-				pipe(
-					object({
-						fields: object({
-							ntt_sj: pipe(
-								string(),
-								transform((s) => s.replace(/<[^>]*>/g, '')),
-							),
-							url: pipe(
-								string(),
-								transform((s) => 'https://www.msit.go.kr' + s),
-							),
-							pstg_bgng_dt: pipe(
-								string(),
-								transform(
-									(s) => new Date(`${s.substring(0, 10)}T00:00:00+09:00`),
-								),
-							),
-						}),
-					}),
-					transform((v) => v.fields),
+		brdList: array(
+			object({
+				title: string(),
+				disp_write_dt: pipe(
+					string(),
+					isoDate(),
+					transform((v) => new Date(v)),
 				),
-			),
-		}),
+			}),
+		),
 	}),
-	transform((v) => v.result.rows),
+	transform(({ brdList }) => brdList),
 );
 
 /**
@@ -38,9 +32,7 @@ const Schema = pipe(
  * @returns {value is `https://hook.dooray.com/services/${string}`}
  */
 const isDoorayWebhookUrl = (value) => {
-	return value && value.startsWith('https://hook.dooray.com/services/')
-		? true
-		: false;
+	return !!value && value.startsWith('https://hook.dooray.com/services/');
 };
 
 // The message cannot be sent under these circumstances.
@@ -55,27 +47,37 @@ if (!isDoorayWebhookUrl(doorayWebhookUrl)) throw new Error();
 
 try {
 	const response = await fetch(
-		'https://www.msit.go.kr/bbs/list.do?sCode=user&mId=113&mPid=238&pageIndex=1&bbsSeqNo=94&nttSeqNo=&searchOpt=ALL&searchTxt=%EC%9B%94%EB%A0%A5%EC%9A%94%ED%95%AD',
+		'https://www.kasa.go.kr/web/board/ajax/list.do?menu_cd=000024',
+		{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+			},
+			body: new URLSearchParams({
+				currentPage: '1',
+				searchData: 'contdata',
+				searchText: '월력요항',
+				countPerPage: '10',
+			}),
+			// TODO Remove workaround:
+			// TypeError: fetch failed
+			// [cause]: Error: unable to verify the first certificate
+			// code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE'
+			dispatcher: new Agent({ connect: { rejectUnauthorized: false } }),
+		},
 	);
-	if (!response.ok) throw new Error('과기부 누리집 요청에 실패했습니다.');
 
-	const regex = /(?<=function getSerachData\(\) {\s+let data = )[^;]+/;
-	const html = await response.text();
+	if (!response.ok) throw new Error('우주항공청 누리집 요청에 실패했습니다.');
 
-	const matched = html.match(regex);
-	if (!matched) throw new Error('검색 결과 데이터를 찾지 못했습니다.');
-
-	const json = JSON.parse(matched[0]);
-	const posts = parse(Schema, json);
-
+	const posts = parse(Schema, await response.json());
 	const currentYear = new Date().getFullYear();
 
 	for await (const post of posts) {
-		if (post.pstg_bgng_dt.getFullYear() === currentYear) {
+		if (post.disp_write_dt.getFullYear() === currentYear) {
 			const response = await DooraySendMessage(
 				{
 					botName: '대한민국의 공휴일',
-					text: `${post.ntt_sj} ${post.url}`,
+					text: post.title,
 				},
 				{ url: doorayWebhookUrl },
 			);
