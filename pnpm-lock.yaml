@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      new-request:
-        specifier: ^0.0.16
-        version: 0.0.16
-      undici:
-        specifier: ^6.19.2
-        version: 6.19.2
       valibot:
         specifier: ^0.35.0
         version: 0.35.0
@@ -21,12 +15,6 @@ importers:
       '@types/node':
         specifier: ^20.14.9
         version: 20.14.9
-      esno:
-        specifier: ^4.7.0
-        version: 4.7.0
-      pm2-ecosystem:
-        specifier: ^5.4.1
-        version: 5.4.1
       publint:
         specifier: ^0.2.8
         version: 0.2.8
@@ -398,10 +386,6 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  esno@4.7.0:
-    resolution: {integrity: sha512-81owrjxIxOwqcABt20U09Wn8lpBo9K6ttqbGvQcB3VYNLJyaV1fvKkDtpZd3Rj5BX3WXiGiJCjUevKQGNICzJg==}
-    hasBin: true
-
   execa@5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
     engines: {node: '>=10'}
@@ -432,9 +416,6 @@ packages:
   get-stream@6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
-
-  get-tsconfig@4.7.5:
-    resolution: {integrity: sha512-ZCuZCnlqNzjb4QprAzXKdpp/gh6KTxSJuw3IBsPnV/7fV4NxC9ckB+vPTt8w7fJA0TaSD7c55BR47JD6MEDyDw==}
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -563,10 +544,6 @@ packages:
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
 
-  new-request@0.0.16:
-    resolution: {integrity: sha512-MNRyoIwf5aOD17AWseeiIl1kZ3GLbQN1ZtjNhmxnUOOqZnwqCXNrqTIEGAh3VhNIXmsTkRCSLFZVN+yZUUyILQ==}
-    engines: {node: '>=18'}
-
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
@@ -625,9 +602,6 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  pm2-ecosystem@5.4.1:
-    resolution: {integrity: sha512-yUqHk4C4X+yCcJEV/gQNtEbTe7TJcNjnMw+n6A9RwTHPo5eS2Xolk7zhgehlgIBa8veeu+uE7njKtrUOKwldpg==}
-
   postcss-load-config@4.0.2:
     resolution: {integrity: sha512-bSVhyJGL00wMVoPUzAVAnbEoWyqRxkjv64tUl427SKnPrENtq6hJwUojroMz2VB+Q1edmi4IfrAPpami5VVgMQ==}
     engines: {node: '>= 14'}
@@ -659,9 +633,6 @@ packages:
   resolve-from@5.0.0:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
     engines: {node: '>=8'}
-
-  resolve-pkg-maps@1.0.0:
-    resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
 
   reusify@1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
@@ -767,11 +738,6 @@ packages:
       typescript:
         optional: true
 
-  tsx@4.15.7:
-    resolution: {integrity: sha512-u3H0iSFDZM3za+VxkZ1kywdCeHCn+8/qHQS1MNoO2sONDgD95HlWtt8aB23OzeTmFP9IU4/8bZUdg58Uu5J4cg==}
-    engines: {node: '>=18.0.0'}
-    hasBin: true
-
   typescript@5.5.2:
     resolution: {integrity: sha512-NcRtPEOsPFFWjobJEtfihkLCZCXZt/os3zf8nTxjVH3RvTSxjrCamJpbExGvYOF+tFHc3pA65qpdwPbzjohhew==}
     engines: {node: '>=14.17'}
@@ -779,10 +745,6 @@ packages:
 
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-
-  undici@6.19.2:
-    resolution: {integrity: sha512-JfjKqIauur3Q6biAtHJ564e3bWa8VvT+7cSiOJHFbX4Erv6CLGDpg8z+Fmg/1OI/47RA+GI2QZaF48SSaLvyBA==}
-    engines: {node: '>=18.17'}
 
   valibot@0.35.0:
     resolution: {integrity: sha512-+i2aCRkReTrd5KBN/dW2BrPOvFnU5LXTV2xjZnjnqUIO8YUx6P2+MgRrkwF2FhkexgyKq/NIZdPdknhHf5A/Ww==}
@@ -1084,10 +1046,6 @@ snapshots:
       '@esbuild/win32-ia32': 0.21.5
       '@esbuild/win32-x64': 0.21.5
 
-  esno@4.7.0:
-    dependencies:
-      tsx: 4.15.7
-
   execa@5.1.1:
     dependencies:
       cross-spawn: 7.0.3
@@ -1127,10 +1085,6 @@ snapshots:
     optional: true
 
   get-stream@6.0.1: {}
-
-  get-tsconfig@4.7.5:
-    dependencies:
-      resolve-pkg-maps: 1.0.0
 
   glob-parent@5.1.2:
     dependencies:
@@ -1244,8 +1198,6 @@ snapshots:
       object-assign: 4.1.1
       thenify-all: 1.6.0
 
-  new-request@0.0.16: {}
-
   normalize-path@3.0.0: {}
 
   npm-bundled@2.0.1:
@@ -1292,8 +1244,6 @@ snapshots:
 
   pirates@4.0.6: {}
 
-  pm2-ecosystem@5.4.1: {}
-
   postcss-load-config@4.0.2:
     dependencies:
       lilconfig: 3.1.2
@@ -1314,8 +1264,6 @@ snapshots:
       picomatch: 2.3.1
 
   resolve-from@5.0.0: {}
-
-  resolve-pkg-maps@1.0.0: {}
 
   reusify@1.0.4: {}
 
@@ -1439,18 +1387,9 @@ snapshots:
       - supports-color
       - ts-node
 
-  tsx@4.15.7:
-    dependencies:
-      esbuild: 0.21.5
-      get-tsconfig: 4.7.5
-    optionalDependencies:
-      fsevents: 2.3.3
-
   typescript@5.5.2: {}
 
   undici-types@5.26.5: {}
-
-  undici@6.19.2: {}
 
   valibot@0.35.0: {}
 

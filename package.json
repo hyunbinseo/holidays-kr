@@ -1,40 +1,33 @@
 {
 	"name": "@hyunbinseo/holidays-kr",
-	"version": "2.2025.0",
 	"description": "South Korea's national holidays, based on the official gazette",
+	"version": "2.2025.0",
+	"type": "module",
 	"scripts": {
-		"build": "esno cli/generate && tsup && publint",
-		"prepublishOnly": "pnpm build",
-		"check": "pm2 start"
+		"build": "tsup && publint",
+		"prepublishOnly": "tsup && publint"
 	},
 	"dependencies": {
-		"new-request": "^0.0.16",
-		"undici": "^6.19.2",
 		"valibot": "^0.35.0"
 	},
 	"devDependencies": {
 		"@types/node": "^20.14.9",
-		"esno": "^4.7.0",
-		"pm2-ecosystem": "^5.4.1",
 		"publint": "^0.2.8",
 		"tsup": "^8.1.0",
 		"typescript": "^5.5.2"
 	},
-	"files": [
-		"dist",
-		"public",
-		"!public/_redirects"
-	],
-	"type": "commonjs",
-	"main": "./dist/index.js",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
-			"require": "./dist/index.js",
-			"import": "./dist/index.mjs"
+			"require": "./dist/index.cjs",
+			"import": "./dist/index.js"
 		}
 	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
 	"keywords": [
 		"대한민국",
 		"한국",

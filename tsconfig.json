@@ -1,12 +1,18 @@
 {
 	"compilerOptions": {
+		"strict": true,
+
+		// Target is used by tsup and is `node14` if unspecified.
+		// Reference https://tsup.egoist.dev/#target-environment
+		// Reference https://www.typescriptlang.org/tsconfig#target
+
+		// ES2017 supports async, await, Object.values, Object,entries, etc.
+		// Reference https://en.wikipedia.org/wiki/ECMAScript_version_history
+		// Reference https://caniuse.com/sr_es8
+
+		"target": "ES2018",
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
-		"paths": {
-			"source": ["./source"],
-			"source/*": ["./source/*"]
-		},
-		"strict": true,
-		"target": "ESNext"
+		"resolveJsonModule": true
 	}
 }

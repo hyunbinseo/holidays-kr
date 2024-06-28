@@ -1,14 +1,3 @@
 {
-	"[csv]": {
-		"files.encoding": "utf8bom"
-	},
-	"cSpell.words": ["Dooray"],
-	"editor.codeActionsOnSave": {
-		"source.organizeImports": "explicit"
-	},
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnSave": true,
-	"editor.insertSpaces": false,
-	"files.eol": "\n",
-	"files.insertFinalNewline": true
+	"typescript.tsdk": "node_modules/typescript/lib"
 }
