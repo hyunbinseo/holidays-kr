@@ -1,19 +1,10 @@
 {
+	"include": ["src"], // Fixes: [vite:dts] Internal Error: getResolvedModule() could not resolve module name "~"
 	"compilerOptions": {
 		"paths": {
 			"$types": ["./src/types.ts"] // Enables: import type { } from '$types';
 		},
 		"strict": true,
-
-		// Target is used by tsup and is `node14` if unspecified.
-		// Reference https://tsup.egoist.dev/#target-environment
-		// Reference https://www.typescriptlang.org/tsconfig#target
-
-		// ES2017 supports async, await, Object.values, Object,entries, etc.
-		// Reference https://en.wikipedia.org/wiki/ECMAScript_version_history
-		// Reference https://caniuse.com/sr_es8
-
-		"target": "ES2017",
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,

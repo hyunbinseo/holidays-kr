@@ -4,8 +4,8 @@
 	"version": "2.2025.0",
 	"type": "module",
 	"scripts": {
-		"build": "tsup && publint",
-		"prepublishOnly": "tsup && publint"
+		"build": "vite build && publint",
+		"prepublishOnly": "vite build && publint"
 	},
 	"dependencies": {
 		"valibot": "^0.35.0"
@@ -13,8 +13,9 @@
 	"devDependencies": {
 		"@types/node": "^20.14.9",
 		"publint": "^0.2.8",
-		"tsup": "^8.1.0",
-		"typescript": "^5.5.2"
+		"typescript": "^5.5.2",
+		"vite": "^5.3.2",
+		"vite-plugin-dts": "^3.9.1"
 	},
 	"exports": {
 		".": {
