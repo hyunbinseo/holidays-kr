@@ -10,14 +10,14 @@ import y2025 from './2025.json' assert { type: 'json' };
 import { validateDateStrings } from '../modules/validate.js';
 import { checkLunarHolidays, checkSolarHolidays } from './modules/check.js';
 
-/** @import { Preset } from "$types" */
-/** @type {ReadonlyMap<number, [Preset, number]>} */
-const yearlyHolidays = new Map([
-	[2022, [y2022, 1669509606092]],
-	[2023, [y2023, 1669289424786]],
-	[2024, [y2024, 1687425345417]],
-	[2025, [y2025, 1719570756964]],
-]);
+const yearlyHolidays = /** @satisfies {import('$types').YearlyPresets} */ (
+	new Map([
+		[2022, [y2022, 1669509606092]],
+		[2023, [y2023, 1669289424786]],
+		[2024, [y2024, 1687425345417]],
+		[2025, [y2025, 1719570756964]],
+	])
+);
 
 for (const [year, [holidays, timestamp]] of yearlyHolidays) {
 	validateDateStrings(year, holidays);
