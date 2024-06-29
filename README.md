@@ -29,19 +29,31 @@ import { y2025 } from '@hyunbinseo/holidays-kr';
 }
 ```
 
-Check if a JavaScript Date is a holiday. Be cautious with the date's timezone.
+Check if a JavaScript Date is a holiday:
 
 ```js
+// Uses the latest 2 years of holiday data.
+// v3.2025 supports dates in the year 2024-2025
 import { isHoliday } from '@hyunbinseo/holidays-kr';
 
-// +0900 is equivalent to the Asia/Seoul timezone.
+// Jan 01 2025 00:00:00 GMT+0900 is a holiday in ROK.
 isHoliday(new Date('2025-01-01T00:00:00.000+0900')); // true
 
-// Sat Dec 31 2024 23:00:00 GMT+0900 is not a holiday.
+// Be cautious with the date's time zone.
+// Dec 31 2024 23:00:00 GMT+0900 is not a holiday in ROK.
 isHoliday(new Date('2025-01-01T00:00:00.000+1000')); // false
+
+// Throws RangeError in versions 3.2025 and above.
+isHoliday(new Date('2023-01-01T00:00:00.000+0900'));
 ```
 
-<!-- TODO Document isHolidayOf -->
+```js
+// Uses holiday data from the year 2022.
+// v3.2025 supports dates in the year 2022-2025
+import { isHolidayExtended as isHoliday } from '@hyunbinseo/holidays-kr';
+
+isHoliday(new Date('2023-01-01T00:00:00.000+0900')); // true
+```
 
 ## Migration
 
@@ -50,6 +62,7 @@ isHoliday(new Date('2025-01-01T00:00:00.000+1000')); // false
 - The `/public` directory has been removed.
 - Saturday, Sunday checks have been removed.
 - Throws `RangeError` instead of returning `null`.
+- `isHoliday` uses the latest 2 years of holiday data.
 
 ```diff
 # Yearly holidays changed from a Map to an Object.

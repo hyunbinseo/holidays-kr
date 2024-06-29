@@ -1,10 +1,10 @@
-import * as presets from './holidays/latest.js';
+import * as presets from './holidays/presets.js';
 import { toROKDateString } from './modules/utilities.js';
 
 type ValidKey = keyof typeof presets;
 const isValidKey = (key: string): key is ValidKey => key in presets;
 
-export const isHoliday = (date: Date) => {
+export const isHolidayExtended = (date: Date) => {
 	const dateString = toROKDateString(date);
 	const yearString = dateString.substring(0, 4);
 

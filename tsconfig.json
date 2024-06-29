@@ -13,7 +13,7 @@
 		// Reference https://en.wikipedia.org/wiki/ECMAScript_version_history
 		// Reference https://caniuse.com/sr_es8
 
-		"target": "ES2018",
+		"target": "ES2017",
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
