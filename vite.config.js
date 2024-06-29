@@ -11,6 +11,7 @@ export default defineConfig({
 			fileName: 'index',
 			formats: ['es', 'cjs'],
 		},
+		minify: false,
 		target: 'es2017',
 	},
 	plugins: [
