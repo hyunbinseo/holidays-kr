@@ -14,10 +14,7 @@ const { y2025 } = require('@hyunbinseo/holidays-kr');
 ```
 
 ```js
-import {
-  holidays, // All holidays from the year 2022
-  y2025, // Holidays of the year 2025
-} from '@hyunbinseo/holidays-kr';
+import { y2025 } from '@hyunbinseo/holidays-kr';
 
 '2025-01-01' in y2025; // true
 '2025-01-02' in y2025; // false
@@ -40,26 +37,19 @@ import { isHoliday } from '@hyunbinseo/holidays-kr';
 // +0900 is equivalent to the Asia/Seoul timezone.
 isHoliday(new Date('2025-01-01T00:00:00.000+0900')); // true
 
-const date = new Date('2025-01-04T00:00:00.000+0900'); // Saturday
-isHoliday(date, { include: { saturday: true } }); // true
-isHoliday(date, { include: { sunday: true } }); // false
-isHoliday(date); // false
-
-isHoliday(new Date('2025-01-01T00:00:00.000+1000')); // false
 // Sat Dec 31 2024 23:00:00 GMT+0900 is not a holiday.
+isHoliday(new Date('2025-01-01T00:00:00.000+1000')); // false
 ```
+
+<!-- TODO Document isHolidayOf -->
 
 ## Migration
 
 ### 3.x
 
-The `/public` directory is no longer included.
-
-```js
-// Throws error instead of returning null or TypeError.
-isHoliday(new Date(2021, 0)); // Date before the year 2022
-isHoliday('2025-01-01'); // Is not Date
-```
+- The `/public` directory has been removed.
+- Saturday, Sunday checks have been removed.
+- Throws `RangeError` instead of returning `null`.
 
 ```diff
 # Yearly holidays changed from a Map to an Object.

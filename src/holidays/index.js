@@ -8,7 +8,7 @@ import y2024 from './2024.json' assert { type: 'json' };
 import y2025 from './2025.json' assert { type: 'json' };
 
 import { validateDateStrings } from '../modules/validate.js';
-import { checkLunarHolidays, checkSolarHolidays } from './check.js';
+import { checkLunarHolidays, checkSolarHolidays } from './modules/check.js';
 
 /** @import { Preset } from "$types" */
 /** @type {ReadonlyMap<number, [Preset, number]>} */
