@@ -1,5 +1,8 @@
 {
 	"compilerOptions": {
+		"paths": {
+			"$types": ["./src/types.ts"] // Enables: import type { } from '$types';
+		},
 		"strict": true,
 
 		// Target is used by tsup and is `node14` if unspecified.
@@ -13,6 +16,9 @@
 		"target": "ES2018",
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"allowJs": true, // Fixes: Cannot find module '$types' or its corresponding type declarations.ts(2307)
+		"checkJs": true,
+		"outDir": "dist" // Fixes: Cannot write file '~.js' because it would overwrite input file.ts
 	}
 }

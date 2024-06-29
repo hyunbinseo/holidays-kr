@@ -1,1 +1,1 @@
-export type Holidays = Readonly<Record<string, Array<string>>>;
+export type Preset = Readonly<Record<string, Array<string>>>;

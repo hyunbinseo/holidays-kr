@@ -3,8 +3,8 @@ import y2023 from './2023.json';
 import y2024 from './2024.json';
 import y2025 from './2025.json';
 
-/** @import { Holidays } from "../types.js" */
-/** @type {ReadonlyMap<number, [Holidays, number]>} */
+/** @import { Preset } from "$types" */
+/** @type {ReadonlyMap<number, [Preset, number]>} */
 const yearlyHolidays = new Map([
 	[2022, [y2022, 1669509606092]],
 	[2023, [y2023, 1669289424786]],
