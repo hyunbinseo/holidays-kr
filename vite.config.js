@@ -12,7 +12,7 @@ export default defineConfig({
 			formats: ['es', 'cjs'],
 		},
 		minify: false,
-		target: 'es2017',
+		target: 'node18',
 	},
 	plugins: [
 		dts({

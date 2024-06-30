@@ -29,6 +29,9 @@
 	"files": [
 		"dist"
 	],
+	"engines": {
+		"node": ">=18"
+	},
 	"keywords": [
 		"대한민국",
 		"한국",
