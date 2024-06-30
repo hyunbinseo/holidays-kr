@@ -21,7 +21,11 @@ const lunarHolidaySubjects = new Set([
 /** @type {import("$types").CheckPreset} */
 export const checkLunarHolidays = (year, holidays) => {
 	/** @type {ReadonlySet<string>} */
-	const subjects = new Set(Object.values(holidays).flatMap((subjects) => subjects));
+	const subjects = new Set(
+		Object.values(holidays)
+			.filter((v) => !!v)
+			.flatMap((subjects) => subjects),
+	);
 
 	for (const requiredSubject of lunarHolidaySubjects) {
 		if (!subjects.has(requiredSubject)) {
