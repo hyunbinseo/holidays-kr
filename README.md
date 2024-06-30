@@ -80,6 +80,7 @@ getHolidayNames(new Date('2025-05-04T00:00:00.000+0900')); // null
 ### 3.x
 
 - `/public` directory is no longer included.
+- `TypeError` is thrown instead of being returned.
 - `RangeError` is thrown instead of returning `null`.
 - `isHoliday` uses the latest 2 years of holiday data.
 - `isHoliday` no longer supports the `options` parameter.
