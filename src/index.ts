@@ -1,3 +1,3 @@
 export * from './holidays/presets.js';
-export { isHoliday } from './isHoliday.js';
-export { isHolidayExtended } from './isHolidayE.js';
+export { getHolidayNames, isHoliday } from './isHoliday.js';
+export { getHolidayNames as getHolidayNamesE, isHoliday as isHolidayE } from './isHolidayE.js';
