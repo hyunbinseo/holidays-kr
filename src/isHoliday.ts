@@ -1,7 +1,9 @@
-import * as presets from './holidays/latest.js';
+import { Preset } from '$types';
+import * as latest from './holidays/latest.js';
+import * as presets from './holidays/presets.js';
 import { toROKDateString } from './modules/utilities.js';
 
-export const getHolidayNames = (date: Date) => {
+export const generateFn = (presets: Record<string, Preset>) => (date: Date) => {
 	if (!(date instanceof Date)) throw new TypeError(`${date} is not a Date`);
 
 	const dateString = toROKDateString(date);
@@ -18,4 +20,8 @@ export const getHolidayNames = (date: Date) => {
 	return preset[dateString];
 };
 
+export const getHolidayNames = generateFn(latest);
 export const isHoliday = (date: Date) => !!getHolidayNames(date);
+
+export const getHolidayNamesE = generateFn(presets);
+export const isHolidayE = (date: Date) => !!getHolidayNamesE(date);
