@@ -46,14 +46,14 @@ Check if a JavaScript Date is a holiday:
 import { isHoliday } from '@hyunbinseo/holidays-kr';
 
 // Jan 01 2025 00:00:00 GMT+0900 is a holiday in ROK.
-isHoliday(new Date('2025-01-01T00:00:00.000+0900')); // true
+isHoliday(new Date('2025-01-01T00:00:00+0900')); // true
 
 // Be cautious with the date's time zone!
 // Dec 31 2024 23:00:00 GMT+0900 is not a holiday in ROK.
-isHoliday(new Date('2025-01-01T00:00:00.000+1000')); // false
+isHoliday(new Date('2025-01-01T00:00:00+1000')); // false
 
 // Throws RangeError in versions 3.2025 and above.
-isHoliday(new Date('2023-01-01T00:00:00.000+0900'));
+isHoliday(new Date('2023-01-01T00:00:00+0900'));
 ```
 
 ```js
@@ -62,7 +62,7 @@ isHoliday(new Date('2023-01-01T00:00:00.000+0900'));
 // e.g. v3.2025 supports dates in the year 2022-2025
 import { isHolidayE } from '@hyunbinseo/holidays-kr';
 
-isHolidayE(new Date('2023-01-01T00:00:00.000+0900')); // true
+isHolidayE(new Date('2023-01-01T00:00:00+0900')); // true
 ```
 
 Get holiday names of a given JavaScript Date:
@@ -71,8 +71,8 @@ Get holiday names of a given JavaScript Date:
 // Trailing E stands for extended. Same as above.
 import { getHolidayNames, getHolidayNamesE } from '@hyunbinseo/holidays-kr';
 
-getHolidayNames(new Date('2025-05-05T00:00:00.000+0900')); // [ '어린이날', '부처님 오신 날' ]
-getHolidayNames(new Date('2025-05-04T00:00:00.000+0900')); // null
+getHolidayNames(new Date('2025-05-05T00:00:00+0900')); // [ '어린이날', '부처님 오신 날' ]
+getHolidayNames(new Date('2025-05-04T00:00:00+0900')); // null
 ```
 
 ## Migration
