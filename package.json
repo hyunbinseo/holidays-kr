@@ -7,7 +7,7 @@
 		"build": "tsup && publint",
 		"prepublishOnly": "tsup && publint",
 		"postversion": "git push && git push --tags",
-		"test": "node --experimental-strip-types --test"
+		"test": "node --no-warnings=ExperimentalWarning --experimental-strip-types --test"
 	},
 	"devDependencies": {
 		"@types/node": "^22.5.2",

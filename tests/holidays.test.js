@@ -9,12 +9,16 @@ import {
 	PresetValuesToSubjectsSchema,
 } from './schemas.ts';
 
-for (const entry of Object.entries(presets)) {
+for (const [key, _preset] of Object.entries(presets)) {
 	/** @type {import('../src/types.ts').Preset} */
-	const preset = entry[1];
-	const year = parse(PresetsKeyToYearSchema, entry[0]);
+	const preset = _preset;
+	const year = parse(PresetsKeyToYearSchema, key);
 
-	test(`holidays (${year})`, () => {
+	test(key, () => {
+		equal(`${year}-01-01` in preset, true);
+		equal(`${year}-01-02` in preset, false);
+		equal(`${year - 1}-01-01` in preset, false);
+
 		doesNotThrow(() => parse(createPresetKeysSchema(year), Object.keys(preset)));
 
 		const subjects = parse(PresetValuesToSubjectsSchema, Object.values(preset));
