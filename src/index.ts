@@ -1,8 +1,8 @@
 import * as all from './holidays/all.ts';
 import * as latest from './holidays/latest.js';
-import type { Preset } from './types.ts';
+import type { Presets } from './types.ts';
 
-const createFn = (presets: Partial<Record<string, Preset>>) => (date: Date) => {
+const createFn = (presets: Presets) => (date: Date) => {
 	if (!(date instanceof Date)) throw new TypeError(`${date} is not a Date`);
 	const dateString = new Date(date.valueOf() + 9 * 60 * 60 * 1000).toISOString().substring(0, 10);
 	const moduleName = 'y' + dateString.substring(0, 4);
