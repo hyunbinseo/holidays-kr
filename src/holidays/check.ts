@@ -1,5 +1,5 @@
 import { toReadonly } from '@hyunbinseo/tools';
-import type { CheckPreset } from '../../types.ts';
+import type { Preset } from '../types.ts';
 
 // 공휴일에 관한 법률 (약칭: 공휴일법)
 // [시행 2022. 1. 1.] [법률 제18291호, 2021. 7. 7., 제정]
@@ -22,9 +22,8 @@ const lunarHolidaySubjects = toReadonly(
 	]),
 );
 
-export const checkLunarHolidays: CheckPreset = (year, holidays) => {
-	/** @type {ReadonlySet<string>} */
-	const subjects = new Set(
+export const checkLunarHolidays = (year: number, holidays: Preset) => {
+	const subjects: ReadonlySet<string> = new Set(
 		Object.values(holidays)
 			.filter((v) => !!v)
 			.flatMap((subjects) => subjects),
@@ -58,7 +57,7 @@ const generateSolarHolidays = (year: number) =>
 		]),
 	);
 
-export const checkSolarHolidays: CheckPreset = (year, holidays) => {
+export const checkSolarHolidays = (year: number, holidays: Preset) => {
 	for (const [dateString, requiredSubject] of generateSolarHolidays(year)) {
 		if ((holidays[dateString] || []).includes(requiredSubject)) continue;
 		throw new Error(`${year}년도 '${requiredSubject}' 오류`);

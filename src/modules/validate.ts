@@ -1,7 +1,7 @@
 import { array, everyItem, isoDate, parse, pipe, startsWith, string, transform } from 'valibot';
-import type { CheckPreset } from '../types.ts';
+import { Preset } from '../types.ts';
 
-export const validateDateStrings: CheckPreset = (year, holidays) => {
+export const validateDateStrings = (year: number, holidays: Preset) => {
 	const Schema = pipe(
 		array(
 			pipe(
