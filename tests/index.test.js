@@ -1,21 +1,13 @@
 import { deepEqual, doesNotThrow, equal, throws } from 'node:assert/strict';
 import { test } from 'node:test';
-import { array, integer, length, number, parse, pipe, regex, string, transform } from 'valibot';
+import { length, parse, pipe } from 'valibot';
 import * as all from '../src/holidays/all.ts';
 import * as latest from '../src/holidays/latest.js';
 import { getHolidayNames, isHoliday, y2024, y2025 } from '../src/index.ts';
+import { PresetsKeysToYearsSchema } from './schemas.ts';
 
-const PresetsKeySchema = array(
-	pipe(
-		string(),
-		regex(/^y2\d{3}$/),
-		transform((v) => Number(v.substring(1))),
-		number(),
-		integer(),
-	),
-);
-const allYears = parse(PresetsKeySchema, Object.keys(all));
-const latestYears = parse(pipe(PresetsKeySchema, length(2)), Object.keys(latest));
+const allYears = parse(PresetsKeysToYearsSchema, Object.keys(all));
+const latestYears = parse(pipe(PresetsKeysToYearsSchema, length(2)), Object.keys(latest));
 
 test('functions (non-extended)', () => {
 	deepEqual(allYears.slice(-2), latestYears);

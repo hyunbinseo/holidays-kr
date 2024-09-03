@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@hyunbinseo/tools':
-        specifier: ^0.3.2
-        version: 0.3.2
       '@types/node':
         specifier: ^22.5.2
         version: 22.5.2
@@ -175,10 +172,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@hyunbinseo/tools@0.3.2':
-    resolution: {integrity: sha512-MFUJQS5f9+70BEt0jEZNME68/K6N4HPq4/s51DJZlmwB4xIj1yS4fqPgksp+U3OvNxysCo5dt34RGkNYVBG2Og==}
-    engines: {node: '>=20'}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -876,8 +869,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.23.1':
     optional: true
-
-  '@hyunbinseo/tools@0.3.2': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:
