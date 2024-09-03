@@ -9,7 +9,7 @@
 		"postversion": "git push && git push --tags",
 		"bump": "pnpm test && pnpm write",
 		"test": "node --no-warnings=ExperimentalWarning --experimental-strip-types --test",
-		"write": "node --no-warnings=ExperimentalWarning --experimental-strip-types cli/write"
+		"write": "node --no-warnings=ExperimentalWarning --experimental-strip-types src/write"
 	},
 	"devDependencies": {
 		"@types/node": "^22.5.2",

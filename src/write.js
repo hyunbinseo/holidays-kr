@@ -7,7 +7,7 @@ write(
 	'대한민국의 공휴일',
 	'./public',
 	'./src/holidays/*.json',
-	await import('../src/holidays/all.ts'),
+	await import('./holidays/all.ts'),
 	new Map([
 		['y2022', 1669509606092],
 		['y2023', 1669289424786],
@@ -20,7 +20,7 @@ write(
 	'대한민국의 기념일',
 	'./public/anniversaries',
 	'./src/anniversaries/*.json',
-	await import('../src/anniversaries/all.ts'),
+	await import('./anniversaries/all.ts'),
 	new Map([
 		['y2022', 1694431396579],
 		['y2023', 1694431397227],
@@ -33,7 +33,7 @@ write(
  * @param {string} calendarName
  * @param {string} outputDirectory
  * @param {string} copyFilesGlobPattern
- * @param {import('../src/types.ts').Presets} presets
+ * @param {import('./types.ts').Presets} presets
  * @param {Map<string, number>} presetsUpdatedAt
  */
 function write(calendarName, outputDirectory, copyFilesGlobPattern, presets, presetsUpdatedAt) {
