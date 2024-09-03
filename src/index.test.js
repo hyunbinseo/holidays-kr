@@ -5,6 +5,9 @@ import * as latest from './holidays/latest.js';
 import * as presets from './holidays/presets.js';
 import { getHolidayNames, isHoliday, y2024, y2025 } from './index.js';
 
+// Node.js v22.7.0 test runner does not run files with a `*.test.ts` extension.
+// Reference https://nodejs.org/api/test.html#running-tests-from-the-command-line
+
 const KeysSchema = array(
 	pipe(
 		string(),

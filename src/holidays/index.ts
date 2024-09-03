@@ -1,12 +1,11 @@
-import { validateDateStrings } from '../modules/validate.js';
-import { checkLunarHolidays, checkSolarHolidays } from './modules/check.js';
+import { validateDateStrings } from '../modules/validate.ts';
+import type { Preset } from '../types.ts';
+import { checkLunarHolidays, checkSolarHolidays } from './modules/check.ts';
 import * as presets from './presets.js';
 
 for (const [key, _preset] of Object.entries(presets)) {
 	const year = Number(key.substring(1));
-
-	/** @type {import('$types').Preset} */
-	const preset = _preset;
+	const preset: Preset = _preset;
 
 	validateDateStrings(year, preset);
 	checkLunarHolidays(year, preset);
