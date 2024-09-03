@@ -1,4 +1,11 @@
-import { copyFileSync, createWriteStream, globSync, mkdirSync, rmSync } from 'node:fs';
+import {
+	copyFileSync,
+	createWriteStream,
+	globSync,
+	mkdirSync,
+	rmSync,
+	writeFileSync,
+} from 'node:fs';
 
 rmSync('./public', { recursive: true, force: true });
 mkdirSync('./public/anniversaries', { recursive: true });
@@ -41,6 +48,12 @@ function write(calendarName, outputDirectory, copyFilesGlobPattern, presets, pre
 		const filename = path.substring(path.lastIndexOf('/') + 1);
 		copyFileSync(path, `${outputDirectory}/${filename}`);
 	}
+
+	writeFileSync(
+		`${outputDirectory}/basic.json`,
+		JSON.stringify(presets).replaceAll(/y(\d{4})/g, '$1'),
+		'utf8',
+	);
 
 	const ics = {
 		header:
