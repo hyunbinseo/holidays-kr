@@ -1,8 +1,8 @@
+import * as all from './holidays/all.ts';
 import * as latest from './holidays/latest.js';
-import * as presets from './holidays/presets.ts';
 import type { Preset } from './types.ts';
 
-const presetsToFunction = (presets: Partial<Record<string, Preset>>) => (date: Date) => {
+const createFn = (presets: Partial<Record<string, Preset>>) => (date: Date) => {
 	if (!(date instanceof Date)) throw new TypeError(`${date} is not a Date`);
 	const dateString = new Date(date.valueOf() + 9 * 60 * 60 * 1000).toISOString().substring(0, 10);
 	const moduleName = 'y' + dateString.substring(0, 4);
@@ -11,10 +11,8 @@ const presetsToFunction = (presets: Partial<Record<string, Preset>>) => (date: D
 	return preset[dateString] || null;
 };
 
-export * from './holidays/presets.ts';
-
-export const getHolidayNames = presetsToFunction(latest);
+export * from './holidays/all.ts';
+export const getHolidayNames = createFn(latest);
+export const getHolidayNamesE = createFn(all);
 export const isHoliday = (date: Date) => !!getHolidayNames(date);
-
-export const getHolidayNamesE = presetsToFunction(presets);
 export const isHolidayE = (date: Date) => !!getHolidayNamesE(date);

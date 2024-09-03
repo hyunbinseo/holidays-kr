@@ -1,6 +1,6 @@
 import { doesNotThrow } from 'node:assert/strict';
 import { test } from 'node:test';
-import * as presets from '../src/holidays/presets.ts';
+import * as presets from '../src/holidays/all.ts';
 import { checkLunarHolidays, checkSolarHolidays } from './holidays.ts';
 import { validatePreset } from './validate.ts';
 

@@ -1,11 +1,11 @@
 import { deepEqual, doesNotThrow, equal, throws } from 'node:assert/strict';
 import { test } from 'node:test';
-import { array, integer, number, parse, pipe, regex, string, transform } from 'valibot';
+import { array, integer, length, number, parse, pipe, regex, string, transform } from 'valibot';
+import * as all from '../src/holidays/all.ts';
 import * as latest from '../src/holidays/latest.js';
-import * as presets from '../src/holidays/presets.ts';
 import { getHolidayNames, isHoliday, y2024, y2025 } from '../src/index.ts';
 
-const KeysSchema = array(
+const PresetsKeySchema = array(
 	pipe(
 		string(),
 		regex(/^y2\d{3}$/),
@@ -14,15 +14,13 @@ const KeysSchema = array(
 		integer(),
 	),
 );
+const allYears = parse(PresetsKeySchema, Object.keys(all));
+const latestYears = parse(pipe(PresetsKeySchema, length(2)), Object.keys(latest));
 
-const latestKeys = parse(KeysSchema, Object.keys(latest));
-const presetKeys = parse(KeysSchema, Object.keys(presets));
+test('functions (non-extended)', () => {
+	deepEqual(allYears.slice(-2), latestYears);
 
-test('functions', () => {
-	equal(latestKeys.length, 2);
-	deepEqual(presetKeys.slice(-2), latestKeys);
-
-	const [y0, y1] = latestKeys;
+	const [y0, y1] = latestYears;
 
 	equal(isHoliday(new Date(`${y1}-01-01T00:00:00+0900`)), true);
 	equal(isHoliday(new Date(`${y1}-01-01T00:00:00+1000`)), false);
