@@ -1,5 +1,5 @@
 import { toReadonly } from '@hyunbinseo/tools';
-import type { Preset } from '../types.ts';
+import type { Preset } from '../src/types.ts';
 
 // 공휴일에 관한 법률 (약칭: 공휴일법)
 // [시행 2022. 1. 1.] [법률 제18291호, 2021. 7. 7., 제정]

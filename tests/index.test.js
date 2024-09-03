@@ -1,12 +1,9 @@
 import { deepEqual, doesNotThrow, equal, throws } from 'node:assert/strict';
 import { test } from 'node:test';
 import { array, integer, number, parse, pipe, regex, string, transform } from 'valibot';
-import * as latest from './holidays/latest.js';
-import * as presets from './holidays/presets.ts';
-import { getHolidayNames, isHoliday, y2024, y2025 } from './index.ts';
-
-// Node.js v22.7.0 test runner does not run files with a `*.test.ts` extension.
-// Reference https://nodejs.org/api/test.html#running-tests-from-the-command-line
+import * as latest from '../src/holidays/latest.js';
+import * as presets from '../src/holidays/presets.ts';
+import { getHolidayNames, isHoliday, y2024, y2025 } from '../src/index.ts';
 
 const KeysSchema = array(
 	pipe(

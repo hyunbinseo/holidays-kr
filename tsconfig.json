@@ -15,5 +15,5 @@
 		"checkJs": true,
 		"outDir": "dist" // tsup default output directory
 	},
-	"include": ["src"]
+	"include": ["src", "tests"]
 }
