@@ -1,4 +1,5 @@
 # https://docs.npmjs.com/generating-provenance-statements#example-github-actions-workflow
+# https://pnpm.io/continuous-integration#github-actions
 
 name: Publish Package to npmjs
 on:
@@ -12,11 +13,13 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
+          cache: 'pnpm'
+      - run: pnpm install
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
