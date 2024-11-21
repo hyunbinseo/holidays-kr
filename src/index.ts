@@ -16,3 +16,9 @@ export const getHolidayNames = createFn(latest);
 export const getHolidayNamesE = createFn(all);
 export const isHoliday = (date: Date) => !!getHolidayNames(date);
 export const isHolidayE = (date: Date) => !!getHolidayNamesE(date);
+
+{
+	const year = new Date().getUTCFullYear();
+	if (!(`y${year}` in latest))
+		console.warn(`${year}년도 공휴일 정보가 없습니다. 패키지를 업데이트해 주세요.`);
+}
