@@ -92,19 +92,10 @@ getHolidayNames(new Date('2025-05-04T00:00:00+0900')); // null
 ```
 
 ```js
-const date = new Date('2023-01-07T00:00:00+0900'); // Saturday
-
-// No longer supported:
-isHoliday(date, { include: { saturday: true } }); // true
-isHoliday(date, { include: { sunday: true } }); // false
-
-const dateTimeFormat = new Intl.DateTimeFormat('ko-KR', {
-	timeZone: 'Asia/Seoul',
-	weekday: 'narrow',
-});
-
-// Check the date's weekday string instead.
-dateTimeFormat.format(date); // 토
+// Check the day value of a `Date` object.
+import { dateToDayWithOffset } from '@hyunbinseo/tools';
+const date = new Date('2023-01-07T00:00:00+0900');
+dateToDayWithOffset(date, '+09:00'); // 6 - Saturday
 ```
 
 ### 2.x
