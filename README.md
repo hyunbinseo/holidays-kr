@@ -30,10 +30,10 @@ import { y2024, y2025 } from '@hyunbinseo/holidays-kr';
 ```jsonc
 // y2025 is shaped like this:
 {
-  "2025-01-01": ["1월 1일"],
-  "2025-01-28": ["설날 전날"],
-  // ...
-  "2025-12-25": ["기독탄신일"]
+	"2025-01-01": ["1월 1일"],
+	"2025-01-28": ["설날 전날"],
+	// ...
+	"2025-12-25": ["기독탄신일"],
 }
 ```
 
@@ -99,8 +99,8 @@ isHoliday(date, { include: { saturday: true } }); // true
 isHoliday(date, { include: { sunday: true } }); // false
 
 const dateTimeFormat = new Intl.DateTimeFormat('ko-KR', {
-  timeZone: 'Asia/Seoul',
-  weekday: 'narrow',
+	timeZone: 'Asia/Seoul',
+	weekday: 'narrow',
 });
 
 // Check the date's weekday string instead.

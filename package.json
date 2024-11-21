@@ -7,6 +7,7 @@
 		"build": "tsup && publint",
 		"prepublishOnly": "tsup && publint",
 		"postversion": "git push && git push --tags",
+		"format": "prettier --write .",
 		"bump": "pnpm test && pnpm write",
 		"test": "node --no-warnings=ExperimentalWarning --experimental-strip-types --test",
 		"write": "node --no-warnings=ExperimentalWarning --experimental-strip-types src/write"
