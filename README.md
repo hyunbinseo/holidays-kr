@@ -1,9 +1,9 @@
 # South Korea's National Holidays
 
-Yearly updated based on the official gazette. Available in [npm] and [jsDelivr].
+Yearly updated based on the official gazette.
 
-[npm]: https://www.npmjs.com/package/@hyunbinseo/holidays-kr
-[jsDelivr]: https://www.jsdelivr.com/package/npm/@hyunbinseo/holidays-kr
+<!-- Importing from jsDelivr, etc. is not recommended. -->
+<!-- Use bundlers to tree-shake unused holiday presets. -->
 
 ## Usage
 
