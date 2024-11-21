@@ -8,16 +8,16 @@
 		"prepublishOnly": "tsup && publint",
 		"postversion": "git push && git push --tags",
 		"format": "prettier --write .",
-		"bump": "pnpm test && pnpm write",
+		"bump": "node --run test && node --run write",
 		"test": "node --no-warnings=ExperimentalWarning --experimental-strip-types --test",
 		"write": "node --no-warnings=ExperimentalWarning --experimental-strip-types src/write"
 	},
 	"devDependencies": {
-		"@types/node": "^22.5.2",
+		"@types/node": "^22.9.1",
 		"prettier": "^3.3.3",
-		"publint": "^0.2.10",
-		"tsup": "^8.2.4",
-		"typescript": "^5.5.4",
+		"publint": "^0.2.12",
+		"tsup": "^8.3.5",
+		"typescript": "^5.6.3",
 		"valibot": "^0.41.0"
 	},
 	"exports": {
@@ -52,5 +52,5 @@
 		"url": "https://github.com/hyunbinseo/holidays-kr/issues"
 	},
 	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
-	"packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1"
+	"packageManager": "pnpm@9.14.2+sha512.6e2baf77d06b9362294152c851c4f278ede37ab1eba3a55fda317a4a17b209f4dbb973fb250a77abc463a341fcb1f17f17cfa24091c4eb319cda0d9b84278387"
 }
