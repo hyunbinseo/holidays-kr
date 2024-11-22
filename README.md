@@ -1,9 +1,29 @@
-# South Korea's National Holidays
+# 대한민국의 공휴일
 
-Yearly updated based on the official gazette.
+우주항공청에서 발표한 월력요항을 사용합니다. [English](#usage)
+
+- `Date` 객체의 공휴일 여부와 그 명칭들을 확인합니다.
+- `CSV`, `JSON`, `ICS`, 캘린더 구독도 제공됩니다. [링크](https://github.com/hyunbinseo/holidays-kr#readme)
+
+```js
+// 최근 2개년도의 공휴일 정보가 들어있습니다.
+// 예를 들어 v3.2025 버전으로 2024-2025년의 날짜를 확인할 수 있습니다.
+import { getHolidayNames, isHoliday } from '@hyunbinseo/holidays-kr';
+
+// 공휴일 여부
+isHoliday(new Date('2025-01-01T00:00:00+0900')); // true
+isHoliday(new Date('2025-01-02T00:00:00+0900')); // false
+isHoliday(new Date('2023-01-01T00:00:00+0900')); // RangeError
+
+// 공휴일 명칭(들)
+getHolidayNames(new Date('2025-05-05T00:00:00+0900')); // [ '어린이날', '부처님 오신 날' ]
+getHolidayNames(new Date('2025-05-04T00:00:00+0900')); // null
+```
 
 <!-- Importing from jsDelivr, etc. is not recommended. -->
 <!-- Use bundlers to tree-shake unused holiday presets. -->
+
+---
 
 ## Usage
 
@@ -30,10 +50,10 @@ import { y2024, y2025 } from '@hyunbinseo/holidays-kr';
 ```jsonc
 // y2025 is shaped like this:
 {
-	"2025-01-01": ["1월 1일"],
-	"2025-01-28": ["설날 전날"],
-	// ...
-	"2025-12-25": ["기독탄신일"],
+  "2025-01-01": ["1월 1일"],
+  "2025-01-28": ["설날 전날"],
+  // ...
+  "2025-12-25": ["기독탄신일"],
 }
 ```
 

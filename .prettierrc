@@ -3,5 +3,6 @@
 	"quoteProps": "consistent",
 	"singleQuote": true,
 	"trailingComma": "all",
-	"useTabs": true
+	"useTabs": true,
+	"overrides": [{ "files": "*.md", "options": { "useTabs": false } }]
 }
