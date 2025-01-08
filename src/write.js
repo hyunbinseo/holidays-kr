@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import {
 	copyFileSync,
 	createWriteStream,
@@ -6,34 +7,24 @@ import {
 	rmSync,
 	writeFileSync,
 } from 'node:fs';
+import * as anniversaries from './anniversaries/all.ts';
+import * as holidays from './holidays/all.ts';
 
 rmSync('./public', { recursive: true, force: true });
 mkdirSync('./public/anniversaries', { recursive: true });
 
 write(
-	'대한민국의 공휴일',
+	'대한민국의 공휴일', //
 	'./public',
 	'./src/holidays/*.json',
-	await import('./holidays/all.ts'),
-	new Map([
-		['y2022', 1669509606092],
-		['y2023', 1669289424786],
-		['y2024', 1687425345417],
-		['y2025', 1719570756964],
-	]),
+	holidays,
 );
 
 write(
-	'대한민국의 기념일',
+	'대한민국의 기념일', //
 	'./public/anniversaries',
 	'./src/anniversaries/*.json',
-	await import('./anniversaries/all.ts'),
-	new Map([
-		['y2022', 1694431396579],
-		['y2023', 1694431397227],
-		['y2024', 1694431397688],
-		['y2025', 1719575527349],
-	]),
+	anniversaries,
 );
 
 /**
@@ -41,9 +32,8 @@ write(
  * @param {string} outputDirectory
  * @param {string} copyFilesGlobPattern
  * @param {import('./types.ts').Presets} presets
- * @param {Map<string, number>} presetsUpdatedAt
  */
-function write(calendarName, outputDirectory, copyFilesGlobPattern, presets, presetsUpdatedAt) {
+function write(calendarName, outputDirectory, copyFilesGlobPattern, presets) {
 	for (const path of globSync(copyFilesGlobPattern)) {
 		const filename = path.substring(path.lastIndexOf('/') + 1);
 		copyFileSync(path, `${outputDirectory}/${filename}`);
@@ -71,8 +61,7 @@ function write(calendarName, outputDirectory, copyFilesGlobPattern, presets, pre
 
 	for (const [key, preset] of Object.entries(presets)) {
 		const year = key.substring(1);
-		const updatedAt = presetsUpdatedAt.get(key);
-		if (!updatedAt || !preset) throw new TypeError();
+		if (!preset) throw new TypeError();
 
 		// CSV
 		const csvStream = createWriteStream(`${outputDirectory}/${year}.csv`, 'utf8');
@@ -91,12 +80,13 @@ function write(calendarName, outputDirectory, copyFilesGlobPattern, presets, pre
 		for (const [dateString, subjects] of Object.entries(preset)) {
 			if (!subjects) throw new TypeError();
 			for (const subject of subjects) {
-				const formattedDateString = dateString.replace(/-/g, '');
+				const yyyyMMdd = dateString.replaceAll('-', '');
+				const hash = createHash('md5').update(subject).digest('hex');
 				const icsEvent =
 					'BEGIN:VEVENT\n' +
-					`DTSTART;VALUE=DATE:${formattedDateString}\n` +
+					`DTSTART;VALUE=DATE:${yyyyMMdd}\n` +
 					`DTSTAMP:${ics.dtStamp}\n` +
-					`UID:${formattedDateString}-${updatedAt}\n` +
+					`UID:${yyyyMMdd}-${hash}\n` +
 					`SUMMARY:${subject}\n` +
 					'CLASS:PUBLIC\n' + // 공개
 					'TRANSP:TRANSPARENT\n' + // !바쁨
