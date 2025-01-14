@@ -2,6 +2,7 @@ import { doesNotThrow, equal } from 'node:assert/strict';
 import test from 'node:test';
 import { parse } from 'valibot';
 import * as presets from '../src/holidays/all.ts';
+import type { Preset } from '../src/types.ts';
 import { createSolarHolidays, lunarHolidaySubjects } from './holidays.ts';
 import {
 	createPresetKeysSchema,
@@ -9,9 +10,7 @@ import {
 	PresetValuesToSubjectsSchema,
 } from './schemas.ts';
 
-for (const [key, _preset] of Object.entries(presets)) {
-	/** @type {import('../src/types.ts').Preset} */
-	const preset = _preset;
+for (const [key, preset] of Object.entries<Preset>(presets)) {
 	const year = parse(PresetsKeyToYearSchema, key);
 
 	test(key, () => {

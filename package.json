@@ -7,7 +7,7 @@
 		"prepack": "tsup && publint",
 		"postversion": "git push && git push --tags",
 		"format": "prettier --write .",
-		"write": "node src/write"
+		"write": "node src/write.ts"
 	},
 	"devDependencies": {
 		"@types/node": "^22.10.6",

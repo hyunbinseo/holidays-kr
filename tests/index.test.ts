@@ -2,7 +2,7 @@ import { deepEqual, doesNotThrow, equal, throws } from 'node:assert/strict';
 import { test } from 'node:test';
 import { parse } from 'valibot';
 import * as all from '../src/holidays/all.ts';
-import * as latest from '../src/holidays/latest.js';
+import * as latest from '../src/holidays/latest.ts';
 import { getHolidayNames, isHoliday } from '../src/index.ts';
 import { PresetsKeysToYearsSchema } from './schemas.ts';
 

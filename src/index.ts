@@ -1,5 +1,5 @@
 import * as all from './holidays/all.ts';
-import * as latest from './holidays/latest.js';
+import * as latest from './holidays/latest.ts';
 import type { Presets } from './types.ts';
 
 const createFn = (presets: Presets) => (date: Date) => {

@@ -9,6 +9,7 @@ import {
 } from 'node:fs';
 import * as anniversaries from './anniversaries/all.ts';
 import * as holidays from './holidays/all.ts';
+import type { Presets } from './types.ts';
 
 rmSync('./public', { recursive: true, force: true });
 mkdirSync('./public/anniversaries', { recursive: true });
@@ -27,13 +28,12 @@ write(
 	anniversaries,
 );
 
-/**
- * @param {string} calendarName
- * @param {string} outputDirectory
- * @param {string} copyFilesGlobPattern
- * @param {import('./types.ts').Presets} presets
- */
-function write(calendarName, outputDirectory, copyFilesGlobPattern, presets) {
+function write(
+	calendarName: string,
+	outputDirectory: string,
+	copyFilesGlobPattern: string,
+	presets: Presets,
+) {
 	for (const path of globSync(copyFilesGlobPattern)) {
 		const filename = path.substring(path.lastIndexOf('/') + 1);
 		copyFileSync(path, `${outputDirectory}/${filename}`);
