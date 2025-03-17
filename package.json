@@ -10,12 +10,12 @@
 		"write": "node src/write.ts"
 	},
 	"devDependencies": {
-		"@types/node": "^22.10.6",
-		"prettier": "^3.4.2",
-		"publint": "^0.3.2",
-		"tsup": "^8.3.5",
-		"typescript": "^5.7.3",
-		"valibot": "1.0.0-beta.11"
+		"@types/node": "^22.13.10",
+		"prettier": "^3.5.3",
+		"publint": "^0.3.9",
+		"tsup": "^8.4.0",
+		"typescript": "^5.8.2",
+		"valibot": "1.0.0-rc.4"
 	},
 	"exports": {
 		".": {
@@ -49,5 +49,10 @@
 		"url": "https://github.com/hyunbinseo/holidays-kr/issues"
 	},
 	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
-	"packageManager": "pnpm@10.0.0+sha512.b8fef5494bd3fe4cbd4edabd0745df2ee5be3e4b0b8b08fa643aa3e4c6702ccc0f00d68fa8a8c9858a735a0032485a44990ed2810526c875e416f001b17df12b"
+	"packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild"
+		]
+	}
 }
