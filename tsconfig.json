@@ -1,19 +1,33 @@
 {
+	"include": ["src", "tests"],
 	"compilerOptions": {
-		"strict": true,
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
-		"resolveJsonModule": true,
-
-		"noEmit": true,
-		"allowImportingTsExtensions": true,
 
 		"target": "ES2022", // Node.js 18 LTS supports all ES2022 APIs.
 		"lib": ["ES2022"], // Reference https://node.green/#ES2022
 
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+		"verbatimModuleSyntax": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
 		"allowJs": true,
 		"checkJs": true,
-		"outDir": "dist" // tsup default output directory
-	},
-	"include": ["src", "tests"]
+
+		"strict": true,
+
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		// "noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false
+	}
 }

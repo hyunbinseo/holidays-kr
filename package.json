@@ -2,8 +2,8 @@
 	"name": "@hyunbinseo/holidays-kr",
 	"description": "South Korea's national holidays, based on the official gazette",
 	"version": "3.2025.3",
-	"type": "module",
 	"scripts": {
+		"check": "tsc --noEmit",
 		"prepack": "tsup && publint",
 		"postversion": "git push && git push --tags",
 		"format": "prettier --write .",
@@ -17,6 +17,7 @@
 		"typescript": "^5.8.2",
 		"valibot": "1.0.0-rc.4"
 	},
+	"type": "module",
 	"exports": {
 		".": {
 			"require": "./dist/index.cjs",

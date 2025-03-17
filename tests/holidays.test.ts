@@ -1,4 +1,4 @@
-import { doesNotThrow, equal } from 'node:assert/strict';
+import assert, { doesNotThrow, equal } from 'node:assert/strict';
 import test from 'node:test';
 import { parse } from 'valibot';
 import * as presets from '../src/holidays/all.ts';
@@ -21,10 +21,10 @@ for (const [key, preset] of Object.entries<Preset>(presets)) {
 		doesNotThrow(() => parse(createPresetKeysSchema(year), Object.keys(preset)));
 
 		const subjects = parse(PresetValuesToSubjectsSchema, Object.values(preset));
-		equal(lunarHolidaySubjects.isSubsetOf(subjects), true);
+		assert(Array.from(lunarHolidaySubjects).every((item) => subjects.has(item)));
 
 		for (const [dateString, subject] of createSolarHolidays(year)) {
-			equal(preset[dateString]?.includes(subject), true);
+			assert(preset[dateString]?.includes(subject));
 		}
 	});
 }
