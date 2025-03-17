@@ -7,6 +7,7 @@ import {
 	rmSync,
 	writeFileSync,
 } from 'node:fs';
+import { basename } from 'node:path';
 import * as anniversaries from './anniversaries/all.ts';
 import * as holidays from './holidays/all.ts';
 import type { Presets } from './types.ts';
@@ -14,28 +15,14 @@ import type { Presets } from './types.ts';
 rmSync('./public', { recursive: true, force: true });
 mkdirSync('./public/anniversaries', { recursive: true });
 
-write(
-	'대한민국의 공휴일', //
-	'./public',
-	'./src/holidays/*.json',
-	holidays,
-);
+write('대한민국의 공휴일', 'holidays', holidays);
+write('대한민국의 기념일', 'anniversaries', anniversaries);
 
-write(
-	'대한민국의 기념일', //
-	'./public/anniversaries',
-	'./src/anniversaries/*.json',
-	anniversaries,
-);
+function write(calendarName: string, type: 'holidays' | 'anniversaries', presets: Presets) {
+	const outputDirectory = type === 'holidays' ? './public' : `./public/${type}`;
 
-function write(
-	calendarName: string,
-	outputDirectory: string,
-	copyFilesGlobPattern: string,
-	presets: Presets,
-) {
-	for (const path of globSync(copyFilesGlobPattern)) {
-		const filename = path.substring(path.lastIndexOf('/') + 1);
+	for (const path of globSync(`./src/${type}/*.json`)) {
+		const filename = basename(path);
 		copyFileSync(path, `${outputDirectory}/${filename}`);
 	}
 
