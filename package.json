@@ -5,6 +5,7 @@
 	"scripts": {
 		"check": "tsc --noEmit",
 		"prepack": "tsup && publint",
+		"version": "node --run write && git add -A public",
 		"postversion": "git push && git push --tags",
 		"format": "prettier --write .",
 		"write": "node src/write.ts"
