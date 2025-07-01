@@ -1,7 +1,7 @@
 {
 	"name": "@hyunbinseo/holidays-kr",
 	"description": "South Korea's national holidays, based on the official gazette",
-	"version": "3.2025.4",
+	"version": "3.2026.0",
 	"scripts": {
 		"check": "tsc --noEmit",
 		"prepack": "tsup && publint",
