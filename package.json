@@ -11,23 +11,24 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@types/node": "^24.7.1",
-		"prettier": "^3.6.2",
-		"publint": "^0.3.14",
-		"tsdown": "^0.15.6",
+		"@types/node": "^24.10.4",
+		"prettier": "^3.7.4",
+		"publint": "^0.3.16",
+		"tsdown": "0.19.0-beta.2",
 		"typescript": "^5.9.3",
-		"valibot": "^1.1.0"
+		"valibot": "^1.2.0"
 	},
 	"type": "module",
 	"exports": {
 		".": {
 			"require": "./dist/index.cjs",
 			"import": "./dist/index.js"
-		}
+		},
+		"./package.json": "./package.json"
 	},
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"types": "./dist/index.d.cts",
 	"files": [
 		"dist"
 	],
@@ -51,5 +52,5 @@
 		"url": "https://github.com/hyunbinseo/holidays-kr/issues"
 	},
 	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
-	"packageManager": "pnpm@10.18.2+sha512.9fb969fa749b3ade6035e0f109f0b8a60b5d08a1a87fdf72e337da90dcc93336e2280ca4e44f2358a649b83c17959e9993e777c2080879f3801e6f0d999ad3dd"
+	"packageManager": "pnpm@10.27.0+sha512.72d699da16b1179c14ba9e64dc71c9a40988cbdc65c264cb0e489db7de917f20dcf4d64d8723625f2969ba52d4b7e2a1170682d9ac2a5dcaeaab732b7e16f04a"
 }

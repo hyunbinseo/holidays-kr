@@ -1,8 +1,12 @@
 {
-	"printWidth": 100,
-	"quoteProps": "consistent",
-	"singleQuote": true,
-	"trailingComma": "all",
 	"useTabs": true,
-	"overrides": [{ "files": "*.md", "options": { "useTabs": false } }]
+	"singleQuote": true,
+	"quoteProps": "consistent",
+	"trailingComma": "all",
+	"printWidth": 100,
+	"endOfLine": "auto",
+	"overrides": [
+		{ "files": "*.jsonc", "options": { "trailingComma": "none" } },
+		{ "files": "*.md", "options": { "useTabs": false, "tabWidth": 2 } }
+	]
 }

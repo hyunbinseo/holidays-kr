@@ -1,25 +1,20 @@
 {
 	"include": ["src", "tests"],
 	"compilerOptions": {
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"lib": ["es2023"],
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
-
-		"target": "ES2022", // Node.js 18 LTS supports all ES2022 APIs.
-		"lib": ["ES2022"], // Reference https://node.green/#ES2022
-
-		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,
-		"verbatimModuleSyntax": true,
-		"isolatedModules": true,
-		"noEmit": true,
-		"forceConsistentCasingInFileNames": true,
-		"esModuleInterop": true,
+		"rewriteRelativeImportExtensions": true,
 		"skipLibCheck": true,
-		"allowJs": true,
-		"checkJs": true,
-
 		"strict": true,
-
+		"target": "esnext",
+		"types": ["node"],
+		"verbatimModuleSyntax": true,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitOverride": true,
 		"noImplicitReturns": true,
@@ -28,6 +23,6 @@
 		"noUncheckedIndexedAccess": true,
 		"exactOptionalPropertyTypes": true,
 		"allowUnreachableCode": false,
-		"allowUnusedLabels": false
-	}
+		"allowUnusedLabels": false,
+	},
 }

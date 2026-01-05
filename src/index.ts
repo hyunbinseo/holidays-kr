@@ -2,7 +2,7 @@ import * as latest from './holidays.latest.ts';
 import * as all from './holidays.ts';
 import type { Presets } from './types.ts';
 
-const KST_OFFSET = 9 * 60 * 60 * 1000;
+const KST_OFFSET = 9 * 60 * 60_000;
 
 const createFn = (presets: Presets) => (date: Date) => {
 	if (!(date instanceof Date)) throw new TypeError(`${date} is not a Date`);
