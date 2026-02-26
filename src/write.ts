@@ -47,14 +47,14 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 			`X-WR-CALNAME:${calendarName}\n` +
 			'X-WR-TIMEZONE:Asia/Seoul\n' +
 			'X-WR-CALDESC:https://github.com/hyunbinseo/holidays-kr\n',
-		dtStamp: new Date().toISOString().replace(/-|:/g, '').substring(0, 15) + 'Z',
+		dtStamp: new Date().toISOString().replace(/-|:/g, '').slice(0, 15) + 'Z',
 	};
 
 	const basicIcsStream = createWriteStream(join(baseDir, 'basic.ics'), 'utf8');
 	basicIcsStream.write(ics.header);
 
 	for (const [key, preset] of Object.entries(presets)) {
-		const year = key.substring(1);
+		const year = key.slice(1);
 		if (!preset) throw new TypeError();
 
 		// CSV

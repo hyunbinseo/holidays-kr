@@ -1,11 +1,11 @@
 {
-	"include": ["src", "tests"],
+	"include": ["cli", "src", "tests"],
 	"compilerOptions": {
 		"declaration": true,
 		"emitDeclarationOnly": true,
 		"esModuleInterop": true,
 		"isolatedModules": true,
-		"lib": ["es2023"],
+		"lib": ["ES2023", "ESNext.Collection"],
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,

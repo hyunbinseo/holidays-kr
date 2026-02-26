@@ -9,9 +9,9 @@ const createFn = (presets: Presets) => (date: Date) => {
 
 	const yyyy_mm_dd = new Date(date.valueOf() + KST_OFFSET)
 		.toISOString()
-		.substring(0, 10) as `${number}-${number}-${number}`;
+		.slice(0, 10) as `${number}-${number}-${number}`;
 
-	const yyyy = yyyy_mm_dd.substring(0, 4);
+	const yyyy = yyyy_mm_dd.slice(0, 4);
 
 	const preset = presets[`y${yyyy}` as `y${number}`];
 	if (!preset) throw new RangeError(`Missing holiday preset for year ${yyyy}.`);

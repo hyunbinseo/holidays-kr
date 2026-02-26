@@ -16,7 +16,7 @@ export const PresetsKeyToYearSchema = pipe(
 	string(),
 	length(5),
 	startsWith('y'),
-	transform((v) => v.substring(1)),
+	transform((v) => v.slice(1)),
 	digits(),
 	transform(Number),
 	integer(),
