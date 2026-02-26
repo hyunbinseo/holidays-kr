@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { format } from 'oxfmt';
 import * as anniversaries from './anniversaries.ts';
 import * as holidays from './holidays.ts';
-import type { Presets } from './types.ts';
+import type { Preset, PresetKey, Presets } from './types.ts';
 
 const rootDir = join(import.meta.dirname, '..');
 if (!existsSync(join(rootDir, 'package.json'))) throw new Error();
@@ -12,8 +12,8 @@ if (!existsSync(join(rootDir, 'package.json'))) throw new Error();
 rmSync(join(rootDir, './public'), { recursive: true, force: true });
 mkdirSync(join(rootDir, './public/anniversaries'), { recursive: true });
 
-write('대한민국의 공휴일', 'holidays', holidays);
-write('대한민국의 기념일', 'anniversaries', anniversaries);
+await write('대한민국의 공휴일', 'holidays', holidays);
+await write('대한민국의 기념일', 'anniversaries', anniversaries);
 
 async function write(calendarName: string, type: 'holidays' | 'anniversaries', presets: Presets) {
 	const baseDir =
@@ -21,8 +21,26 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 			? join(rootDir, './public')
 			: join(rootDir, './public/anniversaries');
 
-	for await (const [key, preset] of Object.entries(presets)) {
-		const yyyy = key.slice(1);
+	for await (const [y2XXX, preset] of Object.entries(presets)) {
+		const yyyy = y2XXX.slice(1);
+
+		if (type === 'holidays') {
+			const _preset: Preset = (
+				await import(`@hyunbinseo/open-data/data/holidays/${yyyy}.json`, { with: { type: 'json' } })
+			).default;
+
+			const dates = new Set(Object.keys(preset));
+			const _dates = new Set(Object.keys(_preset));
+			if (dates.symmetricDifference(_dates).size !== 0) throw new Error(yyyy);
+
+			for (const date of dates) {
+				const yyyy_mm_dd = date as PresetKey;
+				const names = preset[yyyy_mm_dd];
+				const _names = _preset[yyyy_mm_dd];
+				if (names?.length !== _names?.length) throw new Error(date);
+			}
+		}
+
 		writeFileSync(
 			join(baseDir, `${yyyy}.json`),
 			(await format(`${yyyy}.json`, JSON.stringify(preset), { useTabs: true })).code,

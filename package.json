@@ -11,6 +11,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@hyunbinseo/open-data": "github:hyunbinseo/open-data",
 		"@types/node": "^24.10.14",
 		"oxfmt": "^0.35.0",
 		"prettier": "^3.8.1",
