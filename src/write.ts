@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { createWriteStream, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import * as prettier from 'prettier';
+import { format } from 'oxfmt';
 import * as anniversaries from './anniversaries.ts';
 import * as holidays from './holidays.ts';
 import type { Presets } from './types.ts';
@@ -21,22 +21,18 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 			? join(rootDir, './public')
 			: join(rootDir, './public/anniversaries');
 
-	for await (const [key, value] of Object.entries(presets)) {
+	for await (const [key, preset] of Object.entries(presets)) {
+		const yyyy = key.slice(1);
 		writeFileSync(
-			join(baseDir, `${key.slice(1)}.json`),
-			await prettier.format(JSON.stringify(value), {
-				parser: 'json',
-				useTabs: true,
-			}),
+			join(baseDir, `${yyyy}.json`),
+			(await format(`${yyyy}.json`, JSON.stringify(preset), { useTabs: true })).code,
 		);
 	}
 
 	writeFileSync(
 		join(baseDir, 'basic.json'),
-		await prettier.format(JSON.stringify(presets).replaceAll(/y(\d{4})/g, '$1'), {
-			parser: 'json',
-			useTabs: true,
-		}),
+		(await format('basic.json', JSON.stringify(presets).replaceAll('"y', '"'), { useTabs: true }))
+			.code,
 	);
 
 	const ics = {
