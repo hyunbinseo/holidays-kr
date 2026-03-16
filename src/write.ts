@@ -67,12 +67,12 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 	const basicIcsStream = createWriteStream(join(baseDir, 'basic.ics'), 'utf8');
 	basicIcsStream.write(ics.header);
 
-	for (const [key, preset] of Object.entries(presets)) {
-		const year = key.slice(1);
+	for (const [y2XXX, preset] of Object.entries(presets)) {
+		const yyyy = y2XXX.slice(1);
 		if (!preset) throw new TypeError();
 
 		// CSV
-		const csvStream = createWriteStream(join(baseDir, `${year}.csv`), 'utf8');
+		const csvStream = createWriteStream(join(baseDir, `${yyyy}.csv`), 'utf8');
 		csvStream.write('\ufeff' + 'Start date,Subject\n');
 		for (const [dateString, subjects] of Object.entries(preset)) {
 			if (!subjects) throw new TypeError();
@@ -83,7 +83,7 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 		csvStream.end();
 
 		// ICS
-		const icsStream = createWriteStream(join(baseDir, `${year}.ics`), 'utf8');
+		const icsStream = createWriteStream(join(baseDir, `${yyyy}.ics`), 'utf8');
 		icsStream.write(ics.header);
 		for (const [dateString, subjects] of Object.entries(preset)) {
 			if (!subjects) throw new TypeError();
