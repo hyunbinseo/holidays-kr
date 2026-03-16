@@ -25,12 +25,18 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 		const yyyy = y2XXX.slice(1);
 
 		if (type === 'holidays') {
-			const _preset: Preset = (
-				await import(`@hyunbinseo/open-data/data/holidays/${yyyy}.json`, { with: { type: 'json' } })
-			).default;
+			const response = await fetch(
+				new URL(
+					`/gh/hyunbinseo/open-data@master/data/holidays/${yyyy}.json`,
+					'https://cdn.jsdelivr.net',
+				),
+			);
 
-			const dates = new Set(Object.keys(preset));
+			if (!response.ok) throw new Error(yyyy);
+
+			const _preset = (await response.json()) as Preset;
 			const _dates = new Set(Object.keys(_preset));
+			const dates = new Set(Object.keys(preset));
 			if (dates.symmetricDifference(_dates).size !== 0) throw new Error(yyyy);
 
 			for (const date of dates) {

@@ -11,7 +11,6 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@hyunbinseo/open-data": "github:hyunbinseo/open-data",
 		"@types/node": "^24.10.14",
 		"oxfmt": "^0.35.0",
 		"prettier": "^3.8.1",
@@ -54,5 +53,5 @@
 		"url": "https://github.com/hyunbinseo/holidays-kr/issues"
 	},
 	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
-	"packageManager": "pnpm@10.30.2+sha512.36cdc707e7b7940a988c9c1ecf88d084f8514b5c3f085f53a2e244c2921d3b2545bc20dd4ebe1fc245feec463bb298aecea7a63ed1f7680b877dc6379d8d0cb4"
+	"packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
 }
