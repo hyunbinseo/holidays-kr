@@ -1,4 +1,4 @@
-import type { ValidateHolidays } from './type.ts';
+import type { ValidateHolidays } from './types/index.ts';
 
 export const y2026 = {
 	'2026-01-01': ['1월 1일'],
