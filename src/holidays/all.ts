@@ -1,0 +1,9 @@
+export { y2018 } from './2018.ts';
+export { y2019 } from './2019.ts';
+export { y2020 } from './2020.ts';
+export { y2021 } from './2021.ts';
+export { y2022 } from './2022.ts';
+export { y2023 } from './2023.ts';
+export { y2024 } from './2024.ts';
+export { y2025 } from './2025.ts';
+export { y2026 } from './2026.ts';

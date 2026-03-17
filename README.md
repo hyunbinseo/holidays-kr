@@ -6,96 +6,101 @@
 - `CSV`, `JSON`, `ICS`, 캘린더 구독도 제공됩니다. [링크](https://github.com/hyunbinseo/holidays-kr#readme)
 
 ```js
-// 최근 2개년도의 공휴일 정보가 들어있습니다.
-// 예를 들어 v3.2025 버전으로 2024-2025년의 날짜를 확인할 수 있습니다.
+// 요청한 연도의 공휴일 정보를 동적으로 불러옵니다.
 import { getHolidayNames, isHoliday } from '@hyunbinseo/holidays-kr';
 
 // 공휴일 여부
-isHoliday(new Date('2025-01-01T00:00:00+0900')); // true
-isHoliday(new Date('2025-01-02T00:00:00+0900')); // false
-isHoliday(new Date('2023-01-01T00:00:00+0900')); // RangeError
+await isHoliday(new Date('2026-01-01T00:00:00+0900')); // true
+await isHoliday(new Date('2026-01-02T00:00:00+0900')); // false
+await isHoliday(new Date('2999-01-01T00:00:00+0900')); // RangeError
 
 // 공휴일 명칭(들)
-getHolidayNames(new Date('2025-05-05T00:00:00+0900')); // [ '어린이날', '부처님 오신 날' ]
-getHolidayNames(new Date('2025-05-04T00:00:00+0900')); // null
+await getHolidayNames(new Date('2026-05-05T00:00:00+0900')); // ['어린이날']
+await getHolidayNames(new Date('2026-05-04T00:00:00+0900')); // null
 ```
 
-<!-- Importing from jsDelivr, etc. is not recommended. -->
-<!-- Use bundlers to tree-shake unused holiday presets. -->
+```js
+// 연도별 공휴일 정보를 정적으로 불러옵니다.
+import { y2026 } from '@hyunbinseo/holidays-kr';
+```
+
+```jsonc
+// y2026의 형태:
+{
+  "2026-01-01": ["1월 1일"],
+  // ...
+  "2026-12-25": ["기독탄신일"],
+}
+```
 
 ---
 
 ## Usage
 
-Based on the latest release. [migration guide](#migration)
+Check if a `yyyy-mm-dd` date string is a holiday:
 
 ```js
-// ESM and CJS are both supported.
-import { y2025 } from '@hyunbinseo/holidays-kr';
-const { y2025 } = require('@hyunbinseo/holidays-kr');
-```
+import { y2026 } from '@hyunbinseo/holidays-kr';
 
-Check if a date string is a holiday:
-
-```js
-import { y2024, y2025 } from '@hyunbinseo/holidays-kr';
-
-'2025-01-01' in y2025; // true
-'2025-01-02' in y2025; // false
-
-'2024-01-01' in y2025; // false
-'2024-01-01' in y2024; // true
+'2026-01-01' in y2026; // true
+'2026-01-02' in y2026; // false
+'2025-01-01' in y2026; // false - different year
 ```
 
 ```jsonc
-// y2025 is shaped like this:
+// y2026 is shaped like this:
 {
-  "2025-01-01": ["1월 1일"],
-  "2025-01-28": ["설날 전날"],
+  "2026-01-01": ["1월 1일"],
   // ...
-  "2025-12-25": ["기독탄신일"],
+  "2026-12-25": ["기독탄신일"],
 }
 ```
 
 Check if a JavaScript Date is a holiday:
 
 ```js
-// Uses the latest 2 years of holiday data.
-// e.g. v3.2025 supports dates in the year 2024-2025
-// Supports tree-shaking: unused data is not bundled.
+// Dynamically imports the preset for the requested year.
 import { isHoliday } from '@hyunbinseo/holidays-kr';
 
-// Jan 01 2025 00:00:00 GMT+0900 is a holiday in ROK.
-isHoliday(new Date('2025-01-01T00:00:00+0900')); // true
+// Jan 01 2026 00:00:00 GMT+0900 is a holiday in ROK.
+await isHoliday(new Date('2026-01-01T00:00:00+0900')); // true
 
 // Be cautious with the date's time zone!
-// Dec 31 2024 23:00:00 GMT+0900 is not a holiday in ROK.
-isHoliday(new Date('2025-01-01T00:00:00+1000')); // false
+// Dec 31 2025 23:00:00 GMT+0900 is not a holiday in ROK.
+await isHoliday(new Date('2026-01-01T00:00:00+1000')); // false
 
-// Throws RangeError in versions 3.2025 and above.
-isHoliday(new Date('2023-01-01T00:00:00+0900'));
-```
-
-```js
-// Trailing E stands for extended.
-// Uses holiday data from the year 2022.
-// e.g. v3.2025 supports dates in the year 2022-2025
-import { isHolidayE } from '@hyunbinseo/holidays-kr';
-
-isHolidayE(new Date('2023-01-01T00:00:00+0900')); // true
+// Throws RangeError if no preset exists for the year.
+await isHoliday(new Date('2999-01-01T00:00:00+0900'));
 ```
 
 Get holiday names of a given JavaScript Date:
 
 ```js
-// Trailing E stands for extended. Same as above.
-import { getHolidayNames, getHolidayNamesE } from '@hyunbinseo/holidays-kr';
+import { getHolidayNames } from '@hyunbinseo/holidays-kr';
 
-getHolidayNames(new Date('2025-05-05T00:00:00+0900')); // [ '어린이날', '부처님 오신 날' ]
-getHolidayNames(new Date('2025-05-04T00:00:00+0900')); // null
+await getHolidayNames(new Date('2026-05-05T00:00:00+0900')); // ['어린이날']
+await getHolidayNames(new Date('2026-05-04T00:00:00+0900')); // null
 ```
 
 ## Migration
+
+### 4.x
+
+- `isHoliday` and `getHolidayNames` are now async
+- `isHolidayE` and `getHolidayNamesE` are removed
+- Holiday presets are dynamically imported per year
+
+```diff
+- isHoliday(date);
+- isHolidayE(date);
++ await isHoliday(date);
+```
+
+```diff
+- getHolidayNames(date);
+- getHolidayNamesE(date);
++ await getHolidayNames(date);
+```
 
 ### 3.x
 

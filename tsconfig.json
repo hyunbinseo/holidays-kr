@@ -1,5 +1,5 @@
 {
-	"include": ["cli", "src", "tests"],
+	"include": ["cli", "src"],
 	"compilerOptions": {
 		"declaration": true,
 		"emitDeclarationOnly": true,
@@ -13,7 +13,7 @@
 		"skipLibCheck": true,
 		"strict": true,
 		"target": "esnext",
-		"types": ["node"],
+		"types": ["node", "tsdown/client"],
 		"verbatimModuleSyntax": true,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitOverride": true,

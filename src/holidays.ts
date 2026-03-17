@@ -1,9 +1,0 @@
-export { y2018 } from './holidays/2018.ts';
-export { y2019 } from './holidays/2019.ts';
-export { y2020 } from './holidays/2020.ts';
-export { y2021 } from './holidays/2021.ts';
-export { y2022 } from './holidays/2022.ts';
-export { y2023 } from './holidays/2023.ts';
-export { y2024 } from './holidays/2024.ts';
-export { y2025 } from './holidays/2025.ts';
-export { y2026 } from './holidays/2026.ts';

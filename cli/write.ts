@@ -2,9 +2,9 @@ import { createHash } from 'node:crypto';
 import { createWriteStream, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { format } from 'oxfmt';
-import * as anniversaries from './anniversaries.ts';
-import * as holidays from './holidays.ts';
-import type { Preset, PresetKey, Presets } from './types.ts';
+import * as anniversaries from '../src/anniversaries.ts';
+import * as holidays from '../src/holidays/all.ts';
+import type { ISODate, Preset, Presets } from '../src/types.ts';
 
 const rootDir = join(import.meta.dirname, '..');
 if (!existsSync(join(rootDir, 'package.json'))) throw new Error();
@@ -40,7 +40,7 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 			if (dates.symmetricDifference(_dates).size !== 0) throw new Error(yyyy);
 
 			for (const date of dates) {
-				const yyyy_mm_dd = date as PresetKey;
+				const yyyy_mm_dd = date as ISODate;
 				const names = preset[yyyy_mm_dd];
 				const _names = _preset[yyyy_mm_dd];
 				if (names?.length !== _names?.length) throw new Error(date);
