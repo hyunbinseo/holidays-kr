@@ -1,54 +1,57 @@
 {
 	"name": "@hyunbinseo/holidays-kr",
-	"description": "South Korea's national holidays, based on the official gazette",
 	"version": "3.2026.2",
+	"description": "South Korea's national holidays, based on the official gazette",
+	"keywords": [
+		"Korean",
+		"holidays",
+		"공휴일",
+		"대한민국",
+		"한국"
+	],
+	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
+	"bugs": {
+		"url": "https://github.com/hyunbinseo/holidays-kr/issues"
+	},
+	"license": "MIT",
+	"author": "Hyunbin Seo",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/hyunbinseo/holidays-kr.git"
+	},
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": "./dist/index.js",
+		"./package.json": "./package.json"
+	},
 	"scripts": {
 		"prepack": "tsdown",
 		"preversion": "vitest run",
 		"version": "node cli/write.ts && git add -A public",
 		"postversion": "git push && git push --tags && node cli/postversion.ts",
 		"check": "tsc --noEmit",
-		"format": "prettier --write .",
+		"fmt": "oxfmt",
+		"fmt:check": "oxfmt --check",
+		"lint": "oxlint",
+		"lint:fix": "oxlint --fix",
 		"test": "vitest"
 	},
 	"devDependencies": {
 		"@arethetypeswrong/core": "^0.18.2",
 		"@types/node": "^24.10.14",
-		"oxfmt": "^0.41.0",
-		"prettier": "^3.8.1",
+		"oxfmt": "^0.43.0",
+		"oxlint": "^1.58.0",
 		"publint": "^0.3.18",
 		"tsdown": "0.21.4",
 		"typescript": "^5.9.3",
 		"vitest": "^4.1.0"
 	},
-	"type": "module",
-	"exports": {
-		".": "./dist/index.js",
-		"./package.json": "./package.json"
-	},
-	"types": "./dist/index.d.ts",
-	"files": [
-		"dist"
-	],
 	"engines": {
 		"node": ">=18"
 	},
-	"keywords": [
-		"대한민국",
-		"한국",
-		"공휴일",
-		"Korean",
-		"holidays"
-	],
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/hyunbinseo/holidays-kr.git"
-	},
-	"author": "Hyunbin Seo",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/hyunbinseo/holidays-kr/issues"
-	},
-	"homepage": "https://github.com/hyunbinseo/holidays-kr#readme",
 	"packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
 }
