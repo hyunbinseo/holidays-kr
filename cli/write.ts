@@ -1,10 +1,15 @@
 import { createHash } from 'node:crypto';
 import { createWriteStream, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { env, loadEnvFile } from 'node:process';
 import { format } from 'oxfmt';
 import * as anniversaries from '../src/anniversaries.ts';
 import * as holidays from '../src/holidays/all.ts';
 import type { ISODate, Preset, Presets } from '../src/types.ts';
+
+try {
+	loadEnvFile('.env');
+} catch {}
 
 const rootDir = join(import.meta.dirname, '..');
 if (!existsSync(join(rootDir, 'package.json'))) throw new Error();
@@ -24,7 +29,7 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 	for await (const [y2XXX, preset] of Object.entries(presets)) {
 		const yyyy = y2XXX.slice(1);
 
-		if (type === 'holidays') {
+		if (type === 'holidays' && env['SKIP_API_CHECK'] !== 'TRUE') {
 			const response = await fetch(
 				new URL(
 					`/gh/hyunbinseo/open-data@master/data/holidays/${yyyy}.json`,
