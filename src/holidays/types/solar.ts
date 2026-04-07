@@ -6,6 +6,9 @@
 // 6. 현충일 (6월 6일)
 // 8. 기독탄신일 (12월 25일)
 
+// TODO Apply different holidays per year
+// NOTE 노동절, 제헌절 are holidays as of 2026
+
 type SolarHolidayMap = {
 	'01-01': '1월 1일';
 	'03-01': '3ㆍ1절';
