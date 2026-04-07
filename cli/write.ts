@@ -2,9 +2,9 @@ import { createHash } from 'node:crypto';
 import { createWriteStream, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { format } from 'oxfmt';
-import * as anniversaries from './anniversaries.ts';
-import * as holidays from './holidays.ts';
-import type { Preset, PresetKey, Presets } from './types.ts';
+import * as anniversaries from '../src/anniversaries.ts';
+import * as holidays from '../src/holidays.ts';
+import type { Preset, PresetKey, Presets } from '../src/types.ts';
 
 const rootDir = join(import.meta.dirname, '..');
 if (!existsSync(join(rootDir, 'package.json'))) throw new Error();
