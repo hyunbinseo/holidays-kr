@@ -86,6 +86,7 @@ await getHolidayNames(new Date('2026-05-04T00:00:00+0900')); // null
 
 ### 4.x
 
+- ESM only. No longer includes CJS output.
 - `isHoliday` and `getHolidayNames` are now async
 - `isHolidayE` and `getHolidayNamesE` are removed
 - Holiday presets are dynamically imported per year
