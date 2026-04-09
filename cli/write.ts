@@ -27,8 +27,8 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 		if (type === 'holidays') {
 			const response = await fetch(
 				new URL(
-					`/gh/hyunbinseo/open-data@master/data/holidays/${yyyy}.json`,
-					'https://cdn.jsdelivr.net',
+					`/hyunbinseo/open-data/refs/heads/main/data/holidays/${yyyy}.json`,
+					'https://raw.githubusercontent.com',
 				),
 			);
 
