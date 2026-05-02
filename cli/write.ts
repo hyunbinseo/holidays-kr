@@ -1,15 +1,11 @@
 import { createHash } from 'node:crypto';
 import { createWriteStream, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { env, loadEnvFile } from 'node:process';
+import { env } from 'node:process';
 import { format } from 'oxfmt';
 import * as anniversaries from '#src/anniversaries.ts';
 import * as holidays from '#src/holidays/all.ts';
 import type { ISODate, Preset, Presets } from '#src/types.ts';
-
-try {
-	loadEnvFile('.env');
-} catch {}
 
 const rootDir = join(import.meta.dirname, '..');
 if (!existsSync(join(rootDir, 'package.json'))) throw new Error();
