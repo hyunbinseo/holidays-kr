@@ -3,9 +3,9 @@ import { createWriteStream, existsSync, mkdirSync, rmSync, writeFileSync } from 
 import { join } from 'node:path';
 import { env, loadEnvFile } from 'node:process';
 import { format } from 'oxfmt';
-import * as anniversaries from '../src/anniversaries.ts';
-import * as holidays from '../src/holidays/all.ts';
-import type { ISODate, Preset, Presets } from '../src/types.ts';
+import * as anniversaries from '#src/anniversaries.ts';
+import * as holidays from '#src/holidays/all.ts';
+import type { ISODate, Preset, Presets } from '#src/types.ts';
 
 try {
 	loadEnvFile('.env');
