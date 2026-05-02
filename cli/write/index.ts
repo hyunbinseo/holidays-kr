@@ -1,26 +1,25 @@
 import { createHash } from 'node:crypto';
-import { createWriteStream, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { createWriteStream, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { env } from 'node:process';
 import { format } from 'oxfmt';
-import * as anniversaries from '#src/anniversaries.ts';
-import * as holidays from '#src/holidays/all.ts';
+import { root } from '#cli/utilities.ts';
 import type { ISODate, Preset, Presets } from '#src/types.ts';
 
-const rootDir = join(import.meta.dirname, '..');
-if (!existsSync(join(rootDir, 'package.json'))) throw new Error();
+export const PUBLIC_DIR = join(root, './public');
 
-rmSync(join(rootDir, './public'), { recursive: true, force: true });
-mkdirSync(join(rootDir, './public/anniversaries'), { recursive: true });
+export const HOLIDAYS_DIR = PUBLIC_DIR;
+export const ANNIVERSARIES_DIR = join(PUBLIC_DIR, './anniversaries');
 
-await write('대한민국의 공휴일', 'holidays', holidays);
-await write('대한민국의 기념일', 'anniversaries', anniversaries);
-
-async function write(calendarName: string, type: 'holidays' | 'anniversaries', presets: Presets) {
-	const baseDir =
-		type === 'holidays' //
-			? join(rootDir, './public')
-			: join(rootDir, './public/anniversaries');
+export const write = async (
+	calendarName: string,
+	type: 'holidays' | 'anniversaries',
+	presets: Presets,
+) => {
+	const baseDir = {
+		holidays: HOLIDAYS_DIR,
+		anniversaries: ANNIVERSARIES_DIR,
+	}[type];
 
 	for await (const [y2XXX, preset] of Object.entries(presets)) {
 		const yyyy = y2XXX.slice(1);
@@ -116,4 +115,4 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 
 	basicIcsStream.write('END:VCALENDAR\n');
 	basicIcsStream.end();
-}
+};
