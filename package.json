@@ -29,6 +29,7 @@
 	},
 	"exports": {
 		".": "./dist/index.js",
+		"./all": "./dist/all.js",
 		"./package.json": "./package.json"
 	},
 	"scripts": {

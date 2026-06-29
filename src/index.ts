@@ -1,3 +1,1 @@
-export * from './holidays/all.ts';
-
-export { getHolidayNames, isHoliday } from './holidays/utils.ts';
+export { getHolidayPreset, getHolidayNames, isHoliday } from './holidays/utils.ts';

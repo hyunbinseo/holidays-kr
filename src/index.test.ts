@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getHolidayNames, isHoliday } from './index.ts';
+import { getHolidayNames, getHolidayPreset, isHoliday } from './index.ts';
 
 describe('isHoliday', () => {
 	it('returns true for a KST holiday', async () => {
@@ -24,5 +24,17 @@ describe('getHolidayNames', () => {
 
 	it('returns null for a non-holiday', async () => {
 		await expect(getHolidayNames(new Date('2026-12-31T00:00:00+0900'))).resolves.toBeNull();
+	});
+});
+
+describe('getHolidayPreset', () => {
+	it('loads a preset for a given year', async () => {
+		const preset = await getHolidayPreset('2026');
+		expect('2026-01-01' in preset).toBe(true);
+		expect('2026-01-02' in preset).toBe(false);
+	});
+
+	it('throws RangeError for a year without a preset', async () => {
+		await expect(getHolidayPreset('2999')).rejects.toThrow(RangeError);
 	});
 });
