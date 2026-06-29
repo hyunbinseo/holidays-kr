@@ -25,25 +25,35 @@ export const write = async (
 		const yyyy = y2XXX.slice(1);
 
 		if (type === 'holidays' && env['SKIP_API_CHECK'] !== 'TRUE') {
-			const response = await fetch(
-				new URL(
-					`/hyunbinseo/open-data/refs/heads/main/data/holidays/${yyyy}.json`,
-					'https://raw.githubusercontent.com',
-				),
+			const url = new URL(
+				`/hyunbinseo/open-data/refs/heads/main/data/holidays/${yyyy}.json`,
+				'https://raw.githubusercontent.com',
 			);
 
-			if (!response.ok) throw new Error(yyyy);
+			const response = await fetch(url);
+			if (!response.ok) throw new Error(`${yyyy} error - HTTP ${response.status}`);
 
-			const _preset = (await response.json()) as Preset;
-			const _dates = new Set(Object.keys(_preset));
+			const refPreset = (await response.json()) as Preset;
+			const refDates = new Set(Object.keys(refPreset));
 			const dates = new Set(Object.keys(preset));
-			if (dates.symmetricDifference(_dates).size !== 0) throw new Error(yyyy);
 
-			for (const date of dates) {
-				const yyyy_mm_dd = date as ISODate;
-				const names = preset[yyyy_mm_dd];
-				const _names = _preset[yyyy_mm_dd];
-				if (names?.length !== _names?.length) throw new Error(date);
+			const dateDiff = dates.symmetricDifference(refDates);
+			if (dateDiff.size !== 0) throw new Error(`${yyyy} mismatch - ${[...dateDiff].join(', ')}`);
+
+			for (const date of dates as Set<ISODate>) {
+				const refNames = refPreset[date];
+				const refNameSet = new Set(refNames);
+				if (!refNames) throw new Error(`${date} - no ref names`);
+				if (refNames.length !== refNameSet.size) throw new Error(`${date} - ref name duplicates`);
+
+				const names = preset[date];
+				const nameSet = new Set(names);
+				if (!names) throw new Error(`${date} - no local names`);
+				if (names.length !== nameSet.size) throw new Error(`${date} - local name duplicates`);
+
+				if (nameSet.size !== refNameSet.size) {
+					throw new Error(`${date} mismatch - ${nameSet.size} vs ref ${refNameSet.size}`);
+				}
 			}
 		}
 
