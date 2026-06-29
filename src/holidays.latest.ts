@@ -1,1 +1,1 @@
-export { y2025, y2026 } from './holidays.ts';
+export { y2026, y2027 } from './holidays.ts';

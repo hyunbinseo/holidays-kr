@@ -7,3 +7,4 @@ export { y2023 } from './holidays/2023.ts';
 export { y2024 } from './holidays/2024.ts';
 export { y2025 } from './holidays/2025.ts';
 export { y2026 } from './holidays/2026.ts';
+export { y2027 } from './holidays/2027.ts';
