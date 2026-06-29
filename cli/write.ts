@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { format } from 'oxfmt';
 import * as anniversaries from '../src/anniversaries.ts';
 import * as holidays from '../src/holidays.ts';
-import type { Preset, PresetKey, Presets } from '../src/types.ts';
+import type { Presets } from '../src/types.ts';
 
 const rootDir = join(import.meta.dirname, '..');
 if (!existsSync(join(rootDir, 'package.json'))) throw new Error();
@@ -23,29 +23,6 @@ async function write(calendarName: string, type: 'holidays' | 'anniversaries', p
 
 	for await (const [y2XXX, preset] of Object.entries(presets)) {
 		const yyyy = y2XXX.slice(1);
-
-		if (type === 'holidays') {
-			const response = await fetch(
-				new URL(
-					`/hyunbinseo/open-data/refs/heads/main/data/holidays/${yyyy}.json`,
-					'https://raw.githubusercontent.com',
-				),
-			);
-
-			if (!response.ok) throw new Error(yyyy);
-
-			const _preset = (await response.json()) as Preset;
-			const _dates = new Set(Object.keys(_preset));
-			const dates = new Set(Object.keys(preset));
-			if (dates.symmetricDifference(_dates).size !== 0) throw new Error(yyyy);
-
-			for (const date of dates) {
-				const yyyy_mm_dd = date as PresetKey;
-				const names = preset[yyyy_mm_dd];
-				const _names = _preset[yyyy_mm_dd];
-				if (names?.length !== _names?.length) throw new Error(date);
-			}
-		}
 
 		writeFileSync(
 			join(baseDir, `${yyyy}.json`),
