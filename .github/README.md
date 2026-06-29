@@ -40,12 +40,11 @@
 
 - 명칭은 [공휴일에 관한 법률]을 따릅니다. (기독탄신일 등)
 - 공휴일이 아닌 국경일은 포함하지 않습니다. (제헌절 등)
-- 지방 공휴일은 포함하지 않습니다. ([4·3희생자추념일] 등)
+- 지방 공휴일은 포함하지 않습니다. (4·3희생자추념일 등)
 - 제공되는 `csv` 파일은 [Google 캘린더 형식]을 따릅니다.
 - 제공되는 `ics` 파일은 iCalendar 표준을 따릅니다.
 
-[공휴일에 관한 법률]: https://www.law.go.kr/LSW//lsInfoP.do?lsiSeq=233829
-[4·3희생자추념일]: https://www.law.go.kr/LSW/ordinInfoP.do?ordinSeq=1342242
+[공휴일에 관한 법률]: https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B3%B5%ED%9C%B4%EC%9D%BC%EC%97%90%EA%B4%80%ED%95%9C%EB%B2%95%EB%A5%A0
 [Google 캘린더 형식]: https://support.google.com/calendar/answer/37118?hl=ko
 
 ## 공유 캘린더
