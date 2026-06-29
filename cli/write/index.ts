@@ -1,7 +1,8 @@
 import { createHash } from 'node:crypto';
 import { createWriteStream, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { env } from 'node:process';
+import { stdin, stdout } from 'node:process';
+import { createInterface } from 'node:readline/promises';
 import { format } from 'oxfmt';
 import { root } from '#cli/utilities.ts';
 import type { ISODate, Preset, Presets } from '#src/types.ts';
@@ -24,7 +25,7 @@ export const write = async (
 	for await (const [y2XXX, preset] of Object.entries(presets)) {
 		const yyyy = y2XXX.slice(1);
 
-		if (type === 'holidays' && env['SKIP_API_CHECK'] !== 'TRUE') {
+		if (type === 'holidays') {
 			const url = new URL(
 				`/hyunbinseo/open-data/refs/heads/main/data/holidays/${yyyy}.json`,
 				'https://raw.githubusercontent.com',
@@ -38,7 +39,14 @@ export const write = async (
 			const dates = new Set(Object.keys(preset));
 
 			const dateDiff = dates.symmetricDifference(refDates);
-			if (dateDiff.size !== 0) throw new Error(`${yyyy} mismatch - ${[...dateDiff].join(', ')}`);
+			if (dateDiff.size !== 0) {
+				const message = `${yyyy} mismatch - ${[...dateDiff].join(', ')}`;
+				const rl = createInterface({ input: stdin, output: stdout });
+				const answer = await rl.question(`${message}. Skip? [y/N] `);
+				rl.close();
+				if (answer === 'y') continue;
+				throw new Error(message);
+			}
 
 			for (const date of dates as Set<ISODate>) {
 				const refNames = refPreset[date];

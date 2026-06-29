@@ -34,7 +34,7 @@
 	"scripts": {
 		"prepack": "tsdown",
 		"preversion": "vitest run",
-		"version": "node --env-file-if-exists=.env cli/write/all.ts && git add -A public",
+		"version": "node cli/write/all.ts && git add -A public",
 		"postversion": "git push && git push --tags && node cli/postversion.ts",
 		"check": "tsc --noEmit",
 		"fmt": "oxfmt",
