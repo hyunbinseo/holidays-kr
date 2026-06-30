@@ -2,8 +2,8 @@
 
 우주항공청에서 발표한 월력요항을 사용합니다. [English](#usage)
 
-- `Date` 객체의 공휴일 여부와 그 명칭들을 확인합니다
-- `CSV`, `JSON`, `ICS`, 캘린더 구독도 제공됩니다. [링크](https://github.com/hyunbinseo/holidays-kr#readme)
+- `Date` 객체 또는 `YYYY-MM-DD` 날짜 문자열의 공휴일 여부와 그 명칭들을 확인합니다
+- `CSV`, `JSON`, `ICS` 파일(호스팅) 및 구독할 수 있는 캘린더 URL도 제공됩니다. [링크](https://github.com/hyunbinseo/holidays-kr#readme)
 
 API는 연도별 공휴일 정보를 동적으로 불러오며, 데이터가 존재하지 않으면 `RangeError`를 던집니다.
 
@@ -11,12 +11,14 @@ API는 연도별 공휴일 정보를 동적으로 불러오며, 데이터가 존
 import { getHolidayNames, isHoliday } from '@hyunbinseo/holidays-kr';
 
 // 공휴일 여부
-await isHoliday(new Date('2026-01-01T00:00:00+0900')); // true
 await isHoliday(new Date('2026-01-02T00:00:00+0900')); // false
+await isHoliday(new Date('2026-01-01T00:00:00+0900')); // true
+await isHoliday('2026-01-01'); // true
 
 // 공휴일 명칭(들)
-await getHolidayNames(new Date('2026-05-05T00:00:00+0900')); // ['어린이날']
 await getHolidayNames(new Date('2026-05-04T00:00:00+0900')); // null
+await getHolidayNames(new Date('2026-05-05T00:00:00+0900')); // ['어린이날']
+await getHolidayNames('2026-05-05'); // ['어린이날']
 ```
 
 ```js
@@ -47,6 +49,7 @@ import { isHoliday } from '@hyunbinseo/holidays-kr';
 
 // Jan 01 2026 00:00:00 GMT+0900 is a holiday in ROK
 await isHoliday(new Date('2026-01-01T00:00:00+0900')); // true
+await isHoliday('2026-01-01'); // true
 
 // Be cautious with the date's time zone!
 // Dec 31 2025 23:00:00 GMT+0900 is not a holiday in ROK
@@ -56,8 +59,9 @@ await isHoliday(new Date('2026-01-01T00:00:00+1000')); // false
 ```js
 import { getHolidayNames } from '@hyunbinseo/holidays-kr';
 
-await getHolidayNames(new Date('2026-05-05T00:00:00+0900')); // ['어린이날']
 await getHolidayNames(new Date('2026-05-04T00:00:00+0900')); // null
+await getHolidayNames(new Date('2026-05-05T00:00:00+0900')); // ['어린이날']
+await getHolidayNames('2026-05-05'); // ['어린이날']
 ```
 
 ```js
