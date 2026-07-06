@@ -35,8 +35,8 @@
 	"scripts": {
 		"prepack": "tsdown",
 		"preversion": "vitest run",
-		"version": "node cli/write/all.ts && git add -A public",
-		"postversion": "git push && git push --tags && node cli/postversion.ts",
+		"version": "node cli/scripts/write/all.ts && git add -A public",
+		"postversion": "git push && git push --tags && node cli/scripts/postversion.ts",
 		"check": "tsc --noEmit",
 		"fmt": "oxfmt",
 		"fmt:check": "oxfmt --check",

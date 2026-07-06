@@ -1,7 +1,7 @@
-import { checkHolidays } from '#cli/check/holidays.ts';
+import { checkHolidays } from '#cli/lib/check.ts';
+import { HOLIDAYS_DIR } from '#cli/lib/config.ts';
+import { write } from '#cli/lib/write.ts';
 import * as holidays from '#src/holidays/all.ts';
-import { HOLIDAYS_DIR } from './config.ts';
-import { write } from './index.ts';
 
 await checkHolidays(holidays, { interactive: true });
 

@@ -1,6 +1,6 @@
+import { ANNIVERSARIES_DIR } from '#cli/lib/config.ts';
+import { write } from '#cli/lib/write.ts';
 import * as anniversaries from '#src/anniversaries.ts';
-import { ANNIVERSARIES_DIR } from './config.ts';
-import { write } from './index.ts';
 
 await write({
 	presets: anniversaries,

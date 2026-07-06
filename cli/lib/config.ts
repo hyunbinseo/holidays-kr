@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { root } from '#cli/utilities.ts';
+import { root } from '#cli/lib/utilities.ts';
 
 export const PUBLIC_DIR = join(root, './public');
 

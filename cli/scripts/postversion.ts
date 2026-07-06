@@ -1,4 +1,4 @@
-import pkg from '../package.json' with { type: 'json' };
+import pkg from '../../package.json' with { type: 'json' };
 
 const github = pkg.repository.url.replace(/^git\+|\.git$/g, '');
 
