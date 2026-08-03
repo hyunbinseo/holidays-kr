@@ -1,6 +1,6 @@
 # 대한민국의 공휴일
 
-우주항공청에서 발표한 월력요항을 사용합니다. [English](#usage)
+우주항공청에서 발표한 월력요항을 사용합니다.
 
 - `Date` 객체 또는 `YYYY-MM-DD` 날짜 문자열의 공휴일 여부와 그 명칭들을 확인합니다
 - `CSV`, `JSON`, `ICS` 파일(호스팅) 및 구독할 수 있는 캘린더 URL도 제공됩니다. [링크](https://github.com/hyunbinseo/holidays-kr#readme)
@@ -66,61 +66,18 @@ const y2026 = await getHolidayPreset('2026');
 }
 ```
 
----
-
-## Usage
-
-APIs dynamically load yearly presets. `RangeError` is thrown if not available.
-
-```js
-import { isHoliday } from '@hyunbinseo/holidays-kr';
-
-// Jan 01 2026 00:00:00 GMT+0900 is a holiday in ROK
-await isHoliday(new Date('2026-01-01T00:00:00+0900')); // true
-await isHoliday('2026-01-01'); // true
-
-// Be cautious with the date's time zone!
-// Dec 31 2025 23:00:00 GMT+0900 is not a holiday in ROK
-await isHoliday(new Date('2026-01-01T00:00:00+1000')); // false
-```
-
-```js
-import { getHolidayNames } from '@hyunbinseo/holidays-kr';
-
-await getHolidayNames(new Date('2026-05-04T00:00:00+0900')); // null
-await getHolidayNames(new Date('2026-05-05T00:00:00+0900')); // ['어린이날']
-await getHolidayNames('2026-05-05'); // ['어린이날']
-```
-
-```js
-import { getHolidayPreset } from '@hyunbinseo/holidays-kr';
-
-const y2026 = await getHolidayPreset('2026');
-'2026-01-01' in y2026; // true
-'2026-01-02' in y2026; // false
-```
-
-```jsonc
-// y2026 shape:
-{
-	"2026-01-01": ["1월 1일"],
-	// ...
-	"2026-12-25": ["기독탄신일"],
-}
-```
-
-## Migration
+## 마이그레이션
 
 ### 5.x
 
-`getHolidayPreset` is now the recommended API for loading yearly presets:
+연도별 데이터를 불러올 때는 `getHolidayPreset` 사용을 권장합니다.
 
 ```js
 import { getHolidayPreset } from '@hyunbinseo/holidays-kr';
 const y2026 = await getHolidayPreset('2026');
 ```
 
-Static `y20XX` named exports have been moved to the `./all` subpath:
+연도별 데이터를 정적으로 불러올 경우 경로를 `/all`로 변경해야 합니다.
 
 ```diff
 - import { y2026 } from '@hyunbinseo/holidays-kr';
@@ -129,39 +86,36 @@ Static `y20XX` named exports have been moved to the `./all` subpath:
 
 ### 4.x
 
-- ESM only. No longer includes CJS output
-- `isHoliday` and `getHolidayNames` have become async
-- `isHolidayE` and `getHolidayNamesE` have been removed
-- Holiday presets are dynamically imported per year
+ESM 전용 패키지가 되었습니다. 비동기 API로 변경되었습니다.
 
 ```diff
 - isHoliday(date);
 - isHolidayE(date);
-+ await isHoliday(date);
++ await isHoliday(date); // 모든 연도 조회 가능
 ```
 
 ```diff
 - getHolidayNames(date);
 - getHolidayNamesE(date);
-+ await getHolidayNames(date);
++ await getHolidayNames(date); // 모든 연도 조회 가능
 ```
 
 ### 3.x
 
-- `/public` directory is no longer included
-- `TypeError` is thrown instead of being returned
-- `RangeError` is thrown instead of returning `null`
-- `isHoliday` uses the latest 2 years of holiday data
-- `isHoliday` no longer supports the `options` parameter
+- `/public` 디렉토리가 더 이상 포함되지 않습니다
+- 값을 반환하는 대신 `TypeError`를 던집니다
+- `null`을 반환하는 대신 `RangeError`를 던집니다
+- `isHoliday`는 최근 2개년의 공휴일 데이터를 사용합니다
+- `isHoliday`는 더 이상 `options` 매개변수를 지원하지 않습니다
 
 ```diff
-# Yearly holidays changed from a Map to an Object
+# 연도별 공휴일 데이터가 Map에서 Object로 변경됨
 - y2025.has('2025-01-01');
 + '2025-01-01' in y2025;
 ```
 
 ```js
-// Check the day value of a `Date` object
+// `Date` 객체의 요일 값 확인하기
 import { dateToDayWithOffset } from '@hyunbinseo/tools';
 const date = new Date('2023-01-07T00:00:00+0900');
 dateToDayWithOffset(date, '+09:00'); // 6 - Saturday
