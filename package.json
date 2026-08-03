@@ -37,7 +37,6 @@
 		"preversion": "vitest run",
 		"version": "node cli/scripts/write/all.ts && git add -A public",
 		"postversion": "git push && git push --tags && node cli/scripts/postversion.ts",
-		"check": "tsc --noEmit",
 		"fmt": "oxfmt",
 		"fmt:check": "oxfmt --check",
 		"lint": "oxlint",
@@ -49,9 +48,10 @@
 		"@types/node": "^24.13.2",
 		"oxfmt": "^0.56.0",
 		"oxlint": "^1.71.0",
+		"oxlint-tsgolint": "^7.0.2001",
 		"publint": "^0.3.21",
-		"tsdown": "^0.22.3",
-		"typescript": "^6.0.3",
+		"tsdown": "^0.22.14",
+		"typescript": "^7.0.2",
 		"vitest": "^4.1.9"
 	},
 	"engines": {
