@@ -8,11 +8,10 @@ type HasValue<Union, Required> = Required extends Union
 	? unknown
 	: { '음력 공휴일 누락': Required };
 
-export type ValidateLunarHolidaysHelper<Values> = //
-	HasValue<Values, '설날 전날'> &
-		HasValue<Values, '설날'> &
-		HasValue<Values, '설날 다음 날'> &
-		HasValue<Values, '부처님 오신 날'> &
-		HasValue<Values, '추석 전날'> &
-		HasValue<Values, '추석'> &
-		HasValue<Values, '추석 다음 날'>;
+export type ValidateLunarHolidaysHelper<Values> = HasValue<Values, '설날 전날'> &
+	HasValue<Values, '설날'> &
+	HasValue<Values, '설날 다음 날'> &
+	HasValue<Values, '부처님 오신 날'> &
+	HasValue<Values, '추석 전날'> &
+	HasValue<Values, '추석'> &
+	HasValue<Values, '추석 다음 날'>;
