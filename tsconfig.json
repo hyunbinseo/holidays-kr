@@ -3,8 +3,8 @@
 	"compilerOptions": {
 		// Environment Settings
 		"module": "nodenext",
-		"target": "esnext",
-		"lib": ["esnext"],
+		"target": "es2022",
+		"lib": ["es2022"],
 		"types": ["node", "tsdown/client"],
 
 		// Other Outputs
@@ -35,5 +35,6 @@
 		"noUncheckedSideEffectImports": true,
 		"moduleDetection": "force",
 		"skipLibCheck": true
-	}
+	},
+	"exclude": ["dist"]
 }

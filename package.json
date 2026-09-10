@@ -44,18 +44,29 @@
 		"test": "vitest"
 	},
 	"devDependencies": {
-		"@arethetypeswrong/core": "^0.18.4",
-		"@types/node": "^24.13.2",
-		"oxfmt": "^0.56.0",
-		"oxlint": "^1.71.0",
+		"@arethetypeswrong/core": "^0.18.5",
+		"@types/node": "^24.13.4",
+		"oxfmt": "^0.67.0",
+		"oxlint": "^1.82.0",
 		"oxlint-tsgolint": "^7.0.2001",
-		"publint": "^0.3.21",
-		"tsdown": "^0.22.14",
+		"publint": "^0.3.24",
+		"tsdown": "^0.23.0",
 		"typescript": "^7.0.2",
-		"vitest": "^4.1.9"
+		"vitest": "^4.1.11"
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "12.4.0",
+			"onFail": "download"
+		},
+		"runtime": {
+			"name": "node",
+			"version": "24.21.0",
+			"onFail": "download"
+		}
 	},
 	"engines": {
 		"node": ">=18"
-	},
-	"packageManager": "pnpm@11.9.0+sha512.bd682d5d03fe525ef7c9fd6780c6884d1e756ac4c9c9fe00c538782824310dcf90e3ddc4f53835f06dfaebd5085e41855e0bcbb3b60de2ac5bbab89e5036f03b"
+	}
 }

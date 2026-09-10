@@ -1,11 +1,10 @@
 {
 	"$schema": "./node_modules/oxfmt/configuration_schema.json",
-	"useTabs": true,
-	"singleQuote": true,
-	"quoteProps": "consistent",
-	"trailingComma": "all",
 	"printWidth": 100,
-	"sortImports": {
-		"newlinesBetween": false
-	}
+	"quoteProps": "consistent",
+	"singleQuote": true,
+	"sortImports": { "newlinesBetween": false },
+	"sortPackageJson": true,
+	"trailingComma": "all",
+	"useTabs": true
 }
