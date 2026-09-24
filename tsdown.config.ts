@@ -7,6 +7,7 @@ export default defineConfig({
 	},
 	dts: true,
 	format: ['esm'],
+	target: ['baseline-widely-available', 'node18'],
 	platform: 'neutral',
 	exports: true,
 	publint: true,
