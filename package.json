@@ -45,19 +45,19 @@
 	},
 	"devDependencies": {
 		"@arethetypeswrong/core": "^0.18.5",
-		"@types/node": "^24.13.4",
-		"oxfmt": "^0.67.0",
-		"oxlint": "^1.82.0",
-		"oxlint-tsgolint": "^7.0.2001",
+		"@types/node": "^24.13.6",
+		"oxfmt": "^0.70.0",
+		"oxlint": "^1.85.0",
+		"oxlint-tsgolint": "^7.0.2002",
 		"publint": "^0.3.24",
 		"tsdown": "^0.23.0",
 		"typescript": "^7.0.2",
-		"vitest": "^5.0.0"
+		"vitest": "^5.0.1"
 	},
 	"devEngines": {
 		"packageManager": {
 			"name": "pnpm",
-			"version": "12.4.0",
+			"version": "12.6.0",
 			"onFail": "download"
 		},
 		"runtime": {
