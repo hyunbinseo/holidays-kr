@@ -1,6 +1,11 @@
 {
 	"format_on_save": "on",
 	"formatter": [{ "language_server": { "name": "oxfmt" } }],
+	"languages": {
+		"TypeScript": {
+			"language_servers": ["typescript-ls", "!vtsls", "!typescript-language-server", "..."]
+		}
+	},
 	"lsp": {
 		"oxlint": {
 			"initialization_options": {
