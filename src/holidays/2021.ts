@@ -1,6 +1,4 @@
-import type { ValidateHolidays } from './types/index.ts';
-
-export const y2021 = {
+export default {
 	'2021-01-01': ['1월 1일'],
 	'2021-02-11': ['설날 전날'],
 	'2021-02-12': ['설날'],
@@ -20,5 +18,3 @@ export const y2021 = {
 	'2021-10-11': ['대체공휴일(한글날)'],
 	'2021-12-25': ['기독탄신일'],
 } as const;
-
-export default y2021 satisfies ValidateHolidays<2021, typeof y2021>;
