@@ -1,20 +1,37 @@
 import { describe, expect, it } from 'vitest';
-import { toISODate } from './utils.ts';
+import { toKSTISODate } from './utils.ts';
 
-describe('toISODate', () => {
-	it('returns the string as-is for a valid ISO date string', () => {
-		expect(toISODate('2026-01-01')).toBe('2026-01-01');
+describe('toKSTISODate', () => {
+	it.each(['2026-01-01', '2026-12-31', '2024-02-29'])('returns %s as-is', (input) => {
+		expect(toKSTISODate(input)).toBe(input);
 	});
 
-	it('throws TypeError for an invalid date string', () => {
-		expect(() => toISODate('not-a-date')).toThrow(TypeError);
+	it.each([
+		'not-a-date',
+		'2026-1-1',
+		'2026-13-01',
+		'2026-01-32',
+		'2026-02-30',
+		'2026-04-31',
+		'2025-02-29',
+		'2026-01-01T00:00:00',
+	])('throws TypeError for %s', (input) => {
+		expect(() => toKSTISODate(input)).toThrow(TypeError);
 	});
 
-	it('returns the KST date string for a valid Date', () => {
-		expect(toISODate(new Date('2026-01-01T00:00:00+0900'))).toBe('2026-01-01');
+	it.each([
+		['2026-01-01T00:00:00+0900', '2026-01-01'],
+		['2025-12-31T15:00:00Z', '2026-01-01'],
+		['2025-12-31T14:59:59Z', '2025-12-31'],
+	])('returns the KST date for %s', (input, expected) => {
+		expect(toKSTISODate(new Date(input))).toBe(expected);
 	});
 
 	it('throws RangeError for an invalid Date', () => {
-		expect(() => toISODate(new Date('invalid'))).toThrow(RangeError);
+		expect(() => toKSTISODate(new Date('invalid'))).toThrow(RangeError);
+	});
+
+	it('throws for a non-Date, non-string input', () => {
+		expect(() => toKSTISODate(1 as never)).toThrow();
 	});
 });
