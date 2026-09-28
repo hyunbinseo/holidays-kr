@@ -37,10 +37,11 @@
 		"access": "public"
 	},
 	"scripts": {
-		"prepack": "tsdown",
-		"preversion": "vitest run",
+		"prepack": "node --run check && tsdown",
+		"preversion": "node --run check && vitest run",
 		"version": "node cli/scripts/write/all.ts && git add -A public",
 		"postversion": "git push && git push --tags && node cli/scripts/postversion.ts",
+		"check": "tsc && tsc -p tsconfig.lib.json",
 		"fmt": "oxfmt",
 		"fmt:check": "oxfmt --check",
 		"lint": "oxlint",
@@ -49,7 +50,7 @@
 	},
 	"devDependencies": {
 		"@arethetypeswrong/core": "^0.18.5",
-		"@types/node": "^18.19.130",
+		"@types/node": "^26.6.3",
 		"oxfmt": "^0.70.0",
 		"oxlint": "^1.85.0",
 		"oxlint-tsgolint": "^7.0.2002",

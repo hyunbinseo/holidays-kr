@@ -1,10 +1,9 @@
 {
-	"include": ["src"],
 	"compilerOptions": {
 		// Environment Settings
 		"module": "nodenext",
 		"target": "esnext",
-		"lib": ["es2022"],
+		"lib": ["esnext"],
 		"types": ["node", "tsdown/client"],
 
 		// Other Outputs

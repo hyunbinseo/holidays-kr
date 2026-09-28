@@ -1,5 +1,3 @@
-/// <reference lib="esnext.temporal" />
-
 import { assert, describe, expect, it } from 'vitest';
 import type { ISODate, Presets } from '../types.ts';
 import * as holidays from './all.ts';

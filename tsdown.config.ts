@@ -7,7 +7,7 @@ export default defineConfig({
 	},
 	dts: true,
 	format: ['esm'],
-	target: ['baseline-widely-available', 'node18'],
+	target: 'es2022', // sync with tsconfig.lib.json's lib
 	platform: 'neutral',
 	exports: true,
 	publint: true,

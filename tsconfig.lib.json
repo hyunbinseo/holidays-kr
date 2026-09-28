@@ -1,0 +1,9 @@
+{
+	"extends": "./tsconfig.json",
+	"include": ["src"],
+	"exclude": ["src/**/*.test.*"],
+	"compilerOptions": {
+		"lib": ["es2022"], // sync with tsdown.config.ts's target
+		"types": ["tsdown/client"]
+	}
+}
